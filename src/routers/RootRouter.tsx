@@ -14,7 +14,7 @@ const RooterRouter: React.FC<Props> = (props) => {
       <Route exact path="/start">
         <StartPage />
       </Route>
-      <Route exact path="/process">
+      <Route exact path="/progress">
         <ProgressPage />
       </Route>
       <Route exact path="/result">
