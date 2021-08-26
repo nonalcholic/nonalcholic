@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
-import { UserInterface } from "./interfaces/userInterface";
-import user from "./user";
+import { ProgressInterface } from "./interfaces/progressInterface";
+import progress from "./progress";
 
 export interface IReducer {
-  user: UserInterface;
+  progress: ProgressInterface;
 }
 
 const rootReducer = combineReducers<IReducer>({
-  user,
+  progress,
 });
 
 export default rootReducer;
