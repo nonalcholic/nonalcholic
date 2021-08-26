@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import { IUserResponseDto } from "./interfaces/userInterface";
+import { UserInterface } from "./interfaces/userInterface";
 import user from "./user";
 
 export interface IReducer {
-  user: IUserResponseDto;
+  user: UserInterface;
 }
 
 const rootReducer = combineReducers<IReducer>({

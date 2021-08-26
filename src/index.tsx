@@ -6,9 +6,15 @@ import { Provider } from "react-redux";
 
 import reportWebVitals from "./reportWebVitals";
 import rootReducer from "./redux";
-import { createStore } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { applyMiddleware, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-const store = createStore(rootReducer);
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
 
 ReactDOM.render(
   <Provider store={store}>
