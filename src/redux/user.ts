@@ -22,6 +22,25 @@ export const updateUser = (userData: any) => (dispatch: Dispatch) => {
 
 const initialState: UserInterface = {
   id: -1,
+  currentProgress: 0,
+  EI: 0,
+  SN: 0,
+  TF: 0,
+  JP: 0,
+  answerData: [
+    { id: 0, score: 0 },
+    { id: 1, score: 0 },
+    { id: 2, score: 0 },
+    { id: 3, score: 0 },
+    { id: 4, score: 0 },
+    { id: 5, score: 0 },
+    { id: 6, score: 0 },
+    { id: 7, score: 0 },
+    { id: 8, score: 0 },
+    { id: 9, score: 0 },
+    { id: 10, score: 0 },
+    { id: 11, score: 0 },
+  ],
 };
 
 export default handleActions<UserInterface, any>(
