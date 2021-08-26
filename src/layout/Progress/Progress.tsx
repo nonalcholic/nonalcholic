@@ -1,8 +1,14 @@
 import "./Progress.css";
 import React from "react";
 import { QuestionData } from "../../redux/interfaces/progressInterface";
-import { nextProgress, prevProgress } from "../../redux/progress";
+import {
+  answerProgress,
+  nextProgress,
+  prevProgress,
+} from "../../redux/progress";
 import { useDispatch } from "react-redux";
+import { TOTAL_PROGRESS_NUMBER } from "../../utils/utils.const";
+import { useHistory } from "react-router-dom";
 
 interface Props {
   currentProgress: QuestionData;
@@ -10,6 +16,7 @@ interface Props {
 const Progress: React.FC<Props> = (props) => {
   const { currentProgress } = props;
   const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
     <>
@@ -29,8 +36,31 @@ const Progress: React.FC<Props> = (props) => {
       </button>
       <div>{currentProgress.id}</div>
       <div>{currentProgress.question}</div>
-      <div>{currentProgress.answerA}</div>
-      <div>{currentProgress.answerB}</div>
+      <button
+        onClick={() => {
+          answerProgress({
+            id: currentProgress.id,
+            score: currentProgress.choiceA.type,
+          })(dispatch);
+          nextProgress()(dispatch);
+        }}
+      >
+        {currentProgress.choiceA.text}
+      </button>
+      <button
+        onClick={() => {
+          answerProgress({
+            id: currentProgress.id,
+            score: currentProgress.choiceB.type,
+          })(dispatch);
+          nextProgress()(dispatch);
+        }}
+      >
+        {currentProgress.choiceB.text}
+      </button>
+      {currentProgress.id === TOTAL_PROGRESS_NUMBER - 1 && (
+        <button onClick={() => history.push("/result")}>결과보기</button>
+      )}
     </>
   );
 };

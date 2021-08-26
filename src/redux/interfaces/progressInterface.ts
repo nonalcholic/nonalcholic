@@ -1,10 +1,6 @@
 export interface ProgressInterface {
   id: number;
   currentProgress: number;
-  EI: number;
-  SN: number;
-  TF: number;
-  JP: number;
   answerData: AnswerData[];
 }
 
@@ -20,6 +16,10 @@ export interface QuestionData {
   id: number;
   type: MBTIType;
   question: string;
-  answerA: string;
-  answerB: string;
+  choiceA: ChoiceData;
+  choiceB: ChoiceData;
+}
+export interface ChoiceData {
+  text: string;
+  type: Answer;
 }
