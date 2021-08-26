@@ -1,4 +1,4 @@
-export interface UserInterface {
+export interface ProgressInterface {
   id: number;
   currentProgress: number;
   EI: number;

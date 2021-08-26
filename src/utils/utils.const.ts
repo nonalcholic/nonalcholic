@@ -1,4 +1,4 @@
-import { QuestionData } from "../redux/interfaces/userInterface";
+import { QuestionData } from "../redux/interfaces/progressInterface";
 
 export const TOTAL_PROGRESS_NUMBER = 12;
 
