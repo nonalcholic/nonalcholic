@@ -1,8 +1,7 @@
 version: "3.7"
 
 services:
-  nonalcholic:
-    container_name: nonalcholic
+  client:
     build:
       context: .
       dockerfile: Dockerfile
