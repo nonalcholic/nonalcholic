@@ -6,8 +6,19 @@ const StartPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
   const onClickFunction = async () => {
-    const res = await fetch("http://localhost:9999/");
-    console.log(res.body);
+    const body = {
+      message: "hi",
+    };
+
+    const res = await fetch("http://localhost:9999/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    // const res = await fetch("http://localhost:9999/");
     const text = await res.text();
     console.log("text,", text);
   };
