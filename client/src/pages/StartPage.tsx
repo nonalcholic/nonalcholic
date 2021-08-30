@@ -5,12 +5,21 @@ interface Props {}
 const StartPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
-  useEffect(() => {
-    console.log(history);
-    return () => {};
-  }, []);
-
-  return <button onClick={() => history.push("/progress")}>시작하기</button>;
+  return (
+    <>
+      <button
+        onClick={() => {
+          fetch("/").then((res) => {
+            console.log("hello server");
+            console.log(res);
+          });
+        }}
+      >
+        요청 보내기
+      </button>
+      <button onClick={() => history.push("/progress")}>시작하기</button>
+    </>
+  );
 };
 
 export default StartPage;
