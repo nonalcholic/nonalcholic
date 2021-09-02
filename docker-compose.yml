@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - mongo
+    networks:
+      - internal
     volumes:
       - "./server:/app"
     ports:
@@ -18,6 +20,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - server
+    networks:
+      - internal
     volumes:
       - "./client:/app"
       - "/app/node_modules"

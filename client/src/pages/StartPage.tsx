@@ -10,7 +10,7 @@ const StartPage: React.FC<Props> = (props) => {
       message: "hi",
     };
 
-    const res = await fetch("http://localhost:9999/", {
+    const res = await fetch("http://localhost:9999/test/message", {
       method: "POST",
       headers: {
         Accept: "application/json",
