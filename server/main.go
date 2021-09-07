@@ -3,31 +3,42 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type Message struct {
-	Message string
-	Name    string
-	Score   int
-}
-
-type Trainer struct {
-	Name string
-	Age  int
-	City string
-}
-
-func Test(c *gin.Context) {
+func Result(c *gin.Context) {
+	fmt.Println("/result")
 	c.JSON(http.StatusOK, gin.H{
-		"message": "테스트입니다.",
+		"message": "Database: data, Collection: result.",
 	})
+}
+
+func Share(c *gin.Context) {
+	fmt.Println("/share")
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Database: data, Collection: share.",
+	})
+}
+
+type Data struct {
+	Id        string
+	Answers   [3]int
+	Result    string
+	Ip        string
+	CreatedAt time.Time
+}
+
+type Type struct {
+	Id   string
+	Type string
 }
 
 func main() {
@@ -55,8 +66,8 @@ func main() {
 
 	fmt.Println("Connected to MongoDB!")
 
-	test_message := client.Database("test").Collection("message")
-	test_trainers := client.Database("test").Collection("trainers")
+	result := client.Database("data").Collection("result")
+	// share := client.Database("data").Collection("share")
 
 	// Disconnect to MongoDB
 	// err = client.Disconnect(context.TODO())
@@ -68,23 +79,44 @@ func main() {
 
 	router := gin.Default()
 	router.Use(CORSMiddleware())
-	router.POST("/test/message", Test, func(c *gin.Context) {
-		message := Message{"테스트 2", "민지", 100}
-		ash := Trainer{"Ash", 10, "Pallet Town"}
 
-		insertResult1, err1 := test_trainers.InsertOne(context.TODO(), ash)
-		insertResult2, err2 := test_message.InsertOne(context.TODO(), message)
+	router.POST("/result", Result, func(c *gin.Context) {
+		var d Data
 
-		if err1 != nil {
-			log.Fatal(err)
-		}
-		if err2 != nil {
+		err := json.NewDecoder(c.Request.Body).Decode(&d)
+		if err != nil {
 			log.Fatal(err)
 		}
 
-		fmt.Println("Inserted a single document: ", insertResult1.InsertedID)
-		fmt.Println("Inserted a single document: ", insertResult2.InsertedID)
+		d.CreatedAt = time.Now()
 
+		// message := Data{Id: data["id"], Answer: [3]int{1, 2, 3}, Result: "Result", CreatedAt: time.Now().Local()}
+
+		insertResult, err := result.InsertOne(context.TODO(), d)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Println("Inserted a single document: ", insertResult.InsertedID)
+	})
+
+	router.POST("/share", Share, func(c *gin.Context) {
+		// var t Type
+
+		// err := json.NewDecoder(c.Request.Body).Decode(&t)
+		// if err != nil {
+		// 	log.Fatal(err)
+		// }
+		// d.CreatedAt = time.Now()
+
+		// message := Data{Id: data["id"], Answer: [3]int{1, 2, 3}, Result: "Result", CreatedAt: time.Now().Local()}
+
+		// incrementResult, err := share.Find(context.TODO(), bson.D{Id: t.Id})
+		// if err != nil {
+		// 	log.Fatal(err)
+		// }
+
+		// fmt.Println("Inserted a single document: ", incrementResult.InsertedID)
 	})
 	router.Run(":9999")
 }
