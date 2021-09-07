@@ -1,16 +1,25 @@
+import axios from "axios";
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import {
+  ResultInterface,
+  ShareInterface,
+} from "../redux/interfaces/dataInterface";
+import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 
 interface Props {}
 const StartPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
-  const onClickFunction = async () => {
-    const body = {
-      message: "hi",
+  const onResult = () => {
+    const body: ResultInterface = {
+      id: getIdCookie(),
+      answers: [1, 0, -1],
+      result: "ENFJ",
+      ip: getIpCookie(),
     };
 
-    const res = await fetch("http://localhost:9999/test/message", {
+    fetch("http://localhost:9999/test/message", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -18,13 +27,27 @@ const StartPage: React.FC<Props> = (props) => {
       },
       body: JSON.stringify(body),
     });
-    // const res = await fetch("http://localhost:9999/");
-    const text = await res.text();
-    console.log("text,", text);
+  };
+
+  const onShare = () => {
+    const body: ShareInterface = {
+      id: getIdCookie(),
+      type: "kakao",
+    };
+
+    fetch("http://localhost:9999/test/message", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
   };
   return (
     <>
-      <button onClick={() => onClickFunction()}>요청 보내기</button>
+      <button onClick={() => onResult()}>결과 보내기</button>
+      <button onClick={() => onShare()}>공유하기</button>
       <button onClick={() => history.push("/progress")}>시작하기</button>
     </>
   );
