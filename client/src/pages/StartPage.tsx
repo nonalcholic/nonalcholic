@@ -19,7 +19,7 @@ const StartPage: React.FC<Props> = (props) => {
       ip: getIpCookie(),
     };
 
-    fetch("http://localhost:9999/test/message", {
+    fetch("http://localhost:9999/result", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -35,7 +35,7 @@ const StartPage: React.FC<Props> = (props) => {
       type: "kakao",
     };
 
-    fetch("http://localhost:9999/test/message", {
+    fetch("http://localhost:9999/share", {
       method: "POST",
       headers: {
         Accept: "application/json",

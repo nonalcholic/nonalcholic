@@ -15,12 +15,14 @@ import (
 )
 
 func Result(c *gin.Context) {
+	fmt.Println("/result")
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Database: data, Collection: result.",
 	})
 }
 
 func Share(c *gin.Context) {
+	fmt.Println("/share")
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Database: data, Collection: share.",
 	})
@@ -28,8 +30,9 @@ func Share(c *gin.Context) {
 
 type Data struct {
 	Id        string
-	Answer    [3]int
+	Answers   [3]int
 	Result    string
+	Ip        string
 	CreatedAt time.Time
 }
 
@@ -97,24 +100,24 @@ func main() {
 		fmt.Println("Inserted a single document: ", insertResult.InsertedID)
 	})
 
-	// router.POST("/share", Share, func(c *gin.Context) {
-	// 	var t Type
+	router.POST("/share", Share, func(c *gin.Context) {
+		// var t Type
 
-	// 	err := json.NewDecoder(c.Request.Body).Decode(&t)
-	// 	if err != nil {
-	// 		log.Fatal(err)
-	// 	}
-	// 	// d.CreatedAt = time.Now()
+		// err := json.NewDecoder(c.Request.Body).Decode(&t)
+		// if err != nil {
+		// 	log.Fatal(err)
+		// }
+		// d.CreatedAt = time.Now()
 
-	// 	// message := Data{Id: data["id"], Answer: [3]int{1, 2, 3}, Result: "Result", CreatedAt: time.Now().Local()}
+		// message := Data{Id: data["id"], Answer: [3]int{1, 2, 3}, Result: "Result", CreatedAt: time.Now().Local()}
 
-	// 	incrementResult, err := share.Find(context.TODO(), bson.D{Id: t.Id})
-	// 	// if err != nil {
-	// 	// 	log.Fatal(err)
-	// 	// }
+		// incrementResult, err := share.Find(context.TODO(), bson.D{Id: t.Id})
+		// if err != nil {
+		// 	log.Fatal(err)
+		// }
 
-	// 	// fmt.Println("Inserted a single document: ", incrementResult.InsertedID)
-	// })
+		// fmt.Println("Inserted a single document: ", incrementResult.InsertedID)
+	})
 	router.Run(":9999")
 }
 
