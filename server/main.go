@@ -6,28 +6,23 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type Message struct {
-	Message string
-	Name    string
-	Score   int
-}
-
-type Trainer struct {
-	Name string
-	Age  int
-	City string
-}
-
 func Test(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "테스트입니다.",
 	})
+}
+
+type Data struct {
+	Answer    [3]int
+	Result    string
+	CreatedAt time.Time
 }
 
 func main() {
@@ -55,8 +50,7 @@ func main() {
 
 	fmt.Println("Connected to MongoDB!")
 
-	test_message := client.Database("test").Collection("message")
-	test_trainers := client.Database("test").Collection("trainers")
+	test := client.Database("test").Collection("message")
 
 	// Disconnect to MongoDB
 	// err = client.Disconnect(context.TODO())
@@ -69,21 +63,16 @@ func main() {
 	router := gin.Default()
 	router.Use(CORSMiddleware())
 	router.POST("/test/message", Test, func(c *gin.Context) {
-		message := Message{"테스트 2", "민지", 100}
-		ash := Trainer{"Ash", 10, "Pallet Town"}
 
-		insertResult1, err1 := test_trainers.InsertOne(context.TODO(), ash)
-		insertResult2, err2 := test_message.InsertOne(context.TODO(), message)
+		message := Data{Answer: [3]int{1, 2, 3}, Result: "Result", CreatedAt: time.Now().Local()}
 
-		if err1 != nil {
-			log.Fatal(err)
-		}
-		if err2 != nil {
+		insertResult, err := test.InsertOne(context.TODO(), message)
+
+		if err != nil {
 			log.Fatal(err)
 		}
 
-		fmt.Println("Inserted a single document: ", insertResult1.InsertedID)
-		fmt.Println("Inserted a single document: ", insertResult2.InsertedID)
+		fmt.Println("Inserted a single document: ", insertResult.InsertedID)
 
 	})
 	router.Run(":9999")
