@@ -1,40 +1,53 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { ResultInterface } from "../redux/interfaces/dataInterface";
-import { getIdCookie } from "../utils/utils.identification";
+import {
+  ResultInterface,
+  ShareInterface,
+} from "../redux/interfaces/dataInterface";
+import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 
 interface Props {}
 const StartPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
-  const onClickFunction = () => {
-    axios.get("https://geolocation-db.com/json/").then(async (res) => {
-      console.log(res.data["IPv4"]);
+  const onResult = () => {
+    const body: ResultInterface = {
+      id: getIdCookie(),
+      answers: [1, 0, -1],
+      result: "ENFJ",
+      ip: getIpCookie(),
+    };
 
-      const body: ResultInterface = {
-        id: getIdCookie(),
-        answers: [1, 0, -1],
-        result: "ENFJ",
-        ip: res.data["IPv4"],
-      };
+    fetch("http://localhost:9999/test/message", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+  };
 
-      await fetch("http://localhost:9999/test/message", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
+  const onShare = () => {
+    const body: ShareInterface = {
+      id: getIdCookie(),
+      type: "kakao",
+    };
 
-      // const text = await res.text();
-      // console.log("text,", text);
+    fetch("http://localhost:9999/test/message", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
     });
   };
   return (
     <>
-      <button onClick={() => onClickFunction()}>요청 보내기</button>
+      <button onClick={() => onResult()}>결과 보내기</button>
+      <button onClick={() => onShare()}>공유하기</button>
       <button onClick={() => history.push("/progress")}>시작하기</button>
     </>
   );

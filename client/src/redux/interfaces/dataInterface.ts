@@ -6,3 +6,8 @@ export interface ResultInterface {
   result: string;
   ip: string;
 }
+
+export interface ShareInterface {
+  id: string;
+  type: "kakao" | "instagram" | "link";
+}
