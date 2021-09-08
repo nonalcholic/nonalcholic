@@ -11,7 +11,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/bson" // @@@@
 	"go.mongodb.org/mongo-driver/mongo/options"
+
 )
 
 func Result(c *gin.Context) {
@@ -101,22 +103,27 @@ func main() {
 	})
 
 	router.POST("/share", Share, func(c *gin.Context) {
-		// var t Type
+		var t Type
 
-		// err := json.NewDecoder(c.Request.Body).Decode(&t)
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
-		// d.CreatedAt = time.Now()
+		err := json.NewDecoder(c.Request.Body).Decode(&t)
+		if err != nil {
+			log.Fatal(err)
+		}
 
-		// message := Data{Id: data["id"], Answer: [3]int{1, 2, 3}, Result: "Result", CreatedAt: time.Now().Local()}
+		filter := bson.M{"id": t.Id}
+		update := bson.M{
+			"$set": bson.M{
+				"result": "ABCD",
+			},
+		}
 
-		// incrementResult, err := share.Find(context.TODO(), bson.D{Id: t.Id})
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
+		incrementResult, err := result.UpdateOne(context.TODO(), filter, update)
 
-		// fmt.Println("Inserted a single document: ", incrementResult.InsertedID)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Println("Inserted a single document: ", incrementResult)
 	})
 	router.Run(":9999")
 }
