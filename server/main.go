@@ -11,7 +11,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/bson" // @@@@
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
+
 )
 
 func Result(c *gin.Context) {
@@ -39,6 +42,20 @@ type Data struct {
 type Type struct {
 	Id   string
 	Type string
+}
+
+
+
+type FindData struct {
+	ID          primitive.ObjectID `bson:"_id"`
+	Answers [3]int	`bson:"answers"`
+	CreatedAt time.Time `bson:"createdat"`
+	UserID string `bson:"id"`
+	Instagram int `bson:"instagram"`
+	Ip string `bson:"ip"`
+	Kakao int `bson:"kakao"`
+	Link int `bson:"link"`
+	Result string `bson:"result"`
 }
 
 func main() {
@@ -101,22 +118,42 @@ func main() {
 	})
 
 	router.POST("/share", Share, func(c *gin.Context) {
-		// var t Type
+		var t Type
 
-		// err := json.NewDecoder(c.Request.Body).Decode(&t)
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
-		// d.CreatedAt = time.Now()
+		err := json.NewDecoder(c.Request.Body).Decode(&t)
+		if err != nil {
+			log.Fatal(err)
+		}
 
-		// message := Data{Id: data["id"], Answer: [3]int{1, 2, 3}, Result: "Result", CreatedAt: time.Now().Local()}
+		f := FindData{}
+		filter := bson.M{"id": t.Id}
+		err2 := result.FindOne(context.TODO(), filter).Decode(&f)
 
-		// incrementResult, err := share.Find(context.TODO(), bson.D{Id: t.Id})
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
+		if err2 != nil {
+		    log.Fatal(err2)
+		}
+		
+		fmt.Println(f.Kakao)
 
-		// fmt.Println("Inserted a single document: ", incrementResult.InsertedID)
+		var previous int
+		if (t.Type == "kakao") {previous = f.Kakao}
+		if (t.Type == "instagram") {previous = f.Instagram}
+		if (t.Type == "link"){ previous = f.Link}
+		
+		filter2 := bson.M{"id": t.Id}
+		update := bson.M{
+			"$set": bson.M{
+				t.Type: previous + 1,
+			},
+		}
+
+		incrementResult, err := result.UpdateOne(context.TODO(), filter2, update)
+
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Println("Inserted a single document: ", incrementResult)
 	})
 	router.Run(":9999")
 }

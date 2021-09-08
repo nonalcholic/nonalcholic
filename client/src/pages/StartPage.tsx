@@ -29,10 +29,10 @@ const StartPage: React.FC<Props> = (props) => {
     });
   };
 
-  const onShare = () => {
+  const onShare = (where: "link" | "instagram" | "kakao") => {
     const body: ShareInterface = {
       id: getIdCookie(),
-      type: "kakao",
+      type: where,
     };
 
     fetch("http://localhost:9999/share", {
@@ -47,7 +47,9 @@ const StartPage: React.FC<Props> = (props) => {
   return (
     <>
       <button onClick={() => onResult()}>결과 보내기</button>
-      <button onClick={() => onShare()}>공유하기</button>
+      <button onClick={() => onShare("link")}>링크 공유하기</button>
+      <button onClick={() => onShare("kakao")}>카카오 공유하기</button>
+      <button onClick={() => onShare("instagram")}>인스타 공유하기</button>
       <button onClick={() => history.push("/progress")}>시작하기</button>
     </>
   );
