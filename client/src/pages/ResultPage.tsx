@@ -2,8 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { IReducer } from "../redux";
+import {
+  ResultInterface,
+  ShareInterface,
+} from "../redux/interfaces/dataInterface";
 import { resetProgress } from "../redux/progress";
-import { QuestionInfo } from "../utils/utils.const";
+import { caculateMBTI } from "../utils/utils.calculate";
+import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 
 interface Props {}
 const ResultPage: React.FC<Props> = (props) => {
@@ -11,45 +16,46 @@ const ResultPage: React.FC<Props> = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const caculateMBTI = () => {
-    let EI = 0;
-    let SN = 0;
-    let TF = 0;
-    let JP = 0;
-    progress.answerData.forEach((answer) => {
-      const question = QuestionInfo[answer.id];
+  const onResult = () => {
+    const body: ResultInterface = {
+      id: getIdCookie(),
+      answers: progress.answerData.map((ans) => ans.score),
+      result: caculateMBTI(progress.answerData),
+      ip: getIpCookie(),
+    };
 
-      switch (question.type) {
-        case "EI":
-          EI += answer.score;
-          break;
-        case "SN":
-          SN += answer.score;
-          break;
-        case "TF":
-          TF += answer.score;
-          break;
-        case "JP":
-          JP += answer.score;
-          break;
-      }
+    fetch("http://localhost:9999/result", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
     });
-
-    let result = "";
-    if (EI > 0) result += "E";
-    else result += "I";
-    if (SN > 0) result += "S";
-    else result += "N";
-    if (TF > 0) result += "T";
-    else result += "F";
-    if (JP > 0) result += "J";
-    else result += "P";
-
-    return result;
   };
+
+  const onShare = (where: "link" | "instagram" | "kakao") => {
+    const body: ShareInterface = {
+      id: getIdCookie(),
+      type: where,
+    };
+
+    fetch("http://localhost:9999/share", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+  };
+
   return (
     <>
-      {caculateMBTI()}
+      <button onClick={() => onResult()}>결과 보내기</button>
+      <button onClick={() => onShare("link")}>링크 공유하기</button>
+      <button onClick={() => onShare("kakao")}>카카오 공유하기</button>
+      <button onClick={() => onShare("instagram")}>인스타 공유하기</button>
       <button
         onClick={() => {
           resetProgress()(dispatch);
