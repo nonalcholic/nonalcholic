@@ -32,7 +32,7 @@ const RootRouter: React.FC<Props> = (props) => {
         <Route exact path="/progress">
           <ProgressPage />
         </Route>
-        <Route exact path="/result">
+        <Route path="/:mbti">
           <ResultPage />
         </Route>
       </Switch>

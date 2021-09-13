@@ -1,17 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { IReducer } from "../redux";
 import {
   ResultInterface,
   ShareInterface,
 } from "../redux/interfaces/dataInterface";
 import { resetProgress } from "../redux/progress";
-import { caculateMBTI } from "../utils/utils.calculate";
 import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 
 interface Props {}
 const ResultPage: React.FC<Props> = (props) => {
+  const { mbti } = useParams<{ mbti: string }>();
   const progress = useSelector((state: IReducer) => state.progress);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const ResultPage: React.FC<Props> = (props) => {
     const body: ResultInterface = {
       id: getIdCookie(),
       answers: progress.answerData.map((ans) => ans.score),
-      result: caculateMBTI(progress.answerData),
+      result: mbti,
       ip: getIpCookie(),
     };
 
