@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { IReducer } from "../redux";
@@ -8,6 +8,9 @@ import {
 } from "../redux/interfaces/dataInterface";
 import { resetProgress } from "../redux/progress";
 import { getIdCookie, getIpCookie } from "../utils/utils.identification";
+import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
+import { FiLink } from "react-icons/fi";
+import "./ResultPage.scss";
 
 interface Props {}
 const ResultPage: React.FC<Props> = (props) => {
@@ -16,7 +19,7 @@ const ResultPage: React.FC<Props> = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const onResult = () => {
+  useEffect(() => {
     const body: ResultInterface = {
       id: getIdCookie(),
       answers: progress.answerData.map((ans) => ans.score),
@@ -32,7 +35,7 @@ const ResultPage: React.FC<Props> = (props) => {
       },
       body: JSON.stringify(body),
     });
-  };
+  }, []);
 
   const onShare = (where: "link" | "instagram" | "kakao") => {
     const body: ShareInterface = {
@@ -52,11 +55,13 @@ const ResultPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <button onClick={() => onResult()}>결과 보내기</button>
-      <button onClick={() => onShare("link")}>링크 공유하기</button>
-      <button onClick={() => onShare("kakao")}>카카오 공유하기</button>
-      <button onClick={() => onShare("instagram")}>인스타 공유하기</button>
+      <div className="result-container">
+        <span className="title">당신의 MBTI</span>
+        <span className="context">{mbti}</span>
+        <span className="description">당신은 어쩌구 저쩌구 이러쿵 저러쿵</span>
+      </div>
       <button
+        className="large-button"
         onClick={() => {
           resetProgress()(dispatch);
           history.push("/start");
@@ -64,6 +69,17 @@ const ResultPage: React.FC<Props> = (props) => {
       >
         처음으로
       </button>
+      <div className="bottom-buttons">
+        <button className="small-button" onClick={() => onShare("link")}>
+          <FiLink />
+        </button>
+        <button className="small-button" onClick={() => onShare("kakao")}>
+          <RiKakaoTalkFill className="share-svg" />
+        </button>
+        <button className="small-button" onClick={() => onShare("instagram")}>
+          <RiInstagramLine className="share-svg" />
+        </button>
+      </div>
     </>
   );
 };

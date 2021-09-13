@@ -1,4 +1,4 @@
-import "./Progress.css";
+import "./Progress.scss";
 import React from "react";
 import { Answer, QuestionData } from "../../redux/interfaces/progressInterface";
 import { answerProgress, nextProgress } from "../../redux/progress";
@@ -30,9 +30,10 @@ const Progress: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div>{currentProgress.id}</div>
-      <div>{currentProgress.question}</div>
+      <span className="title">{currentProgress.question}</span>
+      <span className="description">어쩌구 저쩌구 질문 질문</span>
       <button
+        className="extra-large-button"
         onClick={() => {
           onClickAnswer(currentProgress.choiceA.type);
         }}
@@ -40,6 +41,7 @@ const Progress: React.FC<Props> = (props) => {
         {currentProgress.choiceA.text}
       </button>
       <button
+        className="extra-large-button"
         onClick={() => {
           onClickAnswer(currentProgress.choiceB.type);
         }}
