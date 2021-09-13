@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
+import ProgressBar from "../components/ProgressBar";
 import Progress from "../layout/Progress/Progress";
 import { IReducer } from "../redux";
 import { QuestionInfo } from "../utils/utils.const";
@@ -10,6 +11,7 @@ const ProgressPage: React.FC<Props> = (props) => {
 
   return (
     <>
+      <ProgressBar />
       <Progress currentProgress={QuestionInfo[progress.currentProgress]} />
     </>
   );
