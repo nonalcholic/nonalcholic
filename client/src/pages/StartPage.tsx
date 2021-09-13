@@ -6,7 +6,7 @@ const StartPage: React.FC<Props> = (props) => {
   const history = useHistory();
   return (
     <>
-      <span className="title" style={{ marginBottom: 24 }}>
+      <span className="context" style={{ margin: "96px 0px" }}>
         카이스트 MBTI
       </span>
       <span className="description" style={{ marginBottom: 48 }}>
@@ -19,7 +19,7 @@ const StartPage: React.FC<Props> = (props) => {
       >
         시작하기
       </button>
-      <span className="hint">
+      <span className="hint" style={{ marginTop: "auto" }}>
         {"본 검사는 KAIST의 공식 페이지가 아닌, 졸업생이 제작한 페이지입니다."}
       </span>
     </>

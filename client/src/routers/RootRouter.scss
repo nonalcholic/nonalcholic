@@ -1,7 +1,6 @@
 .root-container {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   padding: 24px;
   box-sizing: border-box;
@@ -9,6 +8,8 @@
   max-width: 600px;
   height: 100vh;
   margin: 0 auto;
+
+  overflow: auto;
 }
 
 .title {
