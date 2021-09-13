@@ -4,7 +4,7 @@ import ProgressPage from "../pages/ProgressPage";
 import ResultPage from "../pages/ResultPage";
 import StartPage from "../pages/StartPage";
 import { setIdCookie, setIpCookie } from "../utils/utils.identification";
-import "./RootRouter.css";
+import "./RootRouter.scss";
 import { v1 as uuid } from "uuid";
 import axios from "axios";
 
@@ -32,7 +32,7 @@ const RootRouter: React.FC<Props> = (props) => {
         <Route exact path="/progress">
           <ProgressPage />
         </Route>
-        <Route exact path="/result">
+        <Route path="/:mbti">
           <ResultPage />
         </Route>
       </Switch>

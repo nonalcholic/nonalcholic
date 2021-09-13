@@ -33,7 +33,7 @@ func Share(c *gin.Context) {
 
 type Data struct {
 	Id        string
-	Answers   [3]int
+	Answers   [12]int
 	Result    string
 	Ip        string
 	CreatedAt time.Time
@@ -48,7 +48,7 @@ type Type struct {
 
 type FindData struct {
 	ID          primitive.ObjectID `bson:"_id"`
-	Answers [3]int	`bson:"answers"`
+	Answers [12]int	`bson:"answers"`
 	CreatedAt time.Time `bson:"createdat"`
 	UserID string `bson:"id"`
 	Instagram int `bson:"instagram"`

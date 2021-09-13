@@ -1,55 +1,27 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import {
-  ResultInterface,
-  ShareInterface,
-} from "../redux/interfaces/dataInterface";
-import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 
 interface Props {}
 const StartPage: React.FC<Props> = (props) => {
   const history = useHistory();
-
-  const onResult = () => {
-    const body: ResultInterface = {
-      id: getIdCookie(),
-      answers: [1, 0, -1],
-      result: "ENFJ",
-      ip: getIpCookie(),
-    };
-
-    fetch("http://localhost:9999/result", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-  };
-
-  const onShare = (where: "link" | "instagram" | "kakao") => {
-    const body: ShareInterface = {
-      id: getIdCookie(),
-      type: where,
-    };
-
-    fetch("http://localhost:9999/share", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-  };
   return (
     <>
-      <button onClick={() => onResult()}>결과 보내기</button>
-      <button onClick={() => onShare("link")}>링크 공유하기</button>
-      <button onClick={() => onShare("kakao")}>카카오 공유하기</button>
-      <button onClick={() => onShare("instagram")}>인스타 공유하기</button>
-      <button onClick={() => history.push("/progress")}>시작하기</button>
+      <span className="title" style={{ marginBottom: 24 }}>
+        카이스트 MBTI
+      </span>
+      <span className="description" style={{ marginBottom: 48 }}>
+        {"유사 과학일수도 아닐수도.\n재미있으면 됐지."}
+      </span>
+      <button
+        className="large-button"
+        onClick={() => history.push("/progress")}
+        style={{ marginBottom: 24 }}
+      >
+        시작하기
+      </button>
+      <span className="hint">
+        {"본 검사는 KAIST의 공식 페이지가 아닌, 졸업생이 제작한 페이지입니다."}
+      </span>
     </>
   );
 };
