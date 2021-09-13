@@ -30,13 +30,18 @@ const Progress: React.FC<Props> = (props) => {
 
   return (
     <>
-      <span className="title">{currentProgress.question}</span>
-      <span className="description">어쩌구 저쩌구 질문 질문</span>
+      <span className="title" style={{ marginBottom: 24 }}>
+        {currentProgress.question}
+      </span>
+      <span className="description" style={{ marginBottom: 48 }}>
+        어쩌구 저쩌구 질문 질문
+      </span>
       <button
         className="extra-large-button"
         onClick={() => {
           onClickAnswer(currentProgress.choiceA.type);
         }}
+        style={{ marginBottom: 24 }}
       >
         {currentProgress.choiceA.text}
       </button>

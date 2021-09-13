@@ -3,24 +3,34 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 24px;
+  box-sizing: border-box;
 
-  width: 600px;
+  max-width: 600px;
   height: 100vh;
   margin: 0 auto;
 }
 
 .title {
   font-size: 28px;
-  margin-bottom: 12px;
 }
 .context {
   font-size: 36px;
   font-weight: bold;
-  margin-bottom: 24px;
 }
 .description {
   font-size: 18px;
-  margin-bottom: 24px;
+  white-space: pre-wrap;
+
+  text-align: center;
+}
+
+.hint {
+  font-size: 14px;
+  color: #383838;
+  white-space: pre-wrap;
+
+  text-align: center;
 }
 
 .large-button {
@@ -44,7 +54,6 @@
 .extra-large-button {
   width: calc(100% - 48px);
   height: 160px;
-  margin-bottom: 12px;
   border-radius: 8px;
   border: 2px solid #383838;
   background: transparent;

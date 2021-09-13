@@ -1,7 +1,6 @@
 import { QuestionData } from "../redux/interfaces/progressInterface";
 
 export const TOTAL_PROGRESS_NUMBER = 12;
-
 export const QuestionInfo: QuestionData[] = [
   {
     id: 0,
