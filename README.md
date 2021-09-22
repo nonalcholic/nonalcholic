@@ -35,3 +35,11 @@ docker-compose up
 ```
 
 ## Production
+1. Go to the docker-compose.yml in the root.
+2. Use Dockerfile.prod in client-build-dockerfile.
+3. Run below commands.
+```bash
+cd path/to/repository
+docker-compose build
+docker-compose up
+```
