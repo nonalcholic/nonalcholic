@@ -52,9 +52,15 @@
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 28px;
 }
 .context {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 36px;
   font-weight: bold;
 }

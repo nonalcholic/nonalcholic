@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { IReducer } from "../redux";
@@ -18,6 +18,7 @@ const ResultPage: React.FC<Props> = (props) => {
   const progress = useSelector((state: IReducer) => state.progress);
   const history = useHistory();
   const dispatch = useDispatch();
+  const hiddenRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     const body: ResultInterface = {
@@ -51,6 +52,22 @@ const ResultPage: React.FC<Props> = (props) => {
       },
       body: JSON.stringify(body),
     });
+
+    switch (where) {
+      case "link":
+        if (hiddenRef.current) {
+          hiddenRef.current.style.display = "block";
+          hiddenRef.current.select();
+          document.execCommand("Copy");
+          hiddenRef.current.style.display = "none";
+        }
+        break;
+      case "instagram":
+        break;
+      case "kakao":
+        break;
+      // 7281c5f7129e05440500f936dedee302/
+    }
   };
 
   return (
@@ -70,6 +87,13 @@ const ResultPage: React.FC<Props> = (props) => {
       >
         처음으로
       </button>
+      <textarea
+        readOnly
+        style={{ display: "none" }}
+        value={`http://localhost:3000/${mbti}`}
+        tabIndex={-1}
+        ref={hiddenRef}
+      />
       <div className="bottom-buttons">
         <button className="small-button" onClick={() => onShare("link")}>
           <FiLink />

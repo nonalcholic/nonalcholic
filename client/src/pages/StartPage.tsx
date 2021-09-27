@@ -6,7 +6,7 @@ const StartPage: React.FC<Props> = (props) => {
   const history = useHistory();
   return (
     <>
-      <span className="context" style={{ margin: "96px 0px" }}>
+      <span className="context" style={{ height: 400 }}>
         카이스트 MBTI
       </span>
       <span className="description" style={{ marginBottom: 48 }}>
