@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { IReducer } from "../redux";
@@ -38,44 +38,46 @@ const ResultPage: React.FC<Props> = (props) => {
       },
       body: JSON.stringify(body),
     });
-
-    window.Kakao.init("7281c5f7129e05440500f936dedee302");
-    console.log(window.Kakao.isInitialized());
-    window.Kakao.Link.createDefaultButton({
-      container: "#kakao-link-btn",
-      objectType: "feed",
-      content: {
-        title: "KAIST 안 내 최애 장소",
-        description: "내 최에 장소는 어디일까요?!",
-        imageUrl: "logo192.png",
-        link: {
-          mobileWebUrl: "https://localhost:3000",
-          webUrl: "https://localhost:3000",
-        },
-      },
-      // social: {
-      //   likeCount: 286,
-      //   commentCount: 45,
-      //   sharedCount: 845,
-      // },
-      buttons: [
-        {
-          title: "결과보기",
-          link: {
-            mobileWebUrl: `https://localhost:3000/${mbti}`,
-            webUrl: `https://localhost:3000/${mbti}`,
-          },
-        },
-        {
-          title: "테스트하기",
-          link: {
-            mobileWebUrl: "https://localhost:3000/start",
-            webUrl: "https://localhost:3000/start",
-          },
-        },
-      ],
-    });
   }, []);
+
+  useEffect(() => {
+    if (window.Kakao.Link) {
+      window.Kakao.Link.createDefaultButton({
+        container: "#kakao-link-btn",
+        objectType: "feed",
+        content: {
+          title: "KAIST 안 내 최애 장소",
+          description: "내 최에 장소는 어디일까요?!",
+          imageUrl: "logo192.png",
+          link: {
+            mobileWebUrl: "https://localhost:3000",
+            webUrl: "https://localhost:3000",
+          },
+        },
+        // social: {
+        //   likeCount: 286,
+        //   commentCount: 45,
+        //   sharedCount: 845,
+        // },
+        buttons: [
+          {
+            title: "결과보기",
+            link: {
+              mobileWebUrl: `https://localhost:3000/${mbti}`,
+              webUrl: `https://localhost:3000/${mbti}`,
+            },
+          },
+          {
+            title: "테스트하기",
+            link: {
+              mobileWebUrl: "https://localhost:3000/start",
+              webUrl: "https://localhost:3000/start",
+            },
+          },
+        ],
+      });
+    }
+  }, [window.Kakao.Link]);
 
   const onShare = (where: "link" | "instagram" | "kakao") => {
     const body: ShareInterface = {
