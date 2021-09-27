@@ -55,6 +55,7 @@ const ResultPage: React.FC<Props> = (props) => {
 
   return (
     <>
+      <div className="animation-fade-in" />
       <div className="result-container">
         <span className="title">당신의 MBTI</span>
         <span className="context">{mbti}</span>

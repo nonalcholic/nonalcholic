@@ -10,6 +10,45 @@
   margin: 0 auto;
 
   overflow: auto;
+
+  .animation-fade-out {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: white;
+    animation: fade-out 1s;
+    opacity: 0;
+
+    @keyframes fade-out {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  .animation-fade-in {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: white;
+    animation: fade-in 1s;
+    opacity: 0;
+    pointer-events: none;
+
+    @keyframes fade-in {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  }
 }
 
 .title {
@@ -50,6 +89,9 @@
   &:hover {
     background-color: #cec0af;
   }
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .extra-large-button {
@@ -66,6 +108,9 @@
   transition: all 0.2s;
   &:hover {
     background-color: #cec0af;
+  }
+  &:active {
+    transform: scale(0.95);
   }
 }
 
@@ -84,6 +129,9 @@
   transition: all 0.2s;
   &:hover {
     background-color: #cec0af;
+  }
+  &:active {
+    transform: scale(0.95);
   }
 
   svg {
