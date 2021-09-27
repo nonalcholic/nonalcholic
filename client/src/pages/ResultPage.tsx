@@ -12,6 +12,8 @@ import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
 import { FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
 
+declare const window: any;
+
 interface Props {}
 const ResultPage: React.FC<Props> = (props) => {
   const { mbti } = useParams<{ mbti: string }>();
@@ -35,6 +37,43 @@ const ResultPage: React.FC<Props> = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
+    });
+
+    window.Kakao.init("7281c5f7129e05440500f936dedee302");
+    console.log(window.Kakao.isInitialized());
+    window.Kakao.Link.createDefaultButton({
+      container: "#kakao-link-btn",
+      objectType: "feed",
+      content: {
+        title: "KAIST 안 내 최애 장소",
+        description: "내 최에 장소는 어디일까요?!",
+        imageUrl: "logo192.png",
+        link: {
+          mobileWebUrl: "https://localhost:3000",
+          webUrl: "https://localhost:3000",
+        },
+      },
+      // social: {
+      //   likeCount: 286,
+      //   commentCount: 45,
+      //   sharedCount: 845,
+      // },
+      buttons: [
+        {
+          title: "결과보기",
+          link: {
+            mobileWebUrl: `https://localhost:3000/${mbti}`,
+            webUrl: `https://localhost:3000/${mbti}`,
+          },
+        },
+        {
+          title: "테스트하기",
+          link: {
+            mobileWebUrl: "https://localhost:3000/start",
+            webUrl: "https://localhost:3000/start",
+          },
+        },
+      ],
     });
   }, []);
 
@@ -98,9 +137,14 @@ const ResultPage: React.FC<Props> = (props) => {
         <button className="small-button" onClick={() => onShare("link")}>
           <FiLink />
         </button>
-        <button className="small-button" onClick={() => onShare("kakao")}>
-          <RiKakaoTalkFill className="share-svg" />
-        </button>
+        <a
+          className="small-button"
+          id="kakao-link-btn"
+          href="javascript:;"
+          onClick={() => onShare("kakao")}
+        >
+          <RiKakaoTalkFill className="share-svg" fill={"black"} />
+        </a>
         <button className="small-button" onClick={() => onShare("instagram")}>
           <RiInstagramLine className="share-svg" />
         </button>
