@@ -88,7 +88,13 @@ export const QuestionInfo: QuestionData[] = [
   },
 ];
 
-export const MBTIResult = {
+export const MBTIResult: {
+  [mbti: string]: {
+    title: string;
+    subtitle: string;
+    description: string;
+  };
+} = {
   ENTP: {
     title: "(술병나서 병결서류 받으러 간) 파팔라도",
     subtitle:

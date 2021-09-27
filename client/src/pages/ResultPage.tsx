@@ -11,12 +11,14 @@ import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
 import { FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
+import { MBTIResult } from "../utils/utils.const";
+import { MBTIResultType } from "../redux/interfaces/progressInterface";
 
 declare const window: any;
 
 interface Props {}
 const ResultPage: React.FC<Props> = (props) => {
-  const { mbti } = useParams<{ mbti: string }>();
+  const { mbti } = useParams<{ mbti: MBTIResultType }>();
   const progress = useSelector((state: IReducer) => state.progress);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -115,9 +117,9 @@ const ResultPage: React.FC<Props> = (props) => {
     <>
       <div className="animation-fade-in" />
       <div className="result-container">
-        <span className="title">당신의 MBTI</span>
-        <span className="context">{mbti}</span>
-        <span className="description">당신은 어쩌구 저쩌구 이러쿵 저러쿵</span>
+        <span className="title">{MBTIResult[mbti].title}</span>
+        <span className="context">{MBTIResult[mbti].subtitle}</span>
+        <span className="description">{MBTIResult[mbti].description}</span>
       </div>
       <button
         className="large-button"
