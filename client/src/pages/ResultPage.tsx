@@ -43,7 +43,7 @@ const ResultPage: React.FC<Props> = (props) => {
   }, []);
 
   useEffect(() => {
-    if (window.Kakao.Link) {
+    if (window.Kakao?.Link) {
       window.Kakao.Link.createDefaultButton({
         container: "#kakao-link-btn",
         objectType: "feed",
@@ -52,8 +52,8 @@ const ResultPage: React.FC<Props> = (props) => {
           description: "내 최에 장소는 어디일까요?!",
           imageUrl: "logo192.png",
           link: {
-            mobileWebUrl: `https://${IP_ADDRESS}:3000`,
-            webUrl: `https://${IP_ADDRESS}:3000`,
+            mobileWebUrl: `https://${IP_ADDRESS}:80`,
+            webUrl: `https://${IP_ADDRESS}:80`,
           },
         },
         // social: {
@@ -65,21 +65,21 @@ const ResultPage: React.FC<Props> = (props) => {
           {
             title: "결과보기",
             link: {
-              mobileWebUrl: `https://${IP_ADDRESS}:3000/${mbti}`,
-              webUrl: `https://${IP_ADDRESS}:3000/${mbti}`,
+              mobileWebUrl: `https://${IP_ADDRESS}:80/${mbti}`,
+              webUrl: `https://${IP_ADDRESS}:80/${mbti}`,
             },
           },
           {
             title: "테스트하기",
             link: {
-              mobileWebUrl: `https://${IP_ADDRESS}:3000/start`,
-              webUrl: `https://${IP_ADDRESS}:3000/start`,
+              mobileWebUrl: `https://${IP_ADDRESS}:80/start`,
+              webUrl: `https://${IP_ADDRESS}:80/start`,
             },
           },
         ],
       });
     }
-  }, [window.Kakao.Link]);
+  }, [window.Kakao?.Link]);
 
   const onShare = (where: "link" | "instagram" | "kakao") => {
     const body: ShareInterface = {
@@ -133,7 +133,7 @@ const ResultPage: React.FC<Props> = (props) => {
       <textarea
         readOnly
         style={{ display: "none" }}
-        value={`http://${IP_ADDRESS}:3000/${mbti}`}
+        value={`http://${IP_ADDRESS}:80/${mbti}`}
         tabIndex={-1}
         ref={hiddenRef}
       />
