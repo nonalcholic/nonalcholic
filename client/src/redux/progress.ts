@@ -36,18 +36,18 @@ const initialState: ProgressInterface = {
   id: -1,
   currentProgress: 0,
   answerData: [
-    { id: 0, score: 0 },
-    { id: 1, score: 0 },
-    { id: 2, score: 0 },
-    { id: 3, score: 0 },
-    { id: 4, score: 0 },
-    { id: 5, score: 0 },
-    { id: 6, score: 0 },
-    { id: 7, score: 0 },
-    { id: 8, score: 0 },
-    { id: 9, score: 0 },
-    { id: 10, score: 0 },
-    { id: 11, score: 0 },
+    { id: 0, score: "" },
+    { id: 1, score: "" },
+    { id: 2, score: "" },
+    { id: 3, score: "" },
+    { id: 4, score: "" },
+    { id: 5, score: "" },
+    { id: 6, score: "" },
+    { id: 7, score: "" },
+    { id: 8, score: "" },
+    { id: 9, score: "" },
+    { id: 10, score: "" },
+    { id: 11, score: "" },
   ],
 };
 
@@ -61,7 +61,7 @@ export default handleActions<ProgressInterface, any>(
     },
     [PROGRESS_NEXT]: (state) => {
       const moveTo =
-        state.currentProgress === TOTAL_PROGRESS_NUMBER - 1
+        state.currentProgress === TOTAL_PROGRESS_NUMBER
           ? state.currentProgress
           : state.currentProgress + 1;
       return { ...state, currentProgress: moveTo };

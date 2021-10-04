@@ -9,7 +9,7 @@ export interface AnswerData {
   score: Answer;
 }
 
-export type Answer = -1 | 1 | 0;
+export type Answer = "E" | "I" | "S" | "N" | "T" | "F" | "J" | "P" | "";
 export type MBTIType = "EI" | "SN" | "TF" | "JP";
 export type MBTIResultType =
   | "ENTP"

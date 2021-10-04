@@ -21,8 +21,12 @@ const RootRouter: React.FC<Props> = (props) => {
       setIpCookie(res.data["IPv4"]);
     });
 
-    window.Kakao.init("7281c5f7129e05440500f936dedee302");
-    console.log(window.Kakao.isInitialized());
+    try {
+      window.Kakao.init("7281c5f7129e05440500f936dedee302");
+      console.log(window.Kakao.isInitialized());
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
   return (

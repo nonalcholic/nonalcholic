@@ -33,7 +33,7 @@ func Share(c *gin.Context) {
 
 type Data struct {
 	Id        string
-	Answers   [12]int
+	Answers   [12]string
 	Result    string
 	Ip        string
 	CreatedAt time.Time
