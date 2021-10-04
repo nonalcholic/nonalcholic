@@ -1,5 +1,6 @@
 import { QuestionData } from "../redux/interfaces/progressInterface";
 
+export const IP_ADDRESS = "54.180.146.18";
 export const TOTAL_PROGRESS_NUMBER = 12;
 export const QuestionInfo: QuestionData[] = [
   {

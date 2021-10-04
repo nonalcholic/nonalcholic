@@ -11,7 +11,7 @@ import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
 import { FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
-import { MBTIResult } from "../utils/utils.const";
+import { IP_ADDRESS, MBTIResult } from "../utils/utils.const";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
 
 declare const window: any;
@@ -32,7 +32,7 @@ const ResultPage: React.FC<Props> = (props) => {
       ip: getIpCookie(),
     };
 
-    fetch("http://localhost:9999/result", {
+    fetch(`http://${IP_ADDRESS}:9999/result`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -52,8 +52,8 @@ const ResultPage: React.FC<Props> = (props) => {
           description: "내 최에 장소는 어디일까요?!",
           imageUrl: "logo192.png",
           link: {
-            mobileWebUrl: "https://localhost:80",
-            webUrl: "https://localhost:80",
+            mobileWebUrl: `https://${IP_ADDRESS}:80`,
+            webUrl: `https://${IP_ADDRESS}:80`,
           },
         },
         // social: {
@@ -65,15 +65,15 @@ const ResultPage: React.FC<Props> = (props) => {
           {
             title: "결과보기",
             link: {
-              mobileWebUrl: `https://localhost:80/${mbti}`,
-              webUrl: `https://localhost:80/${mbti}`,
+              mobileWebUrl: `https://${IP_ADDRESS}:80/${mbti}`,
+              webUrl: `https://${IP_ADDRESS}:80/${mbti}`,
             },
           },
           {
             title: "테스트하기",
             link: {
-              mobileWebUrl: "https://localhost:80/start",
-              webUrl: "https://localhost:80/start",
+              mobileWebUrl: `https://${IP_ADDRESS}:80/start`,
+              webUrl: `https://${IP_ADDRESS}:80/start`,
             },
           },
         ],
@@ -87,7 +87,7 @@ const ResultPage: React.FC<Props> = (props) => {
       type: where,
     };
 
-    fetch("http://localhost:9999/share", {
+    fetch(`http://${IP_ADDRESS}:9999/share`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -133,7 +133,7 @@ const ResultPage: React.FC<Props> = (props) => {
       <textarea
         readOnly
         style={{ display: "none" }}
-        value={`http://localhost:80/${mbti}`}
+        value={`http://${IP_ADDRESS}:80/${mbti}`}
         tabIndex={-1}
         ref={hiddenRef}
       />
