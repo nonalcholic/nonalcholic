@@ -52,8 +52,8 @@ const ResultPage: React.FC<Props> = (props) => {
           description: "내 최에 장소는 어디일까요?!",
           imageUrl: "logo192.png",
           link: {
-            mobileWebUrl: "https://localhost:3000",
-            webUrl: "https://localhost:3000",
+            mobileWebUrl: "https://localhost:80",
+            webUrl: "https://localhost:80",
           },
         },
         // social: {
@@ -65,15 +65,15 @@ const ResultPage: React.FC<Props> = (props) => {
           {
             title: "결과보기",
             link: {
-              mobileWebUrl: `https://localhost:3000/${mbti}`,
-              webUrl: `https://localhost:3000/${mbti}`,
+              mobileWebUrl: `https://localhost:80/${mbti}`,
+              webUrl: `https://localhost:80/${mbti}`,
             },
           },
           {
             title: "테스트하기",
             link: {
-              mobileWebUrl: "https://localhost:3000/start",
-              webUrl: "https://localhost:3000/start",
+              mobileWebUrl: "https://localhost:80/start",
+              webUrl: "https://localhost:80/start",
             },
           },
         ],
@@ -133,7 +133,7 @@ const ResultPage: React.FC<Props> = (props) => {
       <textarea
         readOnly
         style={{ display: "none" }}
-        value={`http://localhost:3000/${mbti}`}
+        value={`http://localhost:80/${mbti}`}
         tabIndex={-1}
         ref={hiddenRef}
       />
