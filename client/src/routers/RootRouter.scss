@@ -1,0 +1,147 @@
+.root-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px;
+  box-sizing: border-box;
+
+  max-width: 600px;
+  height: 100vh;
+  margin: 0 auto;
+
+  overflow: auto;
+
+  .animation-fade-out {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: white;
+    animation: fade-out 1s;
+    opacity: 0;
+
+    @keyframes fade-out {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  .animation-fade-in {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: white;
+    animation: fade-in 1s;
+    opacity: 0;
+    pointer-events: none;
+
+    @keyframes fade-in {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+}
+.context {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+.description {
+  font-size: 18px;
+  white-space: pre-wrap;
+
+  text-align: center;
+}
+
+.hint {
+  font-size: 14px;
+  color: #383838;
+  white-space: pre-wrap;
+
+  text-align: center;
+}
+
+.large-button {
+  width: 160px;
+  height: 40px;
+
+  border-radius: 8px;
+  border: 2px solid #383838;
+  background: transparent;
+
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+
+  transition: all 0.2s;
+  &:hover {
+    background-color: #cec0af;
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.extra-large-button {
+  width: calc(100% - 48px);
+  height: 160px;
+  border-radius: 8px;
+  border: 2px solid #383838;
+  background: transparent;
+
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+
+  transition: all 0.2s;
+  &:hover {
+    background-color: #cec0af;
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.small-button {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+
+  border-radius: 8px;
+  border: none;
+  box-sizing: border-box;
+  background: transparent;
+
+  cursor: pointer;
+
+  transition: all 0.2s;
+  &:hover {
+    background-color: #cec0af;
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
