@@ -15,7 +15,7 @@ const ProgressPage: React.FC<Props> = (props) => {
   const [animation, setAnimation] = useState<boolean>(false);
 
   useEffect(() => {
-    if (progress.currentProgress === TOTAL_PROGRESS_NUMBER - 1) {
+    if (progress.currentProgress === TOTAL_PROGRESS_NUMBER) {
       setAnimation(true);
       setTimeout(
         () => history.push(`/${caculateMBTI(progress.answerData)}`),

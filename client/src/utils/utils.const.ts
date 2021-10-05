@@ -1,91 +1,126 @@
 import { QuestionData } from "../redux/interfaces/progressInterface";
 
-export const IP_ADDRESS = "54.180.146.18";
 export const TOTAL_PROGRESS_NUMBER = 12;
 export const QuestionInfo: QuestionData[] = [
   {
     id: 0,
     type: "EI",
-    question: "질문 1",
-    choiceA: { text: "답변 1-1", type: -1 },
-    choiceB: { text: "답변 1-1", type: 1 },
+    question:
+      "새로 들어간 동아리의 첫 술자리… 처음 보는 선배와 동기들이 잔뜩 있다! 당신의 속마음은?",
+    choiceA: { text: "저 사람은 누구지? 빨리 친해져서 놀고싶다!", type: "E" },
+    choiceB: { text: "즐겁기는 한데… 좀 힘들다… 방 가고 싶다…", type: "I" },
   },
   {
     id: 1,
     type: "EI",
-    question: "질문 2",
-    choiceA: { text: "답변 2-1", type: -1 },
-    choiceB: { text: "답변 2-2", type: 1 },
+    question: "와 교수님 휴강 메일 왔다 개꿀이네 뭐하지",
+    choiceA: { text: "시간 남는데 누구 놀사람 없나?", type: "E" },
+    choiceB: { text: "미쳤다 유튜브 정주행 각", type: "I" },
   },
   {
     id: 2,
     type: "EI",
-    question: "질문 3",
-    choiceA: { text: "답변 3-1", type: -1 },
-    choiceB: { text: "답변 3-2", type: 1 },
+    question: "드디어 종강이다! 뭐하지?",
+    choiceA: {
+      text: "(카톡방을 열고) 야 나 종강했다 놀러 갈 사람?",
+      type: "E",
+    },
+    choiceB: {
+      text: "(침대에 누운 후) 오늘은 침대 밖으로 나가지 않을 것.",
+      type: "I",
+    },
   },
   {
     id: 3,
     type: "SN",
-    question: "질문 4",
-    choiceA: { text: "답변 4-1", type: -1 },
-    choiceB: { text: "답변 4-2", type: 1 },
+    question: "이 교양 과목 어때?",
+    choiceA: { text: "ㄹㅇ 꿀과목 일단 신청하고 보셈", type: "S" },
+    choiceB: {
+      text: "배우는 내용이 꽤 의미있고, 교수님이 수업을 너무 잘하셔! 영어 수업이긴 해서 조금 힘들 수도 있어",
+      type: "I",
+    },
   },
   {
     id: 4,
     type: "SN",
-    question: "질문 5",
-    choiceA: { text: "답변 5-1", type: -1 },
-    choiceB: { text: "답변 5-2", type: 1 },
+    question: "언어 교양 과목을 듣고 싶은데",
+    choiceA: { text: "고등학교 때 어느정도 배웠던 일본어 회화", type: "S" },
+    choiceB: { text: "처음 배우는 스페인어 회화", type: "N" },
   },
   {
     id: 5,
     type: "SN",
-    question: "질문 6",
-    choiceA: { text: "답변 6-1", type: -1 },
-    choiceB: { text: "답변 6-2", type: 1 },
+    question: "큰 플젝이 생겼다 ",
+    choiceA: {
+      text: "일단 뭐든 시작해보자 하다보면 어떻게든 되겠지",
+      type: "S",
+    },
+    choiceB: {
+      text: "일단 전체적인 구조부터 잡자 그러면 어떻게 해야되는지 떠오르겠지",
+      type: "N",
+    },
   },
   {
     id: 6,
     type: "TF",
-    question: "질문 7",
-    choiceA: { text: "답변 7-1", type: -1 },
-    choiceB: { text: "답변 7-2", type: 1 },
+    question: "나 오늘 파팔에서 수액 처음 맞아봤어 (카톡)",
+    choiceA: {
+      text: "헐 그래? 어때? 돈 내야돼? 얼마야? 몇 분동안 맞아?",
+      type: "T",
+    },
+    choiceB: { text: "헐 무슨일이야 어디 아파? 힘들겠다ㅠㅠ", type: "F" },
   },
   {
     id: 7,
     type: "TF",
-    question: "질문 8",
-    choiceA: { text: "답변 8-1", type: -1 },
-    choiceB: { text: "답변 8-2", type: 1 },
+    question:
+      "추운 겨울 날, 방맥 하기로 했다 근데 맥주가 없어서 편의점 다녀와야 하는 상황! 친구가 ‘나 혼자 얼른 사올게!’라고 한다.",
+    choiceA: { text: "그래? 고마워 다음엔 내가 갈게", type: "T" },
+    choiceB: {
+      text: "야 그래도 추운데.. 혼자 가지 말고 같이 갔다오자!",
+      type: "F",
+    },
   },
   {
     id: 8,
     type: "TF",
-    question: "질문 9",
-    choiceA: { text: "답변 9-1", type: -1 },
-    choiceB: { text: "답변 9-2", type: 1 },
+    question:
+      "(썸남/썸녀/애인에게 문자가 왔다) 오늘 달 진짜 예뻐서 너 생각이 났어~ (카톡)",
+    choiceA: {
+      text: "달이 예쁜데 왜 내 생각이 나? (진짜 궁금한거임 화난거 아님)",
+      type: "T",
+    },
+    choiceB: { text: "(두근두근) 그것 참 듣기 좋은 소리네 ㅎㅎ ", type: "F" },
   },
   {
     id: 9,
     type: "JP",
-    question: "질문 10",
-    choiceA: { text: "답변 10-1", type: -1 },
-    choiceB: { text: "답변 10-2", type: 1 },
+    question: "기말고사 시험 기간… 다음 학기 시간표를 짜는 당신의 자세는?",
+    choiceA: {
+      text: "(OTL 열리자마자 시간표 짜기 시작) 이 전공은 이번학기만 열리니깐 꼭 듣고… 교양은 떨어질 수도 있으니까 이거이거",
+      type: "J",
+    },
+    choiceB: {
+      text: "엥 수강신청이 내일이라고? 와 나 강제 휴학 휴학할뻔 ㅋㅋㅋ",
+      type: "P",
+    },
   },
   {
     id: 10,
     type: "JP",
-    question: "질문 11",
-    choiceA: { text: "답변 11-1", type: -1 },
-    choiceB: { text: "답변 11-2", type: 1 },
+    question: "과제를 받음 ",
+    choiceA: { text: "뭐부터 해야할지 계획을 정하고 과제 시작", type: "J" },
+    choiceB: { text: "자료조사를 최대한 많이 하고 과제 시작", type: "P" },
   },
   {
     id: 11,
     type: "JP",
-    question: "질문 12",
-    choiceA: { text: "답변 12-1", type: -1 },
-    choiceB: { text: "답변 12-2", type: 1 },
+    question: "오랜만에 방 정리 중",
+    choiceA: { text: "필요 없는건 싸그리 가져다 버린다!", type: "J" },
+    choiceB: {
+      text: "이거 버릴까..? 아냐 언제 쓸 일이 있을지 모르잖아 일단 챙겨둬!",
+      type: "P",
+    },
   },
 ];
 
@@ -97,12 +132,14 @@ export const MBTIResult: {
   };
 } = {
   ENTP: {
+    // 박시온
     title: "(파스쿠치 아메리카노 테이크아웃 후) 오리연못 벤치",
     subtitle: "아무리 생각해도 내가 최고야, 자화자찬 스타일이에요!",
     description:
       "아주 즉흥적이고 추진력이 강한 당신. 혼자서 노는 것이 가장 편한 마이웨이 타입이네요. 자기 스스로를 아주 사랑하고, 지나간 일에 후회가 없는 편이에요. 내가 좋아하는 사람에게는 한없이 다정하지만, 그렇지 않으면 무섭게 쳐내버리기도 해요. 친구가 많은듯 보이지만, 사실 가장 편안함을 느낄 때는 바로 화창한 날씨를 혼자 즐길 때랍니다. 직설적이고 솔직한 당신과 꼭 친구하고 싶어요!",
   },
   ENTJ: {
+    //
     title: "(자연을 즐기자! 산책하러 올라간) 어은동산",
     subtitle:
       "세상에 믿을 사람은 나 하나라고 생각하는, 인생의 개척자 스타일이에요!",
@@ -116,6 +153,7 @@ export const MBTIResult: {
       "순수하고 예술적이면서 하고 싶은게 참 많은 당신. 다재다능한 능력을 가지고 있어 어디에서든 주목받는 타입이네요. 사람 만나는 것을 좋아해 기숙사에서도 쉬지 않고 친구들을 만나며 스스로의 매력 에너지를 발산하고는 해요. 무엇이든 쉽게 몰두했다가 또 금방 포기하기도 해 다소 산만하다는 인상을 줄수도 있지만, 뭐 어때요. 당신과 함께 기숙사에서 수다 떠는 친구들은 귀여운 당신 덕분에 행복하지 않을까요?",
   },
   ENFJ: {
+    // 유주형
     title: "(다같이 캔맥 사들고 가자! 별이 보이는) 신학관 옥상",
     subtitle: "사람을 좋아해도 너무 좋아하는, 골든 리트리버 스타일이에요!",
     description:
@@ -128,6 +166,7 @@ export const MBTIResult: {
       "센스 있고 유머러스하며, 삶을 즐기며 사는 당신. 사람을 좋아하고 관심받는 것도 좋아하지만, 또 막상 만사가 귀찮아질 때도 있겠네요. 술 먹고 기숙사까지 들어가기가 귀찮아서, 어은동 바닥에 그냥 누워버린 적은 없나요? 흘러가는 대로 살면서 다른 사람 눈치도 별로 보지 않는, 어쩌면 말썽꾸러기 같은 그대. 다소 위험한 일들도 거침없이 도전하는 모습에 홀딱 반하는 사람이 분명 있을 것 같아요!",
   },
   ESTJ: {
+    // 이수연
     title: "(이번 학기 딘즈는 나야...) 도서관",
     subtitle: "자신의 목표를 향해 달리는, 야망의 경주마 스타일이에요!",
     description:
@@ -153,6 +192,7 @@ export const MBTIResult: {
       "사람 많고 시끄러운 곳을 싫어하고, 어리석은 사람들을 보면 화가 나는 당신. 자기 자신을 사랑하고 잘 상처받지 않으면서 논리적이기까지 한 당신은 대학원생이 참 잘 어울리네요. 주변에 사람들이 아주 많은건 아니지만, 남아있는 친구들과는 아주 찰떡처럼 잘 맞아요. 가끔은 게으르고 미루는 것을 좋아하지만, 지식에 대한 욕망이 누구보다 강한 만큼 반드시 좋은 결과를 낼 수 있을 거예요.",
   },
   INTJ: {
+    // 이민지
     title: "(매일 출근하는 내 자리) 교분 2층 B-22",
     subtitle:
       "자신만의 시간과 공간을 즐기는, 혼자 노는 게 제일 좋아 스타일이에요!",
@@ -190,6 +230,7 @@ export const MBTIResult: {
       "겸손하고 낙천적인 당신. 누워있는 것 빼고는 모두 귀찮은 당신은 침대에 누워있을 때가 가장 행복한 타입이에요. 친구들과의 약속이 있었는데 갑자기 취소되면 속으로 내심 기뻐하기도 하나요? 미룰 수 있는 모든 일을 미루는 당신은 시험 기간에도 침대의 유혹을 뿌리치기 힘들어요. 성격도 침대처럼 폭신한 당신은 배려심이 깊어 많은 사람들에게 사랑받겠네요!",
   },
   ISFJ: {
+    // 장세헌
     title: "(딸기 파티 하는) 중도 앞 잔디밭",
     subtitle: "온화한 원칙주의자, 봄날의 햇살 스타일이에요!",
     description:

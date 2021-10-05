@@ -11,16 +11,16 @@ export const caculateMBTI = (answerData: AnswerData[]) => {
 
     switch (question.type) {
       case "EI":
-        EI += answer.score;
+        EI += answer.score === "E" ? 1 : -1;
         break;
       case "SN":
-        SN += answer.score;
+        SN += answer.score === "S" ? 1 : -1;
         break;
       case "TF":
-        TF += answer.score;
+        TF += answer.score === "T" ? 1 : -1;
         break;
       case "JP":
-        JP += answer.score;
+        JP += answer.score === "J" ? 1 : -1;
         break;
     }
   });
