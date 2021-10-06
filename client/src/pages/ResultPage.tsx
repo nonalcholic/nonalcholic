@@ -43,7 +43,7 @@ const ResultPage: React.FC<Props> = (props) => {
   }, []);
 
   useEffect(() => {
-    if (window.Kakao.Link) {
+    if (window.Kakao?.Link) {
       window.Kakao.Link.createDefaultButton({
         container: "#kakao-link-btn",
         objectType: "feed",
@@ -79,7 +79,7 @@ const ResultPage: React.FC<Props> = (props) => {
         ],
       });
     }
-  }, [window.Kakao.Link]);
+  }, [window.Kakao?.Link]);
 
   const onShare = (where: "link" | "instagram" | "kakao") => {
     const body: ShareInterface = {
