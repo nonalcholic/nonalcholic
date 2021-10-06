@@ -10,12 +10,18 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/bson" // @@@@
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-
 )
+
+func Test(c *gin.Context) {
+	fmt.Println("/test")
+	c.JSON(http.StatusOK, gin.H{
+		"message": "test",
+	})
+}
 
 func Result(c *gin.Context) {
 	fmt.Println("/result")
@@ -28,6 +34,13 @@ func Share(c *gin.Context) {
 	fmt.Println("/share")
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Database: data, Collection: share.",
+	})
+}
+
+func Statistics(c *gin.Context) {
+	fmt.Println("A, /statistics")
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Get statistics from db using mbti result.",
 	})
 }
 
@@ -44,18 +57,30 @@ type Type struct {
 	Type string
 }
 
-
-
 type FindData struct {
-	ID          primitive.ObjectID `bson:"_id"`
-	Answers [12]int	`bson:"answers"`
-	CreatedAt time.Time `bson:"createdat"`
-	UserID string `bson:"id"`
-	Instagram int `bson:"instagram"`
-	Ip string `bson:"ip"`
-	Kakao int `bson:"kakao"`
-	Link int `bson:"link"`
+	ID        primitive.ObjectID `bson:"_id"`
+	Answers   [12]int            `bson:"answers"`
+	CreatedAt time.Time          `bson:"createdat"`
+	UserID    string             `bson:"id"`
+	Instagram int                `bson:"instagram"`
+	Ip        string             `bson:"ip"`
+	Kakao     int                `bson:"kakao"`
+	Link      int                `bson:"link"`
+	Result    string             `bson:"result"`
+}
+
+type MbtiType struct {
+	Type string
+}
+type Mbti struct {
+	Types [16]MbtiType
+}
+type CountType struct {
 	Result string `bson:"result"`
+	Count  int64
+}
+type CountResult struct {
+	Results [16]CountType
 }
 
 func main() {
@@ -97,6 +122,10 @@ func main() {
 	router := gin.Default()
 	router.Use(CORSMiddleware())
 
+	router.GET("/test", Test, func(c *gin.Context) {
+	})
+
+	//// Database: data, Collection: result에 결과 저장
 	router.POST("/result", Result, func(c *gin.Context) {
 		var d Data
 
@@ -117,6 +146,7 @@ func main() {
 		fmt.Println("Inserted a single document: ", insertResult.InsertedID)
 	})
 
+	////
 	router.POST("/share", Share, func(c *gin.Context) {
 		var t Type
 
@@ -130,16 +160,22 @@ func main() {
 		err2 := result.FindOne(context.TODO(), filter).Decode(&f)
 
 		if err2 != nil {
-		    log.Fatal(err2)
+			log.Fatal(err2)
 		}
-		
+
 		fmt.Println(f.Kakao)
 
 		var previous int
-		if (t.Type == "kakao") {previous = f.Kakao}
-		if (t.Type == "instagram") {previous = f.Instagram}
-		if (t.Type == "link"){ previous = f.Link}
-		
+		if t.Type == "kakao" {
+			previous = f.Kakao
+		}
+		if t.Type == "instagram" {
+			previous = f.Instagram
+		}
+		if t.Type == "link" {
+			previous = f.Link
+		}
+
 		filter2 := bson.M{"id": t.Id}
 		update := bson.M{
 			"$set": bson.M{
@@ -155,6 +191,29 @@ func main() {
 
 		fmt.Println("Inserted a single document: ", incrementResult)
 	})
+
+	//// 저장된 결과로부터 통계 가져오기
+	router.POST("/statistics", func(c *gin.Context) {
+		var m Mbti
+		var cr CountResult
+		err := json.NewDecoder(c.Request.Body).Decode(&m)
+		if err != nil {
+			log.Fatal(err)
+		}
+		for i := 0; i < 16; i++ {
+			filter := bson.M{"result": m.Types[i].Type}
+			total, err := result.CountDocuments(context.TODO(), filter, nil)
+			var ct CountType
+			ct.Result = m.Types[i].Type
+			ct.Count = total
+			cr.Results[i] = ct
+			if err != nil {
+				log.Fatal(err)
+			}
+		}
+		c.JSON(200, gin.H{"results": cr.Results})
+	})
+
 	router.Run(":9999")
 }
 

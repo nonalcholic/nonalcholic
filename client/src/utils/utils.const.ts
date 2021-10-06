@@ -1,5 +1,9 @@
-import { QuestionData } from "../redux/interfaces/progressInterface";
+import {
+  MBTIResultType,
+  QuestionData,
+} from "../redux/interfaces/progressInterface";
 
+export const IP_ADDRESS = "localhost";
 export const TOTAL_PROGRESS_NUMBER = 12;
 export const QuestionInfo: QuestionData[] = [
   {
@@ -237,3 +241,25 @@ export const MBTIResult: {
       "다른 사람을 챙기는 것을 좋아하는 당신. 혹시 딸기파티 때 필요한 준비물들을 솔선수범하여 챙기고 있지는 않았나요? 많은 사람들과 함께 노는 걸 크게 좋아하는 편은 아니지만, 가끔 소규모로 옹기종기 모여서 하는 작은 딸기파티는 즐겁게 참여하는 타입이에요. 계획 세우는 걸 좋아해 이런 이벤트가 있으면 앞장서서 주도하기도 해요. 배려심 가득한 당신과 저도 딸기파티 하고 싶어요. 막걸리는 필수!",
   },
 };
+
+export interface MBTIListElem {
+  type: MBTIResultType;
+}
+export const MBTIList: MBTIListElem[] = [
+  { type: "ENTP" },
+  { type: "ENTJ" },
+  { type: "ENFP" },
+  { type: "ENFJ" },
+  { type: "ESTP" },
+  { type: "ESTJ" },
+  { type: "ESFP" },
+  { type: "ESFJ" },
+  { type: "INTP" },
+  { type: "INTJ" },
+  { type: "INFP" },
+  { type: "INFJ" },
+  { type: "ISTP" },
+  { type: "ISTJ" },
+  { type: "ISFP" },
+  { type: "ISFJ" },
+];

@@ -17,8 +17,8 @@ services:
   client:
     build:
       context: ./client
-      # dockerfile: Dockerfile # dev
-      dockerfile: Dockerfile.prod # prod
+      dockerfile: Dockerfile # dev
+      # dockerfile: Dockerfile.prod # prod
     depends_on:
       - server
     networks:
