@@ -1,5 +1,10 @@
 import { MBTIResultType } from "./progressInterface";
 
 export interface StatisticsDto {
-  results: { Type: MBTIResultType; Count: number };
+  results: StatisticResult[];
+}
+
+export interface StatisticResult {
+  Type: MBTIResultType;
+  Count: number;
 }

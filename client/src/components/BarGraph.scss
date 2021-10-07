@@ -1,0 +1,47 @@
+@import "src/index.scss";
+
+.bar-graph {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  width: 100%;
+
+  padding: 48px 12px 12px;
+
+  border: 1px solid $alcholic-black;
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  .element {
+    display: flex;
+    flex-direction: row;
+
+    .type {
+      width: 64px;
+      text-align: center;
+    }
+    .bar {
+      height: 20px;
+      border-radius: 10px;
+
+      background-color: $alcholic-yellow;
+      transform-origin: 0% 50%;
+      animation: extention 1s;
+    }
+    .count {
+      padding: 0 12px;
+      width: 64px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@keyframes extention {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

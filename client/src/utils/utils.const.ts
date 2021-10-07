@@ -3,6 +3,12 @@ import {
   QuestionData,
 } from "../redux/interfaces/progressInterface";
 
+export const AlcholicColor = {
+  Blue: "#3a6ba5",
+  White: "#fdfdfd",
+  Yellow: "#e9e999",
+  Black: "#2e2e2e",
+};
 export const IP_ADDRESS = process.env.REACT_APP_IP_ADDRESS; // "54.180.146.18";
 export const TOTAL_PROGRESS_NUMBER = 12;
 export const QuestionInfo: QuestionData[] = [
