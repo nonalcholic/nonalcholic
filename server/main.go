@@ -193,7 +193,7 @@ func main() {
 	})
 
 	//// 저장된 결과로부터 통계 가져오기
-	router.POST("/statistics", func(c *gin.Context) {
+	router.POST("/statistics", func(c *gin.Context) { // c := types: MBTIList
 		var m Mbti
 		var cr CountResult
 		err := json.NewDecoder(c.Request.Body).Decode(&m)
