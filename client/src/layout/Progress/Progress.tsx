@@ -20,8 +20,11 @@ const Progress: React.FC<Props> = (props) => {
 
   return (
     <>
-      <span className="title" style={{ marginBottom: 24 }}>
-        {currentProgress?.question}
+      <span
+        className="title"
+        style={{ marginBottom: 24, height: 120, fontSize: 19, width: "279px" , textAlign: "center"}}
+      >
+        <div>{currentProgress?.question}</div>
       </span>
       <button
         className="extra-large-button"

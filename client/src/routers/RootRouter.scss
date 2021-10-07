@@ -61,6 +61,7 @@
   justify-content: center;
   align-items: center;
   font-size: 28px;
+  white-space: pre-wrap;
 }
 .context {
   display: flex;
@@ -111,6 +112,7 @@
   border-radius: 8px;
   border: 2px solid #383838;
   background: transparent;
+  white-space: pre-wrap;
 
   cursor: pointer;
   font-weight: bold;
