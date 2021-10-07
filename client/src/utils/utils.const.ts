@@ -3,7 +3,7 @@ import {
   QuestionData,
 } from "../redux/interfaces/progressInterface";
 
-export const IP_ADDRESS = "localhost";
+export const IP_ADDRESS = "localhost"; // "54.180.146.18";
 export const TOTAL_PROGRESS_NUMBER = 12;
 export const QuestionInfo: QuestionData[] = [
   {
