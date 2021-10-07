@@ -7,6 +7,7 @@ import { setIdCookie, setIpCookie } from "../utils/utils.identification";
 import "./RootRouter.scss";
 import { v1 as uuid } from "uuid";
 import axios from "axios";
+import StatisticsPage from "../pages/StatisticsPage";
 
 declare const window: any;
 
@@ -40,6 +41,9 @@ const RootRouter: React.FC<Props> = (props) => {
         </Route>
         <Route exact path="/progress">
           <ProgressPage />
+        </Route>
+        <Route exact path="/statistics">
+          <StatisticsPage />
         </Route>
         <Route path="/:mbti">
           <ResultPage />

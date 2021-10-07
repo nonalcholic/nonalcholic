@@ -76,7 +76,7 @@ type Mbti struct {
 	Types [16]MbtiType
 }
 type CountType struct {
-	Result string `bson:"result"`
+	Type string `bson:"result"`
 	Count  int64
 }
 type CountResult struct {
@@ -204,7 +204,7 @@ func main() {
 			filter := bson.M{"result": m.Types[i].Type}
 			total, err := result.CountDocuments(context.TODO(), filter, nil)
 			var ct CountType
-			ct.Result = m.Types[i].Type
+			ct.Type = m.Types[i].Type
 			ct.Count = total
 			cr.Results[i] = ct
 			if err != nil {
