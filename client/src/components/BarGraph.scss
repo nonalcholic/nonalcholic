@@ -7,11 +7,16 @@
 
   width: 100%;
 
-  padding: 48px 12px 12px;
+  padding: 12px;
 
-  border: 1px solid $alcholic-black;
+  border: 2px solid $alcholic-black;
   border-radius: 8px;
   box-sizing: border-box;
+
+  transition: all 0.3s;
+  &:hover {
+    box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.15);
+  }
 
   .element {
     display: flex;
@@ -19,7 +24,8 @@
 
     .type {
       width: 64px;
-      text-align: center;
+      padding: 0 12px;
+      box-sizing: border-box;
     }
     .bar {
       height: 20px;

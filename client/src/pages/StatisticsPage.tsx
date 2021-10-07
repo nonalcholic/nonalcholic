@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BarGraph from "../components/BarGraph";
+import CompareBarGraph from "../components/CompareBarGraph";
 import { StatisticsDto } from "../redux/interfaces/statisticsInterface";
 import { IP_ADDRESS, MBTIList, MBTIListElem } from "../utils/utils.const";
 
@@ -54,7 +55,43 @@ const StatisticsPage: React.FC<Props> = (props) => {
     };
   };
 
-  return <>{data && <BarGraph {...calculateData()} />}</>;
+  const calculateCompareData = () => {
+    if (!data) return { data: {}, compare: [] };
+
+    const result: { [key: string]: number } = {
+      E: 0,
+      I: 0,
+      S: 0,
+      N: 0,
+      T: 0,
+      F: 0,
+      J: 0,
+      P: 0,
+    };
+    data.results.forEach((_data) => {
+      _data.Type.split("").forEach((t) => {
+        result[t] += _data.Count;
+      });
+    });
+    const compare = [
+      { left: "E", right: "I" },
+      { left: "S", right: "N" },
+      { left: "T", right: "F" },
+      { left: "J", right: "P" },
+    ];
+    return { data: result, compare: compare };
+  };
+
+  return (
+    <>
+      {data && (
+        <>
+          <BarGraph {...calculateData()} />
+          <CompareBarGraph {...calculateCompareData()} />
+        </>
+      )}
+    </>
+  );
 };
 
 export default StatisticsPage;

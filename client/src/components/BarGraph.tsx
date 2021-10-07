@@ -28,8 +28,9 @@ const BarGraph: React.FC<Props> = (props) => {
 
   return (
     <div className="bar-graph">
-      {data.map((_data) => (
-        <div className="element">
+      <span className="title">MBTI 별 분포</span>
+      {data.map((_data, i) => (
+        <div className="element" key={i}>
           <span className="type">{_data.Type}</span>
           <div className="bar" style={getStyle(_data)}></div>
           <span className="count">

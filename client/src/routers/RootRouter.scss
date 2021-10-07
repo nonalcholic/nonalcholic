@@ -1,3 +1,8 @@
+@import "src/index.scss";
+
+#root {
+  background-color: $alcholic-white;
+}
 .root-container {
   display: flex;
   align-items: center;
