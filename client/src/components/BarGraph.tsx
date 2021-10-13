@@ -21,14 +21,16 @@ const BarGraph: React.FC<Props> = (props) => {
     WidthPercent: number;
     Percent: number;
   }) => {
+    const temp = Math.floor((155 * data.Count) / props.maxCount) + 100;
+    console.log(data.Count, temp);
     return {
+      backgroundColor: "#e9e999" + temp.toString(16),
       width: "calc(" + data.WidthPercent + "% - 128px)",
     };
   };
 
   return (
     <div className="bar-graph">
-      <span className="title">MBTI 별 분포</span>
       {data.map((_data, i) => (
         <div className="element" key={i}>
           <span className="type">{_data.Type}</span>

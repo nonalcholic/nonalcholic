@@ -86,6 +86,9 @@ const StatisticsPage: React.FC<Props> = (props) => {
     <>
       {data && (
         <>
+          <div className="title" style={{ marginBottom: 24 }}>
+            Statistics
+          </div>
           <BarGraph {...calculateData()} />
           <CompareBarGraph {...calculateCompareData()} />
         </>
