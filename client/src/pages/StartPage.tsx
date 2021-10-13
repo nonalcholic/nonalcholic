@@ -24,8 +24,15 @@ const StartPage: React.FC<Props> = (props) => {
       <button
         className="large-button"
         onClick={() => history.push("/statistics")}
+        style={{ marginBottom: 12 }}
       >
         통계
+      </button>
+      <button
+        className="large-button"
+        onClick={() => history.push("/developer")}
+      >
+        개발자
       </button>
       <span className="hint" style={{ marginTop: "auto" }}>
         {"본 검사는 KAIST의 공식 페이지가 아닌,\n졸업생이 제작한 페이지입니다."}

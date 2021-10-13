@@ -21,24 +21,30 @@ const BarGraph: React.FC<Props> = (props) => {
     WidthPercent: number;
     Percent: number;
   }) => {
+    const temp = Math.floor((155 * data.Count) / props.maxCount) + 100;
     return {
+      backgroundColor: "#e9e999" + temp.toString(16),
       width: "calc(" + data.WidthPercent + "% - 128px)",
     };
   };
 
   return (
-    <div className="bar-graph">
-      <span className="title">MBTI 별 분포</span>
-      {data.map((_data, i) => (
-        <div className="element" key={i}>
-          <span className="type">{_data.Type}</span>
-          <div className="bar" style={getStyle(_data)}></div>
-          <span className="count">
-            {_data.Count + "(" + Math.round(_data.Percent) + "%)"}
-          </span>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="total-count">
+        총 {props.totalCount} 명이 테스트에 참여했습니다.
+      </div>
+      <div className="bar-graph">
+        {data.map((_data, i) => (
+          <div className="element" key={i}>
+            <span className="type">{_data.Type}</span>
+            <div className="bar" style={getStyle(_data)}></div>
+            <span className="count">
+              {_data.Count + "(" + Math.round(_data.Percent) + "%)"}
+            </span>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
