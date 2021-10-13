@@ -56,7 +56,7 @@ const StatisticsPage: React.FC<Props> = (props) => {
   };
 
   const calculateCompareData = () => {
-    if (!data) return { data: {}, compare: [] };
+    if (!data) return { data: {}, compare: [], maxCount: 1 };
 
     const result: { [key: string]: number } = {
       E: 0,
@@ -79,13 +79,20 @@ const StatisticsPage: React.FC<Props> = (props) => {
       { left: "T", right: "F" },
       { left: "J", right: "P" },
     ];
-    return { data: result, compare: compare };
+    let maxCount = 0;
+    Object.entries(result).forEach(([key, count]) => {
+      if (maxCount < count) maxCount = count;
+    });
+    return { data: result, compare: compare, maxCount: maxCount };
   };
 
   return (
     <>
       {data && (
         <>
+          <div className="title" style={{ marginBottom: 32 }}>
+            Statistics
+          </div>
           <BarGraph {...calculateData()} />
           <CompareBarGraph {...calculateCompareData()} />
         </>

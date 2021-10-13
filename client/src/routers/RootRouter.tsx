@@ -8,6 +8,7 @@ import "./RootRouter.scss";
 import { v1 as uuid } from "uuid";
 import axios from "axios";
 import StatisticsPage from "../pages/StatisticsPage";
+import DeveloperPage from "../pages/DeveloperPage";
 
 declare const window: any;
 
@@ -44,6 +45,9 @@ const RootRouter: React.FC<Props> = (props) => {
         </Route>
         <Route exact path="/statistics">
           <StatisticsPage />
+        </Route>
+        <Route exact path="/developer">
+          <DeveloperPage />
         </Route>
         <Route path="/:mbti">
           <ResultPage />

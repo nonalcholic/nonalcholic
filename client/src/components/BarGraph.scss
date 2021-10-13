@@ -1,5 +1,12 @@
 @import "src/index.scss";
 
+.total-count {
+  font-size: 16px;
+  font-weight: 600;
+
+  margin: 0 auto 8px 4px;
+}
+
 .bar-graph {
   display: flex;
   flex-direction: column;
@@ -8,8 +15,9 @@
   width: 100%;
 
   padding: 12px;
+  margin-bottom: 24px;
 
-  border: 2px solid $alcholic-black;
+  border: 2px solid $alcholic-gray;
   border-radius: 8px;
   box-sizing: border-box;
 
@@ -26,12 +34,12 @@
       width: 64px;
       padding: 0 12px;
       box-sizing: border-box;
+      font-weight: bold;
     }
     .bar {
       height: 20px;
       border-radius: 10px;
 
-      background-color: $alcholic-yellow;
       transform-origin: 0% 50%;
       animation: extention 1s;
     }
@@ -39,6 +47,7 @@
       padding: 0 12px;
       width: 64px;
       box-sizing: border-box;
+      font-size: 14px;
     }
   }
 }
