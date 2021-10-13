@@ -1,7 +1,7 @@
 @import "src/index.scss";
 
 #root {
-  background-color: $alcholic-white;
+  background-color: $nonalcholic-white;
 }
 .root-container {
   display: flex;
@@ -90,8 +90,7 @@
   height: 40px;
 
   border-radius: 8px;
-  border: 2px solid #383838;
-  background: transparent;
+  background: $nonalcholic-yellow;
 
   cursor: pointer;
   font-weight: bold;
@@ -123,6 +122,7 @@
     background-color: #cec0af;
   }
   &:active {
+    background-color: $nonalcholic-yellow;
     transform: scale(0.95);
   }
 }
@@ -141,7 +141,7 @@
 
   transition: all 0.2s;
   &:hover {
-    background-color: #cec0af;
+    background-color: $nonalcholic-lightyellow;
   }
   &:active {
     transform: scale(0.95);
