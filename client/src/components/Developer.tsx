@@ -7,19 +7,23 @@ interface Props {
   mbti: MBTIResultType;
   description: string;
   image: any;
+  instagram: string;
+  email: string;
 }
 const Developer: React.FC<Props> = (props) => {
-  const { name, mbti, description, image } = props;
+  const { name, mbti, description, image, instagram, email } = props;
 
   return (
     <div className="developer">
       <img src={image} />
       <div className="right-items">
-        <span className="name">
+        <div className="first">
           {name}
           <span className="mbti">{mbti}</span>
-        </span>
-        <span className="desc">{description}</span>
+          <span className="insta">{instagram}</span>
+        </div>
+        <div className="second">{description}</div>
+        <div className="third">{email}</div>
       </div>
     </div>
   );
