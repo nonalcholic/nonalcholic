@@ -18,6 +18,8 @@
 
   .animation-fade-out {
     position: absolute;
+    top: 0px;
+
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -37,6 +39,8 @@
 
   .animation-fade-in {
     position: absolute;
+    top: 0px;
+
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -83,6 +87,7 @@
   white-space: pre-wrap;
 
   text-align: center;
+  bottom: 0px;
 }
 
 .large-button {

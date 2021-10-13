@@ -117,41 +117,46 @@ const ResultPage: React.FC<Props> = (props) => {
     <>
       <div className="animation-fade-in" />
       <div className="result-container">
-        <span className="title">{MBTIResult[mbti].title}</span>
-        <span className="context">{MBTIResult[mbti].subtitle}</span>
-        <span className="description">{MBTIResult[mbti].description}</span>
+        <div className="result-picture"></div>
+        <span className="result-title">{MBTIResult[mbti].title}</span>
+        <span className="result-context">{MBTIResult[mbti].subtitle}</span>
+        <span className="result-description">
+          {MBTIResult[mbti].description}
+        </span>
       </div>
-      <button
-        className="large-button"
-        onClick={() => {
-          resetProgress()(dispatch);
-          history.push("/start");
-        }}
-      >
-        처음으로
-      </button>
-      <textarea
-        readOnly
-        style={{ display: "none" }}
-        value={`http://${IP_ADDRESS}:80/${mbti}`}
-        tabIndex={-1}
-        ref={hiddenRef}
-      />
-      <div className="bottom-buttons">
-        <button className="small-button" onClick={() => onShare("link")}>
-          <FiLink />
-        </button>
-        <a
-          className="small-button"
-          id="kakao-link-btn"
-          href="javascript:;"
-          onClick={() => onShare("kakao")}
+      <div className="result-buttons">
+        <button
+          className="result-large-button"
+          onClick={() => {
+            resetProgress()(dispatch);
+            history.push("/start");
+          }}
         >
-          <RiKakaoTalkFill className="share-svg" fill={"black"} />
-        </a>
-        <button className="small-button" onClick={() => onShare("instagram")}>
-          <RiInstagramLine className="share-svg" />
+          처음으로
         </button>
+        <textarea
+          readOnly
+          style={{ display: "none" }}
+          value={`http://${IP_ADDRESS}:80/${mbti}`}
+          tabIndex={-1}
+          ref={hiddenRef}
+        />
+        <div className="bottom-buttons">
+          <button className="small-button" onClick={() => onShare("link")}>
+            <FiLink style={{ color: "black" }} />
+          </button>
+          <a
+            className="small-button"
+            id="kakao-link-btn"
+            href="javascript:;"
+            onClick={() => onShare("kakao")}
+          >
+            <RiKakaoTalkFill className="share-svg" fill={"black"} />
+          </a>
+          <button className="small-button" onClick={() => onShare("instagram")}>
+            <RiInstagramLine style={{ color: "black" }} className="share-svg" />
+          </button>
+        </div>
       </div>
     </>
   );
