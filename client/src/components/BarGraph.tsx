@@ -22,7 +22,6 @@ const BarGraph: React.FC<Props> = (props) => {
     Percent: number;
   }) => {
     const temp = Math.floor((155 * data.Count) / props.maxCount) + 100;
-    console.log(data.Count, temp);
     return {
       backgroundColor: "#e9e999" + temp.toString(16),
       width: "calc(" + data.WidthPercent + "% - 128px)",
