@@ -10,8 +10,6 @@ const CompareBarGraph: React.FC<Props> = (props) => {
   const { data, compare, maxCount } = props;
 
   const getStyle = (data: number) => {
-    // const temp = Math.floor((155 * data.Count) / props.maxCount) + 100;
-    // console.log(data, maxCount);
     return {
       width: "calc(" + (data * 100) / maxCount + "%)",
     };

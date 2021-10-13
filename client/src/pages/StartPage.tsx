@@ -24,6 +24,7 @@ const StartPage: React.FC<Props> = (props) => {
       <button
         className="large-button"
         onClick={() => history.push("/statistics")}
+        style={{ marginBottom: 12 }}
       >
         통계
       </button>

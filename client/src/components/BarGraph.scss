@@ -1,5 +1,12 @@
 @import "src/index.scss";
 
+.total-count {
+  font-size: 16px;
+  font-weight: 600;
+
+  margin: 0 auto 8px 4px;
+}
+
 .bar-graph {
   display: flex;
   flex-direction: column;
