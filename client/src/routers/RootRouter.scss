@@ -60,15 +60,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 28px;
+  font-size: 30px;
   white-space: pre-wrap;
 }
 .context {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 36px;
-  font-weight: bold;
+  font-size: 40px;
+  font-weight: 700;
 }
 .description {
   font-size: 18px;
@@ -79,7 +79,7 @@
 
 .hint {
   font-size: 14px;
-  color: #383838;
+  color: #777777;
   white-space: pre-wrap;
 
   text-align: center;
@@ -90,37 +90,41 @@
   height: 40px;
 
   border-radius: 8px;
+  border: 0px;
+  // border: 2px solid #383838;
   background: $nonalcholic-yellow;
 
   cursor: pointer;
   font-weight: bold;
   font-size: 18px;
+  color: white;
 
   transition: all 0.2s;
-  &:hover {
-    background-color: #cec0af;
-  }
   &:active {
     transform: scale(0.95);
+    opacity: 100%;
   }
 }
 
 .extra-large-button {
   width: calc(100% - 48px);
   height: 160px;
-  border-radius: 8px;
-  border: 2px solid #383838;
+  border-radius: 30px;
+  border: 1px solid #383838;
   background: transparent;
+  color: black;
   white-space: pre-wrap;
 
   cursor: pointer;
-  font-weight: bold;
-  font-size: 18px;
+  font-weight: base;
+  font-size: 16px;
+
+  line-height: 25px;
 
   transition: all 0.2s;
-  &:hover {
-    background-color: #cec0af;
-  }
+  // &:hover {
+  //   background-color: #cec0af;
+  // }
   &:active {
     background-color: $nonalcholic-yellow;
     transform: scale(0.95);
