@@ -5,7 +5,10 @@ import { IReducer } from "../redux";
 interface Props {}
 const ProgressBar: React.FC<Props> = (props) => {
   const progress = useSelector((state: IReducer) => state.progress);
-  const completed = ((progress.currentProgress + 1) * 100) / 12;
+  const completed =
+    progress.currentProgress === 12
+      ? 100
+      : ((progress.currentProgress + 1) * 100) / 12;
   const containerStyles = {
     height: 20,
     width: "100%",
@@ -32,7 +35,9 @@ const ProgressBar: React.FC<Props> = (props) => {
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        <span style={labelStyles}>{`${progress.currentProgress + 1}/12`}</span>
+        <span style={labelStyles}>{`${
+          progress.currentProgress === 12 ? 12 : progress.currentProgress + 1
+        }/12`}</span>
       </div>
     </div>
   );

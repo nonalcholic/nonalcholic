@@ -17,6 +17,7 @@
   padding: 12px;
   margin-bottom: 24px;
 
+  // border: 2px solid $nonalcholic-black;
   border: 2px solid $alcholic-gray;
   border-radius: 8px;
   box-sizing: border-box;
@@ -40,6 +41,7 @@
       height: 20px;
       border-radius: 10px;
 
+      background-color: $nonalcholic-yellow;
       transform-origin: 0% 50%;
       animation: extention 1s;
     }
