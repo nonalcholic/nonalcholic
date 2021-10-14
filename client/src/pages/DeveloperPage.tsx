@@ -9,19 +9,23 @@ const DeveloperPage: React.FC<Props> = (props) => {
         Developer
       </div>
       <Developer
-        name="유주형"
+        name="@jackson"
         mbti="ENFJ"
         image={require("../assets/yuz.png").default}
-        description="KAIST 전산학부 16학번 유주형입니다. 현재 졸업 후, 클라썸에서 개발자로 일하는 중."
-        instagram="@usual_yuz"
+        subdescription="맥주 들고 신학관 옥상으로 따라와!"
+        description_1="KAIST CS 16"
+        description_2="CLASSUM"
+        instagram="usual_yuz"
         email="gogodbwngud@gmail.com"
       />
       <Developer
-        name="이민지"
+        name="@minx"
         mbti="INTJ"
-        image={require("../assets/minji.png").default}
-        description="KAIST 전산학부 16학번 이민지입니다. 현재 졸업 후, NC soft에서 개발자로 일하는 중."
-        instagram="@leeminxji"
+        image={require("../assets/minx.JPG").default}
+        subdescription="교분 2층 B-22 지박령"
+        description_1="KAIST CS 16"
+        description_2="NCSOFT"
+        instagram="leeminxji"
         email="leeminxji@gmail.com"
       />
     </>
