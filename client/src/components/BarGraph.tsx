@@ -1,6 +1,7 @@
 import "./BarGraph.scss";
 import React, { useEffect, useState } from "react";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
+import { MBTIResult } from "../utils/utils.const";
 
 interface Props {
   data: {
@@ -11,9 +12,10 @@ interface Props {
   }[];
   totalCount: number;
   maxCount: number;
+  showMBTI: boolean;
 }
 const BarGraph: React.FC<Props> = (props) => {
-  const { data } = props;
+  const { data, showMBTI } = props;
 
   const getStyle = (data: {
     Type: MBTIResultType;
@@ -24,7 +26,7 @@ const BarGraph: React.FC<Props> = (props) => {
     const temp = Math.floor((155 * data.Count) / props.maxCount) + 100;
     return {
       backgroundColor: "#e9e999" + temp.toString(16),
-      width: "calc(" + data.WidthPercent + "% - 128px)",
+      width: data.WidthPercent + "%",
     };
   };
 
@@ -36,11 +38,15 @@ const BarGraph: React.FC<Props> = (props) => {
       <div className="bar-graph">
         {data.map((_data, i) => (
           <div className="element" key={i}>
-            <span className="type">{_data.Type}</span>
-            <div className="bar" style={getStyle(_data)}></div>
-            <span className="count">
-              {_data.Count + "(" + Math.round(_data.Percent) + "%)"}
+            <span className="type">
+              {showMBTI ? _data.Type : MBTIResult[_data.Type].abstract}
             </span>
+            <div className="bar-container">
+              <div className="bar" style={getStyle(_data)}>
+                <span className="count">{_data.Count}</span>
+              </div>
+            </div>
+            <span className="percent">{Math.round(_data.Percent) + "%"}</span>
           </div>
         ))}
       </div>

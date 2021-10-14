@@ -1,5 +1,6 @@
 import {
   MBTIResultType,
+  MBTIType,
   QuestionData,
 } from "../redux/interfaces/progressInterface";
 
@@ -131,6 +132,17 @@ export const QuestionInfo: QuestionData[] = [
     },
   },
 ];
+
+export const EachMBTIText: { [mbti: string]: string } = {
+  E: "외향",
+  I: "내향",
+  N: "직관",
+  S: "감각",
+  T: "사고",
+  F: "감정",
+  J: "판단",
+  P: "인식",
+};
 
 export const MBTIResult: {
   [mbti: string]: {

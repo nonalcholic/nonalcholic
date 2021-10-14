@@ -8,7 +8,7 @@ const StartPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <span className="context" style={{ height: 400 }}>
+      <span className="context" style={{ height: 200 }}>
         카이스트 MBTI
       </span>
       {/* <span className="description" style={{ marginBottom: 48 }}>

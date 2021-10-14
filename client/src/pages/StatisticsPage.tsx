@@ -1,8 +1,10 @@
+import "./StatisticsPage.scss";
 import React, { useEffect, useState } from "react";
 import BarGraph from "../components/BarGraph";
 import CompareBarGraph from "../components/CompareBarGraph";
 import { StatisticsDto } from "../redux/interfaces/statisticsInterface";
 import { IP_ADDRESS, MBTIList, MBTIListElem } from "../utils/utils.const";
+import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
 
 interface Props {}
 
@@ -12,6 +14,7 @@ interface MBTIInterface {
 
 const StatisticsPage: React.FC<Props> = (props) => {
   const [data, setData] = useState<StatisticsDto>();
+  const [showMBTI, setShowMBTI] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchResult = async () => {
@@ -93,8 +96,15 @@ const StatisticsPage: React.FC<Props> = (props) => {
           <div className="title" style={{ marginBottom: 32 }}>
             Statistics
           </div>
-          <BarGraph {...calculateData()} />
-          <CompareBarGraph {...calculateCompareData()} />
+          <button
+            className="show-mbti"
+            onClick={() => setShowMBTI((prev) => !prev)}
+          >
+            {showMBTI ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+            MBTI로 보기
+          </button>
+          <BarGraph {...calculateData()} showMBTI={showMBTI} />
+          <CompareBarGraph {...calculateCompareData()} showMBTI={showMBTI} />
         </>
       )}
     </>
