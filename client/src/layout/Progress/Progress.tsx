@@ -40,7 +40,7 @@ const Progress: React.FC<Props> = (props) => {
         onClick={() => {
           onClickAnswer(currentProgress?.choiceA?.type);
         }}
-        style={{ marginBottom: 24 }}
+        style={{ margin: "auto 0 24px" }}
       >
         {currentProgress?.choiceA?.text}
       </button>

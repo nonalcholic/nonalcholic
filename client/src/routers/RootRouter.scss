@@ -4,17 +4,19 @@
   background-color: $nonalcholic-white;
 }
 .root-container {
+  position: relative;
+
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 48px 12px;
+  padding: 36px 12px;
   box-sizing: border-box;
 
   max-width: 600px;
-  min-height: 600px;
+  min-height: min(600px, 100vh);
   margin: 0 auto;
 
-  overflow: auto;
+  // overflow: auto;
 
   .animation-fade-out {
     position: absolute;
@@ -112,10 +114,10 @@
 }
 
 .extra-large-button {
-  width: calc(100% - 48px);
-  height: 160px;
+  width: calc(100% - 32px);
+  height: 120px;
   border-radius: 30px;
-  border: 1px solid #383838;
+  border: 1px solid $nonalcholic-gray;
   background: transparent;
   color: black;
   white-space: pre-wrap;
