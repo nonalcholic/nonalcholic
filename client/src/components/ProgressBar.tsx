@@ -14,7 +14,7 @@ const ProgressBar: React.FC<Props> = (props) => {
     width: "100%",
     backgroundColor: "#e0e0de",
     borderRadius: 50,
-    marginBottom: 48,
+    marginBottom: 32,
   };
 
   const fillerStyles = {

@@ -26,7 +26,7 @@ const Progress: React.FC<Props> = (props) => {
           marginBottom: 24,
           height: 120,
           fontSize: 19,
-          width: "279px",
+          width: "100%",
           textAlign: "center",
           lineHeight: "27px",
         }}
