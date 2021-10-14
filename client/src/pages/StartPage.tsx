@@ -35,7 +35,7 @@ const StartPage: React.FC<Props> = (props) => {
         개발자
       </button>
       <span className="hint" style={{ marginTop: "auto" }}>
-        {"본 검사는 KAIST의 공식 페이지가 아닌,\n졸업생이 제작한 페이지입니다."}
+        {"이 사이트는 KAIST의 공식 페이지가 아닌\n졸업생이 제작한 페이지입니다"}
       </span>
     </>
   );
