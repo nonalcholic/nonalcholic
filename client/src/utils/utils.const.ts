@@ -10,7 +10,8 @@ export const AlcholicColor = {
   Yellow: "#e9e999",
   Black: "#2e2e2e",
 };
-export const IP_ADDRESS = process.env.REACT_APP_IP_ADDRESS; // "54.180.146.18";
+export const IP_ADDRESS = process.env.REACT_APP_IP_ADDRESS;
+export const SERVER_PORT = process.env.REACT_APP_SERVER_PORT;
 export const TOTAL_PROGRESS_NUMBER = 12;
 export const QuestionInfo: QuestionData[] = [
   {
