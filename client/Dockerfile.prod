@@ -1,6 +1,8 @@
 # base image (as builder)
 FROM node:12.4.0-alpine as builder
 
+ARG SERVER_PORT
+
 # 작업 폴더를 만들고 npm 설치
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -8,13 +10,18 @@ WORKDIR /usr/src/app
 # $PATH 설정
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-#  Dependency 설치 및 캐싱
+# Dependency 설치 및 캐싱
 COPY package.json /usr/src/app/package.json
 RUN npm install --silent
 RUN npm install react-scripts@3.0.1 -g --silent
 
-# 소스를 작업폴더로 복사하고 빌드
+# 소스를 작업폴더로 복사
 COPY . /usr/src/app
+
+# 환경변수 설정
+RUN echo "REACT_APP_SERVER_PORT=${SERVER_PORT}" >> .env.production
+
+# 빌드
 RUN npm run build
 
 # base image

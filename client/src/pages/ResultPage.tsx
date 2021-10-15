@@ -11,7 +11,8 @@ import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
 import { FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
-import { IP_ADDRESS, MBTIResult } from "../utils/utils.const";
+import { MBTIResult } from "../utils/utils.const";
+import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
 
 declare const window: any;
@@ -32,7 +33,7 @@ const ResultPage: React.FC<Props> = (props) => {
       ip: getIpCookie(),
     };
 
-    fetch(`http://${IP_ADDRESS}:9999/result`, {
+    fetch(`http://${IP_ADDRESS}:${SERVER_PORT}/result`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -87,7 +88,7 @@ const ResultPage: React.FC<Props> = (props) => {
       type: where,
     };
 
-    fetch(`http://${IP_ADDRESS}:9999/share`, {
+    fetch(`http://${IP_ADDRESS}:${SERVER_PORT}/share`, {
       method: "POST",
       headers: {
         Accept: "application/json",

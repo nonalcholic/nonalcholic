@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -25,7 +26,9 @@ func main() {
 		Username: "root",
 		Password: "nonalcholic",
 	}
-	clientOptions := options.Client().ApplyURI("mongodb://mongo:27017").SetAuth((credential))
+	mongo_port := os.Getenv("MONGO_PORT")
+	mongo_url := fmt.Sprintf("mongodb://mongo:%s", mongo_port)
+	clientOptions := options.Client().ApplyURI(mongo_url).SetAuth((credential))
 
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)

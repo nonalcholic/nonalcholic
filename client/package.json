@@ -27,7 +27,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "export PORT=80 && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -55,6 +55,5 @@
     "@types/redux-actions": "^2.6.2",
     "@types/uuid": "^8.3.1",
     "sass": "^1.39.2"
-  },
-  "proxy": "http://localhost:9999"
+  }
 }

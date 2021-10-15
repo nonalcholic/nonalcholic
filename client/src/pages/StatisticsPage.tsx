@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import BarGraph from "../components/BarGraph";
 import CompareBarGraph from "../components/CompareBarGraph";
 import { StatisticsDto } from "../redux/interfaces/statisticsInterface";
-import { IP_ADDRESS, MBTIList, MBTIListElem } from "../utils/utils.const";
+import { MBTIList, MBTIListElem } from "../utils/utils.const";
+import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
 
 interface Props {}
@@ -17,18 +18,22 @@ const StatisticsPage: React.FC<Props> = (props) => {
   const [showMBTI, setShowMBTI] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log(IP_ADDRESS, SERVER_PORT);
     const fetchResult = async () => {
       const body: MBTIInterface = {
         types: MBTIList,
       };
-      const res = await fetch(`http://${IP_ADDRESS}:9999/statistics`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
+      const res = await fetch(
+        `http://${IP_ADDRESS}:${SERVER_PORT}/statistics`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
       const data = await res.json();
       setData(data);
     };
