@@ -6,85 +6,20 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"go.mongodb.org/mongo-driver/bson" // @@@@
-	"go.mongodb.org/mongo-driver/bson/primitive"
+
+	"github.com/template97/nonalcholic/server/cors"
+	"github.com/template97/nonalcholic/server/models"
+
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func Test(c *gin.Context) {
-	fmt.Println("/test")
-	c.JSON(http.StatusOK, gin.H{
-		"message": "test",
-	})
-}
-
-func Result(c *gin.Context) {
-	fmt.Println("/result")
-	c.JSON(http.StatusOK, gin.H{
-		"message": "Database: data, Collection: result.",
-	})
-}
-
-func Share(c *gin.Context) {
-	fmt.Println("/share")
-	c.JSON(http.StatusOK, gin.H{
-		"message": "Database: data, Collection: share.",
-	})
-}
-
-func Statistics(c *gin.Context) {
-	fmt.Println("A, /statistics")
-	c.JSON(http.StatusOK, gin.H{
-		"message": "Get statistics from db using mbti result.",
-	})
-}
-
-type Data struct {
-	Id        string
-	Answers   [12]string
-	Result    string
-	Ip        string
-	CreatedAt time.Time
-}
-
-type Type struct {
-	Id   string
-	Type string
-}
-
-type FindData struct {
-	ID        primitive.ObjectID `bson:"_id"`
-	Answers   [12]int            `bson:"answers"`
-	CreatedAt time.Time          `bson:"createdat"`
-	UserID    string             `bson:"id"`
-	Instagram int                `bson:"instagram"`
-	Ip        string             `bson:"ip"`
-	Kakao     int                `bson:"kakao"`
-	Link      int                `bson:"link"`
-	Result    string             `bson:"result"`
-}
-
-type MbtiType struct {
-	Type string
-}
-type Mbti struct {
-	Types [16]MbtiType
-}
-type CountType struct {
-	Type string `bson:"result"`
-	Count  int64
-}
-type CountResult struct {
-	Results [16]CountType
-}
-
 func main() {
-	// MongoDB
+	// Connect with MongoDB ------------------------------------------------------
 	// Set client options
 	credential := options.Credential{
 		Username: "root",
@@ -94,14 +29,12 @@ func main() {
 
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
-
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// Check the connection
 	err = client.Ping(context.TODO(), nil)
-
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -109,25 +42,21 @@ func main() {
 	fmt.Println("Connected to MongoDB!")
 
 	result := client.Database("data").Collection("result")
-	// share := client.Database("data").Collection("share")
 
 	// Disconnect to MongoDB
 	// err = client.Disconnect(context.TODO())
-
 	// if err != nil {
 	// log.Fatal(err)
 	// }
 	// fmt.Println("Connection to MongoDB closed.")
 
 	router := gin.Default()
-	router.Use(CORSMiddleware())
+	router.Use(cors.CORSMiddleware())
 
-	router.GET("/test", Test, func(c *gin.Context) {
-	})
-
-	//// Database: data, Collection: result에 결과 저장
-	router.POST("/result", Result, func(c *gin.Context) {
-		var d Data
+	// HTTP with Client ----------------------------------------------------------
+	//// Client로부터 받은 결과를 result에 저장
+	router.POST("/result", func(c *gin.Context) {
+		var d models.Data
 
 		err := json.NewDecoder(c.Request.Body).Decode(&d)
 		if err != nil {
@@ -135,8 +64,6 @@ func main() {
 		}
 
 		d.CreatedAt = time.Now()
-
-		// message := Data{Id: data["id"], Answer: [3]int{1, 2, 3}, Result: "Result", CreatedAt: time.Now().Local()}
 
 		insertResult, err := result.InsertOne(context.TODO(), d)
 		if err != nil {
@@ -146,16 +73,16 @@ func main() {
 		fmt.Println("Inserted a single document: ", insertResult.InsertedID)
 	})
 
-	////
-	router.POST("/share", Share, func(c *gin.Context) {
-		var t Type
+	//// Client가 공유한 SNS의 종류/횟수를 result에 저장
+	router.POST("/share", func(c *gin.Context) {
+		var t models.Type
 
 		err := json.NewDecoder(c.Request.Body).Decode(&t)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		f := FindData{}
+		f := models.FindData{}
 		filter := bson.M{"id": t.Id}
 		err2 := result.FindOne(context.TODO(), filter).Decode(&f)
 
@@ -192,10 +119,10 @@ func main() {
 		fmt.Println("Inserted a single document: ", incrementResult)
 	})
 
-	//// 저장된 결과로부터 통계 가져오기
+	//// Client에게 result에 저장된 mbti별 수를 보냄
 	router.POST("/statistics", func(c *gin.Context) { // c := types: MBTIList
-		var m Mbti
-		var cr CountResult
+		var m models.Mbti
+		var cr models.CountResult
 		err := json.NewDecoder(c.Request.Body).Decode(&m)
 		if err != nil {
 			log.Fatal(err)
@@ -203,7 +130,7 @@ func main() {
 		for i := 0; i < 16; i++ {
 			filter := bson.M{"result": m.Types[i].Type}
 			total, err := result.CountDocuments(context.TODO(), filter, nil)
-			var ct CountType
+			var ct models.CountType
 			ct.Type = m.Types[i].Type
 			ct.Count = total
 			cr.Results[i] = ct
@@ -215,18 +142,4 @@ func main() {
 	})
 
 	router.Run(":9999")
-}
-
-func CORSMiddleware() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		c.Header("Access-Control-Allow-Headers", "Content-Type, Authorization, Origin") // You can add more headers here if needed
-		c.Header("Access-Control-Allow-Origin", "*")
-		c.Header("Access-Control-Allow-Methods", "GET, DELETE, POST")
-
-		if c.Request.Method == "OPTIONS" {
-			c.AbortWithStatus(204)
-			return
-		}
-		c.Next()
-	}
 }
