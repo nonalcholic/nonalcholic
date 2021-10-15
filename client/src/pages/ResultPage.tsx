@@ -11,7 +11,8 @@ import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
 import { FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
-import { IP_ADDRESS, MBTIResult, SERVER_PORT } from "../utils/utils.const";
+import { MBTIResult } from "../utils/utils.const";
+import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
 
 declare const window: any;

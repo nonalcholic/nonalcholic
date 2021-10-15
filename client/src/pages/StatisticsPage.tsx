@@ -3,12 +3,8 @@ import React, { useEffect, useState } from "react";
 import BarGraph from "../components/BarGraph";
 import CompareBarGraph from "../components/CompareBarGraph";
 import { StatisticsDto } from "../redux/interfaces/statisticsInterface";
-import {
-  IP_ADDRESS,
-  MBTIList,
-  MBTIListElem,
-  SERVER_PORT,
-} from "../utils/utils.const";
+import { MBTIList, MBTIListElem } from "../utils/utils.const";
+import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
 
 interface Props {}
