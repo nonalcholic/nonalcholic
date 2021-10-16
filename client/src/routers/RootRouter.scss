@@ -17,6 +17,7 @@
 
   box-sizing: border-box;
   // border: 1px solid $nonalcholic-gray;
+  // border-radius: 16px;
 
   .animation-fade-out {
     position: absolute;
@@ -73,10 +74,10 @@
   width: 100%;
   height: 40px;
   padding: 4px 12px;
-  margin-bottom: 12px;
+  // margin-bottom: 12px;
 
   background-color: $nonalcholic-white;
-  border-bottom: 1px solid $nonalcholic-gray;
+  // border-bottom: 1px solid $nonalcholic-gray;
 
   // font-size: 30px;
   // font-weight: 700;

@@ -1,13 +1,16 @@
+@import "src/index.scss";
+
 .developer {
   display: flex;
   flex-direction: row;
 
   width: 100%;
-  margin: 16px 0;
+  margin-bottom: 16px;
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 12px;
   border-radius: 8px;
+  border: 1px solid $nonalcholic-gray;
 
   box-sizing: border-box;
   transition: all 0.3s;
