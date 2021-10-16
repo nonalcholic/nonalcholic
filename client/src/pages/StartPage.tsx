@@ -8,12 +8,9 @@ const StartPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <span className="context" style={{ height: 200 }}>
-        카이스트 MBTI
+      <span className="title" style={{ height: 200 }}>
+        {"나에게 딱 맞는\n카이스트 장소는 어디?"}
       </span>
-      {/* <span className="description" style={{ marginBottom: 48 }}>
-        {"유사 과학일수도 아닐수도.\n재미있으면 됐지."}
-      </span> */}
       <button
         className="large-button"
         onClick={() => history.push("/progress")}

@@ -14,30 +14,28 @@ const ProgressBar: React.FC<Props> = (props) => {
     width: "100%",
     backgroundColor: "#e0e0de",
     borderRadius: 50,
-    marginBottom: 32,
   };
 
   const fillerStyles = {
-    height: "100%",
+    height: 20,
     width: `${completed}%`,
+    minWidth: 32,
     backgroundColor: "#cec0af",
     borderRadius: "inherit",
     textAlign: "right" as "right",
     transition: "width 0.5s ease-in-out",
-  };
-
-  const labelStyles = {
-    padding: 5,
+    paddingRight: 4,
     color: "white",
+    fontSize: 12,
+    lineHeight: "20px",
     fontWeight: "bold" as "bold",
   };
 
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        <span style={labelStyles}>{`${
-          progress.currentProgress === 12 ? 12 : progress.currentProgress + 1
-        }/12`}</span>
+        {progress.currentProgress === 12 ? 12 : progress.currentProgress + 1}
+        /12
       </div>
     </div>
   );

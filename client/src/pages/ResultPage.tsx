@@ -14,6 +14,7 @@ import "./ResultPage.scss";
 import { MBTIResult } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
+import { AiOutlineHome } from "react-icons/ai";
 
 declare const window: any;
 
@@ -53,8 +54,8 @@ const ResultPage: React.FC<Props> = (props) => {
           description: "내 최에 장소는 어디일까요?!",
           imageUrl: "logo192.png",
           link: {
-            mobileWebUrl: `https://${IP_ADDRESS}:80`,
-            webUrl: `https://${IP_ADDRESS}:80`,
+            mobileWebUrl: `https://${IP_ADDRESS}:${SERVER_PORT}`,
+            webUrl: `https://${IP_ADDRESS}:${SERVER_PORT}`,
           },
         },
         // social: {
@@ -66,15 +67,15 @@ const ResultPage: React.FC<Props> = (props) => {
           {
             title: "결과보기",
             link: {
-              mobileWebUrl: `https://${IP_ADDRESS}:80/${mbti}`,
-              webUrl: `https://${IP_ADDRESS}:80/${mbti}`,
+              mobileWebUrl: `https://${IP_ADDRESS}:${SERVER_PORT}/${mbti}`,
+              webUrl: `https://${IP_ADDRESS}:${SERVER_PORT}/${mbti}`,
             },
           },
           {
             title: "테스트하기",
             link: {
-              mobileWebUrl: `https://${IP_ADDRESS}:80/start`,
-              webUrl: `https://${IP_ADDRESS}:80/start`,
+              mobileWebUrl: `https://${IP_ADDRESS}:${SERVER_PORT}/start`,
+              webUrl: `https://${IP_ADDRESS}:${SERVER_PORT}/start`,
             },
           },
         ],
@@ -116,18 +117,30 @@ const ResultPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div className="animation-fade-in" />
-      <div className="result-container">
-        <div className="result-picture"></div>
-        <span className="result-title">{MBTIResult[mbti].title}</span>
-        <span className="result-context">{MBTIResult[mbti].subtitle}</span>
-        <span className="result-description">
-          {MBTIResult[mbti].description}
-        </span>
+      <div className="header">
+        <button
+          className="small-button"
+          onClick={() => {
+            resetProgress()(dispatch);
+            history.push(".");
+          }}
+        >
+          <AiOutlineHome />
+        </button>
       </div>
+      <div className="animation-fade-in" />
+
+      <span className="context" style={{ margin: "8px 0" }}>
+        나의 KAIST 최애 장소는..
+      </span>
+      <div className="result-picture"></div>
+      <span className="result-title">{MBTIResult[mbti].title}</span>
+      <span className="result-context">{MBTIResult[mbti].subtitle}</span>
+      <span className="result-description">{MBTIResult[mbti].description}</span>
       <div className="result-buttons">
         <button
-          className="result-large-button"
+          className="large-button"
+          style={{ margin: 15 }}
           onClick={() => {
             resetProgress()(dispatch);
             history.push("/start");
@@ -138,7 +151,7 @@ const ResultPage: React.FC<Props> = (props) => {
         <textarea
           readOnly
           style={{ display: "none" }}
-          value={`http://${IP_ADDRESS}:80/${mbti}`}
+          value={`http://${IP_ADDRESS}:${SERVER_PORT}/${mbti}`}
           tabIndex={-1}
           ref={hiddenRef}
         />

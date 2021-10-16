@@ -23,7 +23,9 @@ const Developer: React.FC<Props> = (props) => {
 
   return (
     <div className="developer">
-      <img src={image} />
+      <div className="image-container">
+        <img src={image} />
+      </div>
       <div className="right-items">
         <div className="first">
           {name}

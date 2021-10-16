@@ -6,6 +6,8 @@ import { StatisticsDto } from "../redux/interfaces/statisticsInterface";
 import { MBTIList, MBTIListElem } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
+import { useHistory } from "react-router";
 
 interface Props {}
 
@@ -14,6 +16,8 @@ interface MBTIInterface {
 }
 
 const StatisticsPage: React.FC<Props> = (props) => {
+  const history = useHistory();
+
   const [data, setData] = useState<StatisticsDto>();
   const [showMBTI, setShowMBTI] = useState<boolean>(false);
 
@@ -98,10 +102,13 @@ const StatisticsPage: React.FC<Props> = (props) => {
     <>
       {data && (
         <>
-          <div className="stats-title">
-            Statistics
+          <div className="header">
+            <button className="small-button" onClick={() => history.push(".")}>
+              <AiOutlineHome />
+            </button>
             <button
               className="show-mbti"
+              style={{ marginLeft: "auto" }}
               onClick={() => setShowMBTI((prev) => !prev)}
             >
               {showMBTI ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
