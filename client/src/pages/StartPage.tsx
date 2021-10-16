@@ -9,7 +9,7 @@ const StartPage: React.FC<Props> = (props) => {
   return (
     <>
       <span className="title" style={{ height: 200 }}>
-        카이스트 MBTI
+        {"나에게 딱 맞는\n카이스트 장소는 어디?"}
       </span>
       <button
         className="large-button"

@@ -88,8 +88,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
+
+  font-size: 32px;
   font-weight: 700;
+  text-align: center;
+
+  white-space: pre-wrap;
 }
 
 .context {
