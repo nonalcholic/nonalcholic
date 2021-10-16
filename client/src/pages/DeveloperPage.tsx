@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { AiOutlineHome } from "react-icons/ai";
+import { useHistory } from "react-router";
 import Developer from "../components/Developer";
 
 interface Props {}
 const DeveloperPage: React.FC<Props> = (props) => {
+  const history = useHistory();
   return (
     <>
-      <div className="header">Developer</div>
+      <div className="header">
+        <button
+          className="small-button"
+          style={{ marginRight: 4 }}
+          onClick={() => history.push(".")}
+        >
+          <AiOutlineHome />
+        </button>
+        Developer
+      </div>
       <Developer
         name="@jackson"
         mbti="ENFJ"
