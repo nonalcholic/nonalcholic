@@ -5,9 +5,7 @@ interface Props {}
 const DeveloperPage: React.FC<Props> = (props) => {
   return (
     <>
-      <div className="title" style={{ marginBottom: 32 }}>
-        Developer
-      </div>
+      <div className="header">Developer</div>
       <Developer
         name="@jackson"
         mbti="ENFJ"

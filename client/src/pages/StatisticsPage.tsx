@@ -98,7 +98,7 @@ const StatisticsPage: React.FC<Props> = (props) => {
     <>
       {data && (
         <>
-          <div className="stats-title">
+          <div className="header">
             Statistics
             <button
               className="show-mbti"
