@@ -103,16 +103,12 @@ const StatisticsPage: React.FC<Props> = (props) => {
       {data && (
         <>
           <div className="header">
-            <button
-              className="small-button"
-              style={{ marginRight: 4 }}
-              onClick={() => history.push(".")}
-            >
+            <button className="small-button" onClick={() => history.push(".")}>
               <AiOutlineHome />
             </button>
-            Statistics
             <button
               className="show-mbti"
+              style={{ marginLeft: "auto" }}
               onClick={() => setShowMBTI((prev) => !prev)}
             >
               {showMBTI ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}

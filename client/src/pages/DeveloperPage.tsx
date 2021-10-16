@@ -9,14 +9,9 @@ const DeveloperPage: React.FC<Props> = (props) => {
   return (
     <>
       <div className="header">
-        <button
-          className="small-button"
-          style={{ marginRight: 4 }}
-          onClick={() => history.push(".")}
-        >
+        <button className="small-button" onClick={() => history.push(".")}>
           <AiOutlineHome />
         </button>
-        Developer
       </div>
       <Developer
         name="@jackson"

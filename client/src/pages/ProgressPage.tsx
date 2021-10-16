@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { AiOutlineHome } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import ProgressBar from "../components/ProgressBar";
@@ -25,6 +26,11 @@ const ProgressPage: React.FC<Props> = (props) => {
   }, [progress.currentProgress]);
   return (
     <>
+      <div className="header">
+        <button className="small-button" onClick={() => history.push(".")}>
+          <AiOutlineHome />
+        </button>
+      </div>
       <ProgressBar />
       <Progress currentProgress={QuestionInfo[progress.currentProgress]} />
       {animation && <div className="animation-fade-out" />}
