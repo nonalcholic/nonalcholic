@@ -19,6 +19,7 @@ const ProgressBar: React.FC<Props> = (props) => {
   const fillerStyles = {
     height: 20,
     width: `${completed}%`,
+    minWidth: 32,
     backgroundColor: "#cec0af",
     borderRadius: "inherit",
     textAlign: "right" as "right",
