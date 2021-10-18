@@ -54,8 +54,8 @@ const ResultPage: React.FC<Props> = (props) => {
           description: "내 최에 장소는 어디일까요?!",
           imageUrl: "logo192.png",
           link: {
-            mobileWebUrl: `https://${IP_ADDRESS}:${SERVER_PORT}`,
-            webUrl: `https://${IP_ADDRESS}:${SERVER_PORT}`,
+            mobileWebUrl: `https://${IP_ADDRESS}:80`,
+            webUrl: `https://${IP_ADDRESS}:80`,
           },
         },
         // social: {
@@ -67,15 +67,15 @@ const ResultPage: React.FC<Props> = (props) => {
           {
             title: "결과보기",
             link: {
-              mobileWebUrl: `https://${IP_ADDRESS}:${SERVER_PORT}/${mbti}`,
-              webUrl: `https://${IP_ADDRESS}:${SERVER_PORT}/${mbti}`,
+              mobileWebUrl: `http://${IP_ADDRESS}:80/${mbti}`,
+              webUrl: `http://${IP_ADDRESS}:80/${mbti}`,
             },
           },
           {
             title: "테스트하기",
             link: {
-              mobileWebUrl: `https://${IP_ADDRESS}:${SERVER_PORT}/start`,
-              webUrl: `https://${IP_ADDRESS}:${SERVER_PORT}/start`,
+              mobileWebUrl: `http://${IP_ADDRESS}:80/start`,
+              webUrl: `http://${IP_ADDRESS}:80/start`,
             },
           },
         ],
