@@ -4,13 +4,14 @@ import { useHistory, useParams } from "react-router-dom";
 import { ShareInterface } from "../redux/interfaces/dataInterface";
 import { resetProgress } from "../redux/progress";
 import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
-import { FiLink } from "react-icons/fi";
+import { FiImage, FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
 import { MBTIResult } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
 import { AiOutlineHome } from "react-icons/ai";
 import { IReducer } from "../redux";
+import html2canvas from "html2canvas";
 
 declare const window: any;
 
@@ -93,6 +94,24 @@ const ResultPage: React.FC<Props> = (props) => {
     }
   };
 
+  const downloadImage = () => {
+    const container = document.getElementById("result-container");
+    if (container) {
+      html2canvas(container).then((canvas) => {
+        onSaveAs(canvas.toDataURL("image/png"), "kaist-mbti.png");
+      });
+    }
+  };
+
+  const onSaveAs = (uri: string, fileName: string) => {
+    let link = document.createElement("a");
+    document.body.appendChild(link);
+    link.href = uri;
+    link.download = fileName;
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <div className="header">
@@ -107,14 +126,17 @@ const ResultPage: React.FC<Props> = (props) => {
         </button>
       </div>
       <div className="animation-fade-in" />
-
-      <span className="context" style={{ margin: "8px 0" }}>
-        나의 KAIST 최애 장소는..
-      </span>
-      <div className="result-picture"></div>
-      <span className="result-title">{MBTIResult[mbti].title}</span>
-      <span className="result-context">{MBTIResult[mbti].subtitle}</span>
-      <span className="result-description">{MBTIResult[mbti].description}</span>
+      <div className="result-container" id="result-container">
+        <span className="context" style={{ margin: "8px 0" }}>
+          나의 KAIST 최애 장소는..
+        </span>
+        <div className="result-picture"></div>
+        <span className="result-title">{MBTIResult[mbti].title}</span>
+        <span className="result-context">{MBTIResult[mbti].subtitle}</span>
+        <span className="result-description">
+          {MBTIResult[mbti].description}
+        </span>
+      </div>
       <div className="result-buttons">
         <button
           className="large-button"
@@ -136,6 +158,9 @@ const ResultPage: React.FC<Props> = (props) => {
         <div className="bottom-buttons">
           <button className="small-button" onClick={() => onShare("link")}>
             <FiLink style={{ color: "black" }} />
+          </button>
+          <button className="small-button" onClick={() => downloadImage()}>
+            <FiImage style={{ color: "black" }} className="share-svg" />
           </button>
           <a
             className="small-button"
