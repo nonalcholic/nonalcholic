@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { ShareInterface } from "../redux/interfaces/dataInterface";
 import { resetProgress } from "../redux/progress";
-import { getIdCookie } from "../utils/utils.identification";
 import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
 import { FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
@@ -11,6 +10,7 @@ import { MBTIResult } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
 import { AiOutlineHome } from "react-icons/ai";
+import { IReducer } from "../redux";
 
 declare const window: any;
 
@@ -20,6 +20,7 @@ const ResultPage: React.FC<Props> = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const hiddenRef = useRef<HTMLTextAreaElement>(null);
+  const progress = useSelector((state: IReducer) => state.progress);
 
   useEffect(() => {
     if (window.Kakao?.Link) {
@@ -62,7 +63,7 @@ const ResultPage: React.FC<Props> = (props) => {
 
   const onShare = (where: "link" | "instagram" | "kakao") => {
     const body: ShareInterface = {
-      id: getIdCookie(),
+      id: progress.id,
       type: where,
     };
 
