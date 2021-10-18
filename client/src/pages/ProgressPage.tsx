@@ -5,9 +5,12 @@ import { useHistory } from "react-router";
 import ProgressBar from "../components/ProgressBar";
 import Progress from "../layout/Progress/Progress";
 import { IReducer } from "../redux";
+import { ResultInterface } from "../redux/interfaces/dataInterface";
 import { resetProgress } from "../redux/progress";
 import { caculateMBTI } from "../utils/utils.calculate";
 import { QuestionInfo, TOTAL_PROGRESS_NUMBER } from "../utils/utils.const";
+import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
+import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 
 interface Props {}
 const ProgressPage: React.FC<Props> = (props) => {
@@ -17,13 +20,33 @@ const ProgressPage: React.FC<Props> = (props) => {
 
   const [animation, setAnimation] = useState<boolean>(false);
 
+  const sendResult = async () => {
+    setAnimation(true);
+
+    const result = caculateMBTI(progress.answerData);
+
+    const body: ResultInterface = {
+      id: getIdCookie(),
+      answers: progress.answerData.map((ans) => ans.score),
+      result: result,
+      ip: getIpCookie(),
+    };
+
+    await fetch(`http://${IP_ADDRESS}:${SERVER_PORT}/result`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    setTimeout(() => history.push(`/${result}`), 1000);
+  };
+
   useEffect(() => {
     if (progress.currentProgress === TOTAL_PROGRESS_NUMBER) {
-      setAnimation(true);
-      setTimeout(
-        () => history.push(`/${caculateMBTI(progress.answerData)}`),
-        1000
-      );
+      sendResult();
     }
   }, [progress.currentProgress]);
   return (

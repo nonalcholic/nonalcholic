@@ -17,7 +17,6 @@ const RootRouter: React.FC<Props> = (props) => {
   useEffect(() => {
     const id = uuid();
     setIdCookie(id);
-    console.log(id);
 
     axios.get("https://geolocation-db.com/json/").then(async (res) => {
       setIpCookie(res.data["IPv4"]);
@@ -25,10 +24,7 @@ const RootRouter: React.FC<Props> = (props) => {
 
     try {
       window.Kakao.init("7281c5f7129e05440500f936dedee302");
-      console.log(window.Kakao.isInitialized());
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
   }, []);
 
   return (
