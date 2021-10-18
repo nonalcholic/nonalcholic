@@ -21,14 +21,14 @@ type Type struct {
 
 type FindData struct {
 	ID        primitive.ObjectID `bson:"_id"`
-	Answers   [12]int            `bson:"answers"`
-	CreatedAt time.Time          `bson:"createdat"`
 	UserID    string             `bson:"id"`
-	Instagram int                `bson:"instagram"`
-	Ip        string             `bson:"ip"`
-	Kakao     int                `bson:"kakao"`
-	Link      int                `bson:"link"`
+	Answers   [12]string         `bson:"answers"`
 	Result    string             `bson:"result"`
+	Ip        string             `bson:"ip"`
+	CreatedAt time.Time          `bson:"createdat"`
+	Link      int                `bson:"link"`
+	Instagram int                `bson:"instagram"`
+	Kakao     int                `bson:"kakao"`
 }
 
 type MbtiType struct {

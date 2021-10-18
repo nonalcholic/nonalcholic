@@ -68,6 +68,8 @@ func main() {
 
 		d.CreatedAt = time.Now()
 
+		fmt.Println("@@@@@@@@", "In /result, id:", d.Id)
+
 		insertResult, err := result.InsertOne(context.TODO(), d)
 		if err != nil {
 			log.Fatal(err)
@@ -85,7 +87,7 @@ func main() {
 			log.Fatal(err)
 		}
 
-		f := models.FindData{}
+		var f models.FindData
 		filter := bson.M{"id": t.Id}
 		err2 := result.FindOne(context.TODO(), filter).Decode(&f)
 
@@ -113,10 +115,10 @@ func main() {
 			},
 		}
 
-		incrementResult, err := result.UpdateOne(context.TODO(), filter2, update)
+		incrementResult, err3 := result.UpdateOne(context.TODO(), filter2, update)
 
-		if err != nil {
-			log.Fatal(err)
+		if err3 != nil {
+			log.Fatal(err3)
 		}
 
 		fmt.Println("Inserted a single document: ", incrementResult)
