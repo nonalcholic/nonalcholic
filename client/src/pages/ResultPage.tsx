@@ -1,13 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { IReducer } from "../redux";
-import {
-  ResultInterface,
-  ShareInterface,
-} from "../redux/interfaces/dataInterface";
+import { ShareInterface } from "../redux/interfaces/dataInterface";
 import { resetProgress } from "../redux/progress";
-import { getIdCookie, getIpCookie } from "../utils/utils.identification";
 import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
 import { FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
@@ -15,34 +10,17 @@ import { MBTIResult } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
 import { AiOutlineHome } from "react-icons/ai";
+import { IReducer } from "../redux";
 
 declare const window: any;
 
 interface Props {}
 const ResultPage: React.FC<Props> = (props) => {
   const { mbti } = useParams<{ mbti: MBTIResultType }>();
-  const progress = useSelector((state: IReducer) => state.progress);
   const history = useHistory();
   const dispatch = useDispatch();
   const hiddenRef = useRef<HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    const body: ResultInterface = {
-      id: getIdCookie(),
-      answers: progress.answerData.map((ans) => ans.score),
-      result: mbti,
-      ip: getIpCookie(),
-    };
-
-    fetch(`http://${IP_ADDRESS}:${SERVER_PORT}/result`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-  }, []);
+  const progress = useSelector((state: IReducer) => state.progress);
 
   useEffect(() => {
     if (window.Kakao?.Link) {
@@ -85,7 +63,7 @@ const ResultPage: React.FC<Props> = (props) => {
 
   const onShare = (where: "link" | "instagram" | "kakao") => {
     const body: ShareInterface = {
-      id: getIdCookie(),
+      id: progress.id,
       type: where,
     };
 

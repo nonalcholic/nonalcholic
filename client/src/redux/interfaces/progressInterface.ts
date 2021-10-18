@@ -1,5 +1,5 @@
 export interface ProgressInterface {
-  id: number;
+  id: string;
   currentProgress: number;
   answerData: AnswerData[];
 }
