@@ -195,3 +195,29 @@
     height: 24px;
   }
 }
+
+.home-button {
+  // width: 80px;
+  // height: 40px;
+  padding: 8px;
+
+  border-radius: 8px;
+  border: none;
+
+  cursor: pointer;
+
+  transition: all 0.2s;
+
+  background-color: white;
+  &:hover {
+    background-color: rgb(243, 243, 243);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+}

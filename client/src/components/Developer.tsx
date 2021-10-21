@@ -9,12 +9,13 @@ interface Props {
   subdescription: string;
   description_1: string;
   description_2: string;
+  description_3: string;
   image: any;
   instagram: string;
   email: string;
 }
 const Developer: React.FC<Props> = (props) => {
-  const { name, mbti, description_1, description_2, image, instagram, email } =
+  const { name, mbti, description_1, description_2, description_3, image, instagram, email } =
     props;
 
   const onEmailClick = (email: string) => {
@@ -33,8 +34,9 @@ const Developer: React.FC<Props> = (props) => {
           {/* <span className="email">{email}</span> */}
         </div>
         <div className="second">
-          <div>🏫&nbsp;{description_1}</div>
-          <div>🧑‍💻&nbsp;{description_2}</div>
+          <div >🏫&nbsp;{description_1}</div>
+          <div >🏢&nbsp;{description_2}</div>
+          <div >🧑‍💻&nbsp;{description_3}</div>
         </div>
         <div className="third">
           <div>

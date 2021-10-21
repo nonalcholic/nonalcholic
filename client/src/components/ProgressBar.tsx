@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { IReducer } from "../redux";
 
-interface Props {}
+interface Props { }
 const ProgressBar: React.FC<Props> = (props) => {
   const progress = useSelector((state: IReducer) => state.progress);
   const completed =
@@ -14,6 +14,7 @@ const ProgressBar: React.FC<Props> = (props) => {
     width: "100%",
     backgroundColor: "#e0e0de",
     borderRadius: 50,
+    marginTop: "20px"
   };
 
   const fillerStyles = {

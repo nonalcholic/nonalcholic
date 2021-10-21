@@ -16,7 +16,7 @@ import { v1 as uuid } from "uuid";
 
 declare const window: any;
 
-interface Props {}
+interface Props { }
 const ProgressPage: React.FC<Props> = (props) => {
   const progress = useSelector((state: IReducer) => state.progress);
   const history = useHistory();
@@ -34,7 +34,7 @@ const ProgressPage: React.FC<Props> = (props) => {
       });
 
       window.Kakao.init("7281c5f7129e05440500f936dedee302");
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const sendResult = async () => {
@@ -57,7 +57,7 @@ const ProgressPage: React.FC<Props> = (props) => {
         },
         body: JSON.stringify(body),
       });
-    } catch (e) {}
+    } catch (e) { }
 
     setTimeout(() => history.push(`/${result}`), 1000);
   };
@@ -73,20 +73,24 @@ const ProgressPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div className="header">
+      <ProgressBar />
+      <Progress currentProgress={QuestionInfo[progress.currentProgress]} />
+      {animation && <div className="animation-fade-out" />}
+      <span className="hint" style={{ marginTop: "auto" }}>
         <button
-          className="small-button"
+          className="home-button"
+          style={{
+            color: "lightgray",
+          }}
           onClick={() => {
             resetProgress()(dispatch);
             history.push(".");
           }}
         >
+          {/* {` 홈으로`} */}
           <AiOutlineHome />
         </button>
-      </div>
-      <ProgressBar />
-      <Progress currentProgress={QuestionInfo[progress.currentProgress]} />
-      {animation && <div className="animation-fade-out" />}
+      </span>
     </>
   );
 };
