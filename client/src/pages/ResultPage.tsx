@@ -15,7 +15,7 @@ import html2canvas from "html2canvas";
 
 declare const window: any;
 
-interface Props {}
+interface Props { }
 const ResultPage: React.FC<Props> = (props) => {
   const { mbti } = useParams<{ mbti: MBTIResultType }>();
   const history = useHistory();
@@ -114,7 +114,7 @@ const ResultPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div className="header">
+      {/* <div className="header">
         <button
           className="small-button"
           onClick={() => {
@@ -124,12 +124,15 @@ const ResultPage: React.FC<Props> = (props) => {
         >
           <AiOutlineHome />
         </button>
-      </div>
+      </div> */}
+      <span className="title" style={{ height: 100 }}>
+        {"나의 KAIST 최애 장소는.."}
+      </span>
       <div className="animation-fade-in" />
       <div className="result-container" id="result-container">
-        <span className="context" style={{ margin: "8px 0" }}>
+        {/* <span className="context" style={{ margin: "8px 0" }}>
           나의 KAIST 최애 장소는..
-        </span>
+        </span> */}
         <div className="result-picture"></div>
         <span className="result-title">{MBTIResult[mbti].title}</span>
         <span className="result-context">{MBTIResult[mbti].subtitle}</span>
@@ -138,7 +141,7 @@ const ResultPage: React.FC<Props> = (props) => {
         </span>
       </div>
       <div className="result-buttons">
-        <button
+        {/* <button
           className="large-button"
           style={{ margin: 15 }}
           onClick={() => {
@@ -147,7 +150,7 @@ const ResultPage: React.FC<Props> = (props) => {
           }}
         >
           처음으로
-        </button>
+        </button> */}
         <textarea
           readOnly
           style={{ display: "none" }}
@@ -175,6 +178,20 @@ const ResultPage: React.FC<Props> = (props) => {
           </button>
         </div>
       </div>
+      <span className="hint" style={{ marginTop: "auto" }}>
+        <button
+          className="home-button"
+          style={{
+            color: "lightgray",
+          }}
+          onClick={() => {
+            history.push(".");
+          }}
+        >
+          {/* {` 홈으로`} */}
+          <AiOutlineHome />
+        </button>
+      </span>
     </>
   );
 };

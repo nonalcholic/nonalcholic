@@ -9,7 +9,7 @@ import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
 import { useHistory } from "react-router";
 
-interface Props {}
+interface Props { }
 
 interface MBTIInterface {
   types: MBTIListElem[];
@@ -103,7 +103,8 @@ const StatisticsPage: React.FC<Props> = (props) => {
       {data && (
         <>
           <div className="header">
-            <button className="small-button" onClick={() => history.push(".")}>
+            <button className="home-button"
+              onClick={() => history.push(".")}>
               <AiOutlineHome />
             </button>
             <button

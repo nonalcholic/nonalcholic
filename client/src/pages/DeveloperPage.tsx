@@ -3,16 +3,14 @@ import { AiOutlineHome } from "react-icons/ai";
 import { useHistory } from "react-router";
 import Developer from "../components/Developer";
 
-interface Props {}
+interface Props { }
 const DeveloperPage: React.FC<Props> = (props) => {
   const history = useHistory();
   return (
     <>
-      <div className="header">
-        <button className="small-button" onClick={() => history.push(".")}>
-          <AiOutlineHome />
-        </button>
-      </div>
+      <span className="title" style={{ height: 150 }}>
+        {"엮은이들"}
+      </span>
       <Developer
         name="@jackson"
         mbti="ENFJ"
@@ -20,6 +18,7 @@ const DeveloperPage: React.FC<Props> = (props) => {
         subdescription="맥주 들고 신학관 옥상으로 따라와!"
         description_1="KAIST CS 16"
         description_2="CLASSUM"
+        description_3="Web Developer"
         instagram="usual_yuz"
         email="gogodbwngud@gmail.com"
       />
@@ -30,9 +29,24 @@ const DeveloperPage: React.FC<Props> = (props) => {
         subdescription="교분 2층 B-22 지박령"
         description_1="KAIST CS 16"
         description_2="NCSOFT"
+        description_3="MLOps Developer"
         instagram="leeminxji"
         email="leeminxji@gmail.com"
       />
+      <span className="hint" style={{ marginTop: "auto" }}>
+        <button
+          className="home-button"
+          style={{
+            color: "lightgray",
+          }}
+          onClick={() => {
+            history.push(".");
+          }}
+        >
+          {/* {` 홈으로`} */}
+          <AiOutlineHome />
+        </button>
+      </span>
     </>
   );
 };
