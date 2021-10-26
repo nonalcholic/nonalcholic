@@ -21,13 +21,15 @@ const Progress: React.FC<Props> = (props) => {
   return (
     <>
       <span
-        className="context"
+        className="emoji"
         style={{
-          margin: "56px 36px 0",
+          marginTop: "24px",
+          marginBottom: "10px",
         }}
       >
-        {currentProgress?.question}
+        {currentProgress?.emoji}
       </span>
+      <span className="context">{currentProgress?.question}</span>
       <button
         className="extra-large-button"
         onClick={() => {
