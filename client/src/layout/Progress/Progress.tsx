@@ -21,10 +21,16 @@ const Progress: React.FC<Props> = (props) => {
   return (
     <>
       <span
-        className="context"
+        className="emoji"
         style={{
-          margin: "24px 0",
+          marginTop: "24px",
+          marginBottom: "10px"
         }}
+      >
+        {currentProgress?.emoji}
+      </span>
+      <span
+        className="context"
       >
         {currentProgress?.question}
       </span>

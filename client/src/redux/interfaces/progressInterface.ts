@@ -32,6 +32,7 @@ export type MBTIResultType =
 export interface QuestionData {
   id: number;
   type: MBTIType;
+  emoji: string;
   question: string;
   choiceA: ChoiceData;
   choiceB: ChoiceData;

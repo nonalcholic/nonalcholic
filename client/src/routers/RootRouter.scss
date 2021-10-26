@@ -100,6 +100,17 @@
   white-space: pre-wrap;
 }
 
+.emoji {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 48px;
+  font-weight: 700;
+  white-space: pre-wrap;
+  text-align: center;
+}
+
 .context {
   display: flex;
   justify-content: center;
@@ -109,6 +120,8 @@
   font-weight: 700;
   white-space: pre-wrap;
   text-align: center;
+
+  line-height: 28px;
 }
 .description {
   font-size: 18px;
