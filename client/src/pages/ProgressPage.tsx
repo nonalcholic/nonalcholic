@@ -81,14 +81,13 @@ const ProgressPage: React.FC<Props> = (props) => {
           className="home-button"
           style={{
             marginTop: "auto",
-            color: "lightgray",
           }}
           onClick={() => {
             resetProgress()(dispatch);
             history.push(".");
           }}
         >
-          <AiOutlineHome />
+          메인으로
         </button>
       </div>
     </>

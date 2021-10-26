@@ -201,7 +201,11 @@
   width: 100%;
   padding: 4px 0;
 
-  background-color: $nonalcholic-white;
+  background-color: $nonalcholic-yellow;
+
+  // &.shadow {
+  //   box-shadow: 0 8px 12px 4px rgba(0, 0, 0, 0.15);
+  // }
 
   .home-button {
     padding: 8px;
@@ -210,10 +214,14 @@
     border: none;
 
     cursor: pointer;
-
+    color: $nonalcholic-white;
     transition: all 0.2s;
 
-    background-color: $nonalcholic-white;
+    font-size: 14px;
+    line-height: 12px;
+    vertical-align: center;
+
+    background-color: $nonalcholic-yellow;
     &:hover {
       background-color: rgb(243, 243, 243);
     }

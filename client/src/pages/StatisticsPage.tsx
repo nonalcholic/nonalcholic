@@ -139,7 +139,7 @@ const StatisticsPage: React.FC<Props> = (props) => {
             history.push(".");
           }}
         >
-          <AiOutlineHome />
+          메인으로
         </button>
       </div>
     </>
