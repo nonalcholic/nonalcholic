@@ -3,14 +3,12 @@ import { AiOutlineHome } from "react-icons/ai";
 import { useHistory } from "react-router";
 import Developer from "../components/Developer";
 
-interface Props { }
+interface Props {}
 const DeveloperPage: React.FC<Props> = (props) => {
   const history = useHistory();
   return (
     <>
-      <span className="title" style={{ height: 150 }}>
-        {"엮은이들"}
-      </span>
+      <span className="title">{"만든이들"}</span>
       <Developer
         name="@jackson"
         mbti="ENFJ"
