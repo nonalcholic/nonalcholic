@@ -109,6 +109,7 @@
   font-weight: 700;
   white-space: pre-wrap;
   text-align: center;
+  word-break: break-word;
 }
 .description {
   font-size: 18px;
@@ -154,11 +155,10 @@
   border-radius: 24px;
   border: 2px solid $nonalcholic-gray;
   background: transparent;
-  color: black;
   white-space: pre-wrap;
 
   cursor: pointer;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 16px;
   color: $nonalcholic-black;
 
@@ -198,8 +198,6 @@
 }
 
 .home-button {
-  // width: 80px;
-  // height: 40px;
   padding: 8px;
 
   border-radius: 8px;
@@ -209,7 +207,7 @@
 
   transition: all 0.2s;
 
-  background-color: white;
+  background-color: $nonalcholic-white;
   &:hover {
     background-color: rgb(243, 243, 243);
   }

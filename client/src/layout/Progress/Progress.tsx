@@ -23,7 +23,7 @@ const Progress: React.FC<Props> = (props) => {
       <span
         className="context"
         style={{
-          margin: "24px 0",
+          margin: "96px 36px 0 ",
         }}
       >
         {currentProgress?.question}
