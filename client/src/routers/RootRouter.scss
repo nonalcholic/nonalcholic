@@ -12,13 +12,12 @@
   flex-direction: column;
 
   max-width: 600px;
-  min-height: min(600px, 100vh);
-  padding: 0 12px 36px;
+  min-height: 600px;
+  height: 100vh;
+  padding: 0 12px 120px;
   margin: 0 auto;
 
   box-sizing: border-box;
-  // border: 1px solid $nonalcholic-gray;
-  // border-radius: 16px;
 
   .animation-fade-out {
     position: absolute;
@@ -125,11 +124,10 @@
 
 .large-button {
   width: 160px;
-  height: 40px;
+  height: 48px;
 
   border-radius: 8px;
   border: 0px;
-  // border: 2px solid #383838;
   background: $nonalcholic-yellow;
 
   cursor: pointer;
