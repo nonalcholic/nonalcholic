@@ -3,6 +3,8 @@
 #root {
   background-color: $nonalcholic-white;
   height: 100vh;
+
+  user-select: none;
 }
 .root-container {
   position: relative;
@@ -152,7 +154,7 @@
     opacity: 100%;
   }
 
-  box-shadow: 0 12px 16px -8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 16px -12px rgba(0, 0, 0, 0.2);
 }
 
 .extra-large-button {
@@ -173,7 +175,7 @@
   transition: all 0.2s;
 
   &:active {
-    background-color: $nonalcholic-yellow;
+    background-color: $nonalcholic-lightyellow;
     transform: scale(0.95);
   }
 }

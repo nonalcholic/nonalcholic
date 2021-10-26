@@ -35,8 +35,8 @@ const ProgressBar: React.FC<Props> = (props) => {
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        {progress.currentProgress === 12 ? 12 : progress.currentProgress + 1}
-        /12
+        {(progress.currentProgress === 12 ? 12 : progress.currentProgress + 1) +
+          "/12"}
       </div>
     </div>
   );
