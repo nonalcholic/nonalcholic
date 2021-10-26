@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineHome } from "react-icons/ai";
 import { useHistory } from "react-router";
 import Developer from "../components/Developer";
+import HomeButton from "../components/HomeButton";
 
-interface Props { }
+interface Props {}
 const DeveloperPage: React.FC<Props> = (props) => {
   const history = useHistory();
   return (
     <>
-      <span className="title" style={{ height: 150 }}>
-        {"엮은이들"}
-      </span>
+      <span className="title">{"만든이들"}</span>
       <Developer
         name="@jackson"
         mbti="ENFJ"
@@ -33,20 +31,7 @@ const DeveloperPage: React.FC<Props> = (props) => {
         instagram="leeminxji"
         email="leeminxji@gmail.com"
       />
-      <span className="hint" style={{ marginTop: "auto" }}>
-        <button
-          className="home-button"
-          style={{
-            color: "lightgray",
-          }}
-          onClick={() => {
-            history.push(".");
-          }}
-        >
-          {/* {` 홈으로`} */}
-          <AiOutlineHome />
-        </button>
-      </span>
+      <HomeButton />
     </>
   );
 };

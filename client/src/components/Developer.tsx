@@ -15,12 +15,16 @@ interface Props {
   email: string;
 }
 const Developer: React.FC<Props> = (props) => {
-  const { name, mbti, description_1, description_2, description_3, image, instagram, email } =
-    props;
-
-  const onEmailClick = (email: string) => {
-    navigator.clipboard.writeText(email);
-  };
+  const {
+    name,
+    mbti,
+    description_1,
+    description_2,
+    description_3,
+    image,
+    instagram,
+    email,
+  } = props;
 
   return (
     <div className="developer">
@@ -34,25 +38,29 @@ const Developer: React.FC<Props> = (props) => {
           {/* <span className="email">{email}</span> */}
         </div>
         <div className="second">
-          <div >🏫&nbsp;{description_1}</div>
-          <div >🏢&nbsp;{description_2}</div>
-          <div >🧑‍💻&nbsp;{description_3}</div>
+          <div>🏫&nbsp;{description_1}</div>
+          <div>🏢&nbsp;{description_2}</div>
+          {/* <div>🧑‍💻&nbsp;{description_3}</div> */}
         </div>
         <div className="third">
-          <div>
-            <a href={`https://www.instagram.com/${instagram}/`} target="_blank">
-              <RiInstagramLine
-                style={{ color: "black", width: "20px", height: "20px" }}
-                className="share-svg"
-              />
-            </a>
-          </div>
-          <div onClick={() => onEmailClick(email)}>
-            <RiMailLine
-              style={{ color: "black", width: "20px", height: "20px" }}
+          <a
+            className="sns-button"
+            href={`https://www.instagram.com/${instagram}/`}
+            target="_blank"
+          >
+            <RiInstagramLine
+              style={{ color: "white", width: "20px", height: "20px" }}
               className="share-svg"
             />
-          </div>
+            인스타
+          </a>
+          <a className="sns-button" href={`mailto:${email}`} target="_blank">
+            <RiMailLine
+              style={{ color: "white", width: "20px", height: "20px" }}
+              className="share-svg"
+            />
+            이메일
+          </a>
         </div>
       </div>
     </div>

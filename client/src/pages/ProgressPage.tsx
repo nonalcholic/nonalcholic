@@ -1,22 +1,22 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AiOutlineHome } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import ProgressBar from "../components/ProgressBar";
 import Progress from "../layout/Progress/Progress";
 import { IReducer } from "../redux";
 import { ResultInterface } from "../redux/interfaces/dataInterface";
-import { resetProgress, setId } from "../redux/progress";
+import { setId } from "../redux/progress";
 import { caculateMBTI } from "../utils/utils.calculate";
 import { QuestionInfo, TOTAL_PROGRESS_NUMBER } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { getIpCookie, setIpCookie } from "../utils/utils.identification";
 import { v1 as uuid } from "uuid";
+import HomeButton from "../components/HomeButton";
 
 declare const window: any;
 
-interface Props { }
+interface Props {}
 const ProgressPage: React.FC<Props> = (props) => {
   const progress = useSelector((state: IReducer) => state.progress);
   const history = useHistory();
@@ -34,7 +34,7 @@ const ProgressPage: React.FC<Props> = (props) => {
       });
 
       window.Kakao.init("7281c5f7129e05440500f936dedee302");
-    } catch (e) { }
+    } catch (e) {}
   };
 
   const sendResult = async () => {
@@ -57,7 +57,7 @@ const ProgressPage: React.FC<Props> = (props) => {
         },
         body: JSON.stringify(body),
       });
-    } catch (e) { }
+    } catch (e) {}
 
     setTimeout(() => history.push(`/${result}`), 1000);
   };
@@ -76,21 +76,7 @@ const ProgressPage: React.FC<Props> = (props) => {
       <ProgressBar />
       <Progress currentProgress={QuestionInfo[progress.currentProgress]} />
       {animation && <div className="animation-fade-out" />}
-      <span className="hint" style={{ marginTop: "auto" }}>
-        <button
-          className="home-button"
-          style={{
-            color: "lightgray",
-          }}
-          onClick={() => {
-            resetProgress()(dispatch);
-            history.push(".");
-          }}
-        >
-          {/* {` 홈으로`} */}
-          <AiOutlineHome />
-        </button>
-      </span>
+      <HomeButton />
     </>
   );
 };

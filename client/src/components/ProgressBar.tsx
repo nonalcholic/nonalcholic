@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { IReducer } from "../redux";
 
-interface Props { }
+interface Props {}
 const ProgressBar: React.FC<Props> = (props) => {
   const progress = useSelector((state: IReducer) => state.progress);
   const completed =
@@ -10,15 +10,15 @@ const ProgressBar: React.FC<Props> = (props) => {
       ? 100
       : ((progress.currentProgress + 1) * 100) / 12;
   const containerStyles = {
-    height: 20,
+    height: 28,
     width: "100%",
     backgroundColor: "#e0e0de",
     borderRadius: 50,
-    marginTop: "20px"
+    marginTop: "20px",
   };
 
   const fillerStyles = {
-    height: 20,
+    height: 28,
     width: `${completed}%`,
     minWidth: 32,
     backgroundColor: "#cec0af",
@@ -27,16 +27,16 @@ const ProgressBar: React.FC<Props> = (props) => {
     transition: "width 0.5s ease-in-out",
     paddingRight: 4,
     color: "white",
-    fontSize: 12,
-    lineHeight: "20px",
+    fontSize: 14,
+    lineHeight: "28px",
     fontWeight: "bold" as "bold",
   };
 
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        {progress.currentProgress === 12 ? 12 : progress.currentProgress + 1}
-        /12
+        {(progress.currentProgress === 12 ? 12 : progress.currentProgress + 1) +
+          "/12"}
       </div>
     </div>
   );

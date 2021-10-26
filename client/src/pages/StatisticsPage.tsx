@@ -6,10 +6,10 @@ import { StatisticsDto } from "../redux/interfaces/statisticsInterface";
 import { MBTIList, MBTIListElem } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
-import { AiOutlineHome } from "react-icons/ai";
 import { useHistory } from "react-router";
+import HomeButton from "../components/HomeButton";
 
-interface Props { }
+interface Props {}
 
 interface MBTIInterface {
   types: MBTIListElem[];
@@ -20,9 +20,9 @@ const StatisticsPage: React.FC<Props> = (props) => {
 
   const [data, setData] = useState<StatisticsDto>();
   const [showMBTI, setShowMBTI] = useState<boolean>(false);
+  const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
-    console.log(IP_ADDRESS, SERVER_PORT);
     const fetchResult = async () => {
       const body: MBTIInterface = {
         types: MBTIList,
@@ -38,8 +38,14 @@ const StatisticsPage: React.FC<Props> = (props) => {
           body: JSON.stringify(body),
         }
       );
-      const data = await res.json();
+      const data: StatisticsDto = await res.json();
       setData(data);
+
+      const totalCount = data.results.reduce((total, _data) => {
+        total += _data.Count;
+        return total;
+      }, 0);
+      setTotal(totalCount);
     };
     fetchResult();
   }, []);
@@ -53,6 +59,7 @@ const StatisticsPage: React.FC<Props> = (props) => {
       total += _data.Count;
       return total;
     }, 0);
+    // setTotal(totalCount);
 
     return {
       data: sortedData.map((_data) => {
@@ -100,26 +107,28 @@ const StatisticsPage: React.FC<Props> = (props) => {
 
   return (
     <>
+      <span className="title">{"통계"}</span>
+      <div className="header">
+        <div className="total-count">
+          총 {total} 명이 테스트에 참여했습니다.
+        </div>
+        <button
+          className="show-mbti"
+          style={{ marginLeft: "auto" }}
+          onClick={() => setShowMBTI((prev) => !prev)}
+        >
+          {showMBTI ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+          MBTI로 보기
+        </button>
+      </div>
+
       {data && (
         <>
-          <div className="header">
-            <button className="home-button"
-              onClick={() => history.push(".")}>
-              <AiOutlineHome />
-            </button>
-            <button
-              className="show-mbti"
-              style={{ marginLeft: "auto" }}
-              onClick={() => setShowMBTI((prev) => !prev)}
-            >
-              {showMBTI ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-              MBTI로 보기
-            </button>
-          </div>
           <BarGraph {...calculateData()} showMBTI={showMBTI} />
           <CompareBarGraph {...calculateCompareData()} showMBTI={showMBTI} />
         </>
       )}
+      <HomeButton />
     </>
   );
 };

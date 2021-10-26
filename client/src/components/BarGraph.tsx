@@ -32,9 +32,6 @@ const BarGraph: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div className="total-count">
-        총 {props.totalCount} 명이 테스트에 참여했습니다.
-      </div>
       <div className="bar-graph">
         {data.map((_data, i) => (
           <div className="element" key={i}>
