@@ -31,20 +31,20 @@ const DeveloperPage: React.FC<Props> = (props) => {
         instagram="leeminxji"
         email="leeminxji@gmail.com"
       />
-      <span className="hint" style={{ marginTop: "auto" }}>
+      <div className="home-container">
         <button
           className="home-button"
           style={{
+            marginTop: "auto",
             color: "lightgray",
           }}
           onClick={() => {
             history.push(".");
           }}
         >
-          {/* {` 홈으로`} */}
           <AiOutlineHome />
         </button>
-      </span>
+      </div>
     </>
   );
 };

@@ -138,16 +138,6 @@ const ResultPage: React.FC<Props> = (props) => {
         </span>
       </div>
       <div className="result-buttons">
-        {/* <button
-          className="large-button"
-          style={{ margin: 15 }}
-          onClick={() => {
-            resetProgress()(dispatch);
-            history.push("/start");
-          }}
-        >
-          처음으로
-        </button> */}
         <textarea
           readOnly
           style={{ display: "none" }}
@@ -175,19 +165,20 @@ const ResultPage: React.FC<Props> = (props) => {
           </button>
         </div>
       </div>
-      <button
-        className="home-button"
-        style={{
-          marginTop: "auto",
-          color: "lightgray",
-        }}
-        onClick={() => {
-          resetProgress()(dispatch);
-          history.push(".");
-        }}
-      >
-        <AiOutlineHome />
-      </button>
+      <div className="home-container">
+        <button
+          className="home-button"
+          style={{
+            marginTop: "auto",
+            color: "lightgray",
+          }}
+          onClick={() => {
+            history.push(".");
+          }}
+        >
+          <AiOutlineHome />
+        </button>
+      </div>
     </>
   );
 };

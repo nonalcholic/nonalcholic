@@ -76,19 +76,21 @@ const ProgressPage: React.FC<Props> = (props) => {
       <ProgressBar />
       <Progress currentProgress={QuestionInfo[progress.currentProgress]} />
       {animation && <div className="animation-fade-out" />}
-      <button
-        className="home-button"
-        style={{
-          marginTop: "auto",
-          color: "lightgray",
-        }}
-        onClick={() => {
-          resetProgress()(dispatch);
-          history.push(".");
-        }}
-      >
-        <AiOutlineHome />
-      </button>
+      <div className="home-container">
+        <button
+          className="home-button"
+          style={{
+            marginTop: "auto",
+            color: "lightgray",
+          }}
+          onClick={() => {
+            resetProgress()(dispatch);
+            history.push(".");
+          }}
+        >
+          <AiOutlineHome />
+        </button>
+      </div>
     </>
   );
 };

@@ -128,7 +128,7 @@ const StatisticsPage: React.FC<Props> = (props) => {
           <CompareBarGraph {...calculateCompareData()} showMBTI={showMBTI} />
         </>
       )}
-      <div className="stats-home">
+      <div className="home-container">
         <button
           className="home-button"
           style={{
