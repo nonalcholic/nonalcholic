@@ -12,6 +12,7 @@ import { MBTIResultType } from "../redux/interfaces/progressInterface";
 import { AiOutlineHome } from "react-icons/ai";
 import { IReducer } from "../redux";
 import html2canvas from "html2canvas";
+import HomeButton from "../components/HomeButton";
 
 declare const window: any;
 
@@ -165,20 +166,7 @@ const ResultPage: React.FC<Props> = (props) => {
           </button>
         </div>
       </div>
-      <div className="home-container">
-        <button
-          className="home-button"
-          style={{
-            marginTop: "auto",
-          }}
-          onClick={() => {
-            resetProgress()(dispatch);
-            history.push(".");
-          }}
-        >
-          메인으로
-        </button>
-      </div>
+      <HomeButton />
     </>
   );
 };

@@ -6,8 +6,8 @@ import { StatisticsDto } from "../redux/interfaces/statisticsInterface";
 import { MBTIList, MBTIListElem } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
-import { AiOutlineHome } from "react-icons/ai";
 import { useHistory } from "react-router";
+import HomeButton from "../components/HomeButton";
 
 interface Props {}
 
@@ -128,20 +128,7 @@ const StatisticsPage: React.FC<Props> = (props) => {
           <CompareBarGraph {...calculateCompareData()} showMBTI={showMBTI} />
         </>
       )}
-      <div className="home-container">
-        <button
-          className="home-button"
-          style={{
-            marginTop: "auto",
-            color: "lightgray",
-          }}
-          onClick={() => {
-            history.push(".");
-          }}
-        >
-          메인으로
-        </button>
-      </div>
+      <HomeButton />
     </>
   );
 };

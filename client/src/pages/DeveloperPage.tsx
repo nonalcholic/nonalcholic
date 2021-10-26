@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineHome } from "react-icons/ai";
 import { useHistory } from "react-router";
 import Developer from "../components/Developer";
+import HomeButton from "../components/HomeButton";
 
 interface Props {}
 const DeveloperPage: React.FC<Props> = (props) => {
@@ -31,19 +31,7 @@ const DeveloperPage: React.FC<Props> = (props) => {
         instagram="leeminxji"
         email="leeminxji@gmail.com"
       />
-      <div className="home-container">
-        <button
-          className="home-button"
-          style={{
-            marginTop: "auto",
-          }}
-          onClick={() => {
-            history.push(".");
-          }}
-        >
-          메인으로
-        </button>
-      </div>
+      <HomeButton />
     </>
   );
 };

@@ -1,18 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { AiOutlineHome } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import ProgressBar from "../components/ProgressBar";
 import Progress from "../layout/Progress/Progress";
 import { IReducer } from "../redux";
 import { ResultInterface } from "../redux/interfaces/dataInterface";
-import { resetProgress, setId } from "../redux/progress";
+import { setId } from "../redux/progress";
 import { caculateMBTI } from "../utils/utils.calculate";
 import { QuestionInfo, TOTAL_PROGRESS_NUMBER } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { getIpCookie, setIpCookie } from "../utils/utils.identification";
 import { v1 as uuid } from "uuid";
+import HomeButton from "../components/HomeButton";
 
 declare const window: any;
 
@@ -76,20 +76,7 @@ const ProgressPage: React.FC<Props> = (props) => {
       <ProgressBar />
       <Progress currentProgress={QuestionInfo[progress.currentProgress]} />
       {animation && <div className="animation-fade-out" />}
-      <div className="home-container">
-        <button
-          className="home-button"
-          style={{
-            marginTop: "auto",
-          }}
-          onClick={() => {
-            resetProgress()(dispatch);
-            history.push(".");
-          }}
-        >
-          메인으로
-        </button>
-      </div>
+      <HomeButton />
     </>
   );
 };
