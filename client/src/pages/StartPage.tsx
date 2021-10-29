@@ -31,14 +31,15 @@ const StartPage: React.FC<Props> = (props) => {
         >
           통계
         </button>
+      </div>
+
+      <span className="hint bottom-fixed" style={{ padding: "20px 0" }}>
         <button
-          className="large-button"
+          className="hint-button"
           onClick={() => history.push("/developer")}
         >
           개발자
         </button>
-      </div>
-      <span className="hint bottom-fixed" style={{ padding: "20px 0" }}>
         {"이 사이트는 KAIST의 공식 페이지가 아닌\n졸업생이 제작한 페이지입니다"}
       </span>
     </>

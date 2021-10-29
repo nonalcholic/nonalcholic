@@ -127,12 +127,27 @@
 }
 
 .hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   font-size: 14px;
   color: #777777;
+  background-color: $nonalcholic-white;
   white-space: pre-wrap;
 
   text-align: center;
   bottom: 0px;
+
+  .hint-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: underline;
+    color: inherit;
+
+    margin-bottom: 12px;
+  }
 }
 
 .large-button {
