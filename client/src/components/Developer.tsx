@@ -26,8 +26,14 @@ const Developer: React.FC<Props> = (props) => {
     email,
   } = props;
 
+  const [show, setShow] = useState<boolean>(false);
+
+  useEffect(() => {
+    setTimeout(() => setShow(true), 200);
+  }, []);
+
   return (
-    <div className="developer">
+    <div className={`developer ${show}`}>
       <div className="image-container">
         <img src={image} />
       </div>

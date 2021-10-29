@@ -95,8 +95,6 @@ func main() {
 			log.Fatal(err2)
 		}
 
-		fmt.Println(f.Kakao)
-
 		var previous int
 		if t.Type == "kakao" {
 			previous = f.Kakao

@@ -23,6 +23,7 @@ services:
       # dockerfile: Dockerfile.prod # prod
       args:
         SERVER_PORT: "${SERVER_PORT}"
+        CLIENT_PORT: "${CLIENT_PORT}"
     depends_on:
       - server
     networks:
@@ -37,6 +38,7 @@ services:
       CHOKIDAR_USEPOLLING: "true"
       HTTP_PROXY: "http://localhost:${SERVER_PORT}"
       REACT_APP_SERVER_PORT: "${SERVER_PORT}"
+      REACT_APP_CLIENT_PORT: "${CLIENT_PORT}"
 
   mongo:
     image: mongo:4-bionic
