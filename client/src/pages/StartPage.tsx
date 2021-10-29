@@ -7,8 +7,16 @@ interface Props {}
 const StartPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
+  const [animation, setAnimation] = useState<boolean>(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimation(false);
+    }, 1000);
+  }, []);
   return (
     <>
+      {animation && <div className="animation-fade-in" />}
       <div className="main-image-container">
         <span className="title with-image">
           {"나에게 딱 맞는\n카이스트 장소는 어디?"}

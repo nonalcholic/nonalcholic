@@ -11,10 +11,12 @@ const HomeButton: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   return (
     <>
       <div className="bottom-fixed">
-        {props.showDeveloper && (
+        {props.showDeveloper && !isLoading && (
           <button
             className="hint-button"
             style={{ marginBottom: 12 }}
@@ -24,16 +26,19 @@ const HomeButton: React.FC<Props> = (props) => {
           </button>
         )}
         <div
-          className="home-button "
+          className={`home-button ${isLoading}`}
           style={{
             marginTop: "auto",
           }}
           onClick={() => {
-            resetProgress()(dispatch);
-            history.push(".");
+            setIsLoading(true);
+            setTimeout(() => {
+              resetProgress()(dispatch);
+              history.push(".");
+            }, 1000);
           }}
         >
-          메인으로
+          {!isLoading && "메인으로"}
         </div>
       </div>
     </>

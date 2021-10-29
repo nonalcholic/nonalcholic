@@ -23,4 +23,23 @@
     width: 30px;
     height: 30px;
   }
+
+  &.true {
+    animation: fill 1s;
+    cursor: initial;
+    pointer-events: none;
+  }
+}
+
+@keyframes fill {
+  0% {
+    height: 40px;
+  }
+  50% {
+    height: 100vh;
+  }
+  100% {
+    background-color: white;
+    height: 100vh;
+  }
 }
