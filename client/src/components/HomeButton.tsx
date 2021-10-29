@@ -35,7 +35,7 @@ const HomeButton: React.FC<Props> = (props) => {
             setTimeout(() => {
               resetProgress()(dispatch);
               history.push(".");
-            }, 1000);
+            }, 900);
           }}
         >
           {!isLoading && "메인으로"}
