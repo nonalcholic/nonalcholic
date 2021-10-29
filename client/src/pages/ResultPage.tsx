@@ -7,7 +7,7 @@ import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
 import { FiImage, FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
 import { MBTIResult } from "../utils/utils.const";
-import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
+import { CLIENT_PORT, IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
 import { AiOutlineHome } from "react-icons/ai";
 import { IReducer } from "../redux";
@@ -16,7 +16,7 @@ import HomeButton from "../components/HomeButton";
 
 declare const window: any;
 
-interface Props {}
+interface Props { }
 const ResultPage: React.FC<Props> = (props) => {
   const { mbti } = useParams<{ mbti: MBTIResultType }>();
   const history = useHistory();
@@ -142,7 +142,7 @@ const ResultPage: React.FC<Props> = (props) => {
         <textarea
           readOnly
           style={{ display: "none" }}
-          value={`http://${IP_ADDRESS}:${SERVER_PORT}/${mbti}`}
+          value={`http://${IP_ADDRESS}:${CLIENT_PORT}/${mbti}`}
           tabIndex={-1}
           ref={hiddenRef}
         />
