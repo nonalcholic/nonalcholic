@@ -32,8 +32,6 @@ const ProgressPage: React.FC<Props> = (props) => {
       axios.get("https://geolocation-db.com/json/").then(async (res) => {
         setIpCookie(res.data["IPv4"]);
       });
-
-      window.Kakao.init("7281c5f7129e05440500f936dedee302");
     } catch (e) {}
   };
 
