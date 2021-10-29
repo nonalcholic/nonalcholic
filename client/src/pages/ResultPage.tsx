@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ShareInterface } from "../redux/interfaces/dataInterface";
-import { RiInstagramLine, RiKakaoTalkFill } from "react-icons/ri";
+import { RiKakaoTalkFill } from "react-icons/ri";
 import { FiImage, FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
 import { MBTIResult } from "../utils/utils.const";
@@ -95,7 +95,6 @@ const ResultPage: React.FC<Props> = (props) => {
         break;
       case "kakao":
         break;
-      // 7281c5f7129e05440500f936dedee302/
     }
   };
 
@@ -119,11 +118,11 @@ const ResultPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <span className="title" style={{ height: 100 }}>
-        {"나의 KAIST 최애 장소는.."}
-      </span>
       <div className="animation-fade-in" />
       <div className="result-container" id="result-container">
+        <span className="title" style={{ height: 100 }}>
+          {"나의 KAIST 최애 장소는.."}
+        </span>
         <div className="result-picture"></div>
         <span className="result-title">{MBTIResult[mbti].title}</span>
         <span className="result-context">{MBTIResult[mbti].subtitle}</span>
@@ -152,9 +151,6 @@ const ResultPage: React.FC<Props> = (props) => {
             onClick={() => onShare("kakao")}
           >
             <RiKakaoTalkFill className="share-svg" fill={"black"} />
-          </button>
-          <button className="small-button" onClick={() => onShare("instagram")}>
-            <RiInstagramLine style={{ color: "black" }} className="share-svg" />
           </button>
         </div>
       </div>

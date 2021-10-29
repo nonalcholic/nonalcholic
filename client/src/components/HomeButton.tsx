@@ -12,7 +12,7 @@ const HomeButton: React.FC<Props> = (props) => {
   return (
     <>
       <div
-        className="home-button"
+        className="home-button bottom-fixed"
         style={{
           marginTop: "auto",
         }}
