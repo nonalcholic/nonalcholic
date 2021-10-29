@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Answer, QuestionData } from "../../redux/interfaces/progressInterface";
 import { answerProgress, nextProgress } from "../../redux/progress";
 import { useDispatch } from "react-redux";
@@ -10,14 +10,28 @@ const Progress: React.FC<Props> = (props) => {
   const { currentProgress } = props;
   const dispatch = useDispatch();
 
+  const [showA, setShowA] = useState<boolean>(false);
+  const [showB, setShowB] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const onClickAnswer = (ans: Answer) => {
-    answerProgress({
-      id: currentProgress.id,
-      score: ans,
-    })(dispatch);
-    nextProgress()(dispatch);
+    setShowA(false);
+    setShowB(false);
+    setIsLoading(true);
+    setTimeout(() => {
+      answerProgress({
+        id: currentProgress.id,
+        score: ans,
+      })(dispatch);
+      nextProgress()(dispatch);
+    }, 500);
   };
 
+  useEffect(() => {
+    setShowA(true);
+    setTimeout(() => setShowB(true), 500);
+    setTimeout(() => setIsLoading(false), 1000);
+  }, [currentProgress?.id]);
   return (
     <>
       <span
@@ -31,7 +45,7 @@ const Progress: React.FC<Props> = (props) => {
       </span>
       <span className="context">{currentProgress?.question}</span>
       <button
-        className="extra-large-button"
+        className={`extra-large-button ${showA} ${isLoading ? "loading" : ""}`}
         onClick={() => {
           onClickAnswer(currentProgress?.choiceA?.type);
         }}
@@ -40,7 +54,7 @@ const Progress: React.FC<Props> = (props) => {
         {currentProgress?.choiceA?.text}
       </button>
       <button
-        className="extra-large-button"
+        className={`extra-large-button ${showB} ${isLoading ? "loading" : ""}`}
         onClick={() => {
           onClickAnswer(currentProgress?.choiceB?.type);
         }}

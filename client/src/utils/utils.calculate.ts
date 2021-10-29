@@ -7,9 +7,9 @@ export const caculateMBTI = (answerData: AnswerData[]) => {
   let TF = 0;
   let JP = 0;
   answerData.forEach((answer) => {
-    const question = QuestionInfo[answer.id];
+    const question = QuestionInfo.find((question) => question.id === answer.id);
 
-    switch (question.type) {
+    switch (question?.type) {
       case "EI":
         EI += answer.score === "E" ? 1 : -1;
         break;

@@ -67,7 +67,7 @@ export const QuestionInfo: QuestionData[] = [
     choiceA: { text: "(일단 추천한다)\n꿀과목이니까\n무조건 들어", type: "S" },
     choiceB: {
       text: "(상세하게 설명한다)\n장점은 어쩌구~,\n단점은 어쩌구~",
-      type: "I",
+      type: "N",
     },
   },
   {
