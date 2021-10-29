@@ -29,7 +29,7 @@ const Progress: React.FC<Props> = (props) => {
 
   useEffect(() => {
     setShowA(true);
-    setTimeout(() => setShowB(true), 500);
+    setTimeout(() => setShowB(true), 400);
     setTimeout(() => setIsLoading(false), 1000);
   }, [currentProgress?.id]);
   return (
