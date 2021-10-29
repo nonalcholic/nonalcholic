@@ -8,16 +8,16 @@
   margin: auto 0;
 }
 
-.image-container {
+.main-image-container {
   position: relative;
   padding-top: 80px;
 
   .title {
     position: absolute;
     width: 100%;
-    top: 32px;
+    top: 28px;
   }
   .main-image {
-    width: 480px;
+    width: 400px;
   }
 }

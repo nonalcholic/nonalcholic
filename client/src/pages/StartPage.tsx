@@ -9,7 +9,7 @@ const StartPage: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div className="image-container">
+      <div className="main-image-container">
         <span className="title with-image">
           {"나에게 딱 맞는\n카이스트 장소는 어디?"}
         </span>
@@ -38,7 +38,7 @@ const StartPage: React.FC<Props> = (props) => {
           개발자
         </button>
       </div>
-      <span className="hint">
+      <span className="hint" style={{ marginTop: 36 }}>
         {"이 사이트는 KAIST의 공식 페이지가 아닌\n졸업생이 제작한 페이지입니다"}
       </span>
     </>
