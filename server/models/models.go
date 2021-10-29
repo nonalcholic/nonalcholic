@@ -12,6 +12,9 @@ type Data struct {
 	Result    string
 	Ip        string
 	CreatedAt time.Time
+	Link      int
+	Instagram int
+	Kakao     int
 }
 
 type Type struct {
