@@ -14,7 +14,7 @@ import HomeButton from "../components/HomeButton";
 
 declare const window: any;
 
-interface Props { }
+interface Props {}
 const ResultPage: React.FC<Props> = (props) => {
   const { mbti } = useParams<{ mbti: MBTIResultType }>();
   const hiddenRef = useRef<HTMLTextAreaElement>(null);
@@ -154,7 +154,7 @@ const ResultPage: React.FC<Props> = (props) => {
           </button>
         </div>
       </div>
-      <HomeButton />
+      <HomeButton showDeveloper />
     </>
   );
 };
