@@ -1,0 +1,23 @@
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  margin: auto 0;
+}
+
+.main-image-container {
+  position: relative;
+  padding-top: 100px;
+
+  .title {
+    position: absolute;
+    width: 100%;
+    top: 28px;
+  }
+  .main-image {
+    width: 300px;
+  }
+}
