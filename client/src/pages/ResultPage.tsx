@@ -31,8 +31,8 @@ const ResultPage: React.FC<Props> = (props) => {
         description: "내 최애 장소는 어디일까요?!",
         imageUrl: "logo192.png",
         link: {
-          mobileWebUrl: `https://${IP_ADDRESS}:80`,
-          webUrl: `https://${IP_ADDRESS}:80`,
+          mobileWebUrl: `http://${IP_ADDRESS}:80`,
+          webUrl: `http://${IP_ADDRESS}:80`,
         },
       },
       buttons: [
@@ -115,11 +115,16 @@ const ResultPage: React.FC<Props> = (props) => {
     <>
       <div className="animation-fade-in" />
       <div className="result-container" id="result-container">
-        <span className="title" style={{ height: 100 }}>
+        <span className="hint-title" style={{ height: 80 }}>
           {"나의 KAIST 최애 장소는.."}
         </span>
-        <div className="result-picture"></div>
-        <span className="result-title">{MBTIResult[mbti].title}</span>
+
+        <span className="result-title one">{"이번학기 딘즈는 나야!"}</span>
+        <span className="result-title two">{"[  도서관  ]"}</span>
+        <img
+          className="result-picture"
+          src={require("../assets/ENFJ.jpeg").default}
+        />
         <span className="result-context">{MBTIResult[mbti].subtitle}</span>
         <span className="result-description">
           {MBTIResult[mbti].description}
@@ -129,7 +134,7 @@ const ResultPage: React.FC<Props> = (props) => {
         <textarea
           readOnly
           style={{ display: "none" }}
-          value={`http://${IP_ADDRESS}:${CLIENT_PORT}/${mbti}`}
+          value={`http://${IP_ADDRESS}/${mbti}`}
           tabIndex={-1}
           ref={hiddenRef}
         />
