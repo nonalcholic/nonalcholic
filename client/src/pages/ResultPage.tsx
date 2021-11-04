@@ -28,18 +28,13 @@ const ResultPage: React.FC<Props> = (props) => {
       objectType: "feed",
       content: {
         title: "KAIST 안 내 최애 장소",
-        description: "내 최에 장소는 어디일까요?!",
+        description: "내 최애 장소는 어디일까요?!",
         imageUrl: "logo192.png",
         link: {
           mobileWebUrl: `https://${IP_ADDRESS}:80`,
           webUrl: `https://${IP_ADDRESS}:80`,
         },
       },
-      // social: {
-      //   likeCount: 286,
-      //   commentCount: 45,
-      //   sharedCount: 845,
-      // },
       buttons: [
         {
           title: "결과보기",
