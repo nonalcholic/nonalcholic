@@ -31,8 +31,8 @@ const ResultPage: React.FC<Props> = (props) => {
         description: "내 최애 장소는 어디일까요?!",
         imageUrl: "logo192.png",
         link: {
-          mobileWebUrl: `https://${IP_ADDRESS}:80`,
-          webUrl: `https://${IP_ADDRESS}:80`,
+          mobileWebUrl: `http://${IP_ADDRESS}:80`,
+          webUrl: `http://${IP_ADDRESS}:80`,
         },
       },
       buttons: [
@@ -129,7 +129,7 @@ const ResultPage: React.FC<Props> = (props) => {
         <textarea
           readOnly
           style={{ display: "none" }}
-          value={`http://${IP_ADDRESS}:${CLIENT_PORT}/${mbti}`}
+          value={`http://${IP_ADDRESS}/${mbti}`}
           tabIndex={-1}
           ref={hiddenRef}
         />
