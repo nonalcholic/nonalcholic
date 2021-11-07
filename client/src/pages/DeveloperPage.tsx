@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import Developer from "../components/Developer";
 import HomeButton from "../components/HomeButton";
 
-interface Props {}
+interface Props { }
 const DeveloperPage: React.FC<Props> = (props) => {
   const [showA, setShowA] = useState<boolean>(false);
   const [showB, setShowB] = useState<boolean>(false);
@@ -19,7 +19,7 @@ const DeveloperPage: React.FC<Props> = (props) => {
         <Developer
           name="@jackson"
           mbti="ENFJ"
-          image={require("../assets/yuz.png").default}
+          image={require("../assets/developer/yuz.png").default}
           subdescription="맥주 들고 신학관 옥상으로 따라와!"
           description_1="KAIST CS 16"
           description_2="CLASSUM"
@@ -32,7 +32,7 @@ const DeveloperPage: React.FC<Props> = (props) => {
         <Developer
           name="@minx"
           mbti="INTJ"
-          image={require("../assets/minx.JPG").default}
+          image={require("../assets/developer/minx.JPG").default}
           subdescription="교분 2층 B-22 지박령"
           description_1="KAIST CS 16"
           description_2="NCSOFT"

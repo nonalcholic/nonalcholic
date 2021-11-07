@@ -123,7 +123,7 @@ const ResultPage: React.FC<Props> = (props) => {
         <span className="result-title two">{"[  도서관  ]"}</span>
         <img
           className="result-picture"
-          src={require("../assets/ENFJ.jpeg").default}
+          src={require("../assets/mbti/ENFJ.jpeg").default}
         />
         <span className="result-context">{MBTIResult[mbti].subtitle}</span>
         <span className="result-description">
