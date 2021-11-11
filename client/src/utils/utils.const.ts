@@ -17,8 +17,14 @@ export const QuestionInfo: QuestionData[] = [
     type: "SN",
     emoji: "📖",
     question: "언어 교양 과목을 듣고 싶은데...",
-    choiceA: { text: "고등학교 때 어느정도 배웠던\n일본어 회화", type: "S" },
-    choiceB: { text: "살면서 처음 배우는\n스페인어 회화", type: "N" },
+    choiceA: {
+      text: "익숙한게 최고지!\n고등학교 때 배웠던 일본어 회화",
+      type: "S",
+    },
+    choiceB: {
+      text: "배우는 김에 새로운 거!\n살면서 처음 배우는 스페인어 회화",
+      type: "N",
+    },
   },
   {
     id: 7,
@@ -26,7 +32,7 @@ export const QuestionInfo: QuestionData[] = [
     emoji: "🙋",
     question:
       '배달음식이 왔을 때 친구가\n"나 혼자 얼른 받아올게!" 라고 한다면?',
-    choiceA: { text: "그래? 고마워\n다음엔 내가 갈게", type: "T" },
+    choiceA: { text: "그래!\n다음엔 내가 갈게", type: "T" },
     choiceB: {
       text: "음...\n혼자 가지 말고 같이 갔다오자!",
       type: "F",
@@ -37,8 +43,8 @@ export const QuestionInfo: QuestionData[] = [
     type: "EI",
     emoji: "📧",
     question: "[CS330 운영체제 및 실험]\n10월 7일 휴강 안내 메일입니다.",
-    choiceA: { text: "와우 누구 놀사람 없나?", type: "E" },
-    choiceB: { text: "미쳤다 유튜브 정주행 각", type: "I" },
+    choiceA: { text: "와우! 누구 놀사람 없나?", type: "E" },
+    choiceB: { text: "미쳤다 넷플릭스 정주행 각", type: "I" },
   },
   {
     id: 8,
@@ -64,9 +70,9 @@ export const QuestionInfo: QuestionData[] = [
     type: "SN",
     emoji: "🧑‍🏫",
     question: "이 교양 과목 어때?",
-    choiceA: { text: "(일단 추천한다)\n꿀과목이니까\n무조건 들어", type: "S" },
+    choiceA: { text: "야 개꿀\n무조건 들어", type: "S" },
     choiceB: {
-      text: "(상세하게 설명한다)\n장점은 어쩌구~,\n단점은 어쩌구~",
+      text: "일주일에 한 번 과제에 중간고사는 없고\n기말고사 대신에 Final 레포트가 있어\n교수님은 친절하시긴 한데 영어라 힘들었어",
       type: "N",
     },
   },
@@ -76,20 +82,26 @@ export const QuestionInfo: QuestionData[] = [
     emoji: "🍺",
     question:
       "새로 들어간 동아리의 첫 술자리\n처음 보는 선배와 동기들이 잔뜩 있다!",
-    choiceA: { text: "저 사람은 누구지?\n빨리 친해져서 놀고싶다!", type: "E" },
-    choiceB: { text: "즐겁기는 한데…\n음... 방 가고 싶네...", type: "I" },
+    choiceA: {
+      text: "오픈동방 때 봤던 선배다!\n저 친구는 얼굴이 익숙한데\n씐나!!",
+      type: "E",
+    },
+    choiceB: {
+      text: "뭔 사람이 이렇게 많지..\n어우 어색해,\n술 적당히 빼면 뭐라하려나?",
+      type: "I",
+    },
   },
   {
     id: 5,
     type: "SN",
     emoji: "😱",
-    question: "막막할만큼 큰 프로젝트 과제가 생겼다!", // 밑에 비슷한 질문있음, 수정 필요
+    question: "피곤한 하루 일과를 마치고, 침대에 누워서 드는 생각",
     choiceA: {
-      text: "일단 뭐든 시작해보자\n하다보면 어떻게든 되겠지",
+      text: "긴 하루였네.\n내일은 8시에 일어나야지.",
       type: "S",
     },
     choiceB: {
-      text: "일단 전체적인 구조부터 잡자\n그러면 뭔가 떠오르겠지",
+      text: "피곤하다.. 오늘은 아무생각 말고 자야지\n잠깐, 아무생각 안한다는 생각은 생각을 하는건가?\n그렇다면 아무생각 없다 라는 상태는 존재할 수 있나?",
       type: "N",
     },
   },
@@ -98,9 +110,12 @@ export const QuestionInfo: QuestionData[] = [
     type: "JP",
     emoji: "🏠",
     question: "오랜만에 방 정리 중...",
-    choiceA: { text: "필요 없는건 싸그리 가져다 버린다!", type: "J" },
+    choiceA: {
+      text: "너가 이거 다시 쓸 것 같아?!\n이것도 버려. 저것도 버려",
+      type: "J",
+    },
     choiceB: {
-      text: "이거 버릴까..?\n아냐 혹시 모르니 일단 챙겨둬!",
+      text: "이거 버릴까..?\n아냐 아무튼 쓸데가 있을거야. 혹시 몰라",
       type: "P",
     },
   },
@@ -110,7 +125,7 @@ export const QuestionInfo: QuestionData[] = [
     emoji: "🤒",
     question: '친구에게서 카톡이 왔다\n"나 오늘 파팔에서 수액 맞았어"',
     choiceA: {
-      text: "헐 그래? 어때?\n돈 내야돼? 얼마야?\n몇 분동안 맞아?",
+      text: "헐 그래?\n그거 의료상조회 신청하면 환급 받을 수 있을거야",
       type: "T",
     },
     choiceB: { text: "헐 무슨일이야 어디 아파?\n지금은 괜찮아?", type: "F" },
@@ -121,7 +136,7 @@ export const QuestionInfo: QuestionData[] = [
     emoji: "🏫",
     question: "다음 학기 시간표를 짜는\n당신의 자세는?",
     choiceA: {
-      text: "(OTL이 열리자마자)\n꼼꼼하게 비교해서\n최적의 전공/교양 시간표를 완성!",
+      text: "교양/전필/전선 과목별로 1,2,3순위 설정\n플랜 A,B,C,D까지 준비",
       type: "J",
     },
     choiceB: {
@@ -133,13 +148,13 @@ export const QuestionInfo: QuestionData[] = [
     id: 2,
     type: "EI",
     emoji: "🎉",
-    question: "드디어 종강이다! 뭐하지?",
+    question: "비대면 기간이 길어진다",
     choiceA: {
-      text: "(카톡방을 열고)\n야 나 종강했다 놀러 갈 사람?",
+      text: "편하긴 한데, 캠퍼스 라이프가 없는게 아쉽구만.",
       type: "E",
     },
     choiceB: {
-      text: "(침대에 누운 후)\n오늘은 밖으로 나가지 않을 것",
+      text: "주 평균 0.2회 외출. 이보다 행복한 삶은 없다.",
       type: "I",
     },
   },

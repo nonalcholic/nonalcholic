@@ -41,6 +41,13 @@ const DeveloperPage: React.FC<Props> = (props) => {
           email="leeminxji@gmail.com"
         />
       )}
+      <div className="hint" style={{ marginTop: 30 }}>
+        <span className="hint" style={{ marginBottom: 8 }}>
+          도움 주신 분
+        </span>
+        @zzompang2 <br />
+        @sehoney.jang
+      </div>
       <HomeButton />
     </>
   );
