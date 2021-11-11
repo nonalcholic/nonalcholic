@@ -6,6 +6,8 @@ import StartPage from "../pages/StartPage";
 import "./RootRouter.scss";
 import StatisticsPage from "../pages/StatisticsPage";
 import DeveloperPage from "../pages/DeveloperPage";
+import { MBTIResultType } from "../redux/interfaces/progressInterface";
+import { isMBTIResult } from "../utils/utils.calculate";
 
 interface Props {}
 const RootRouter: React.FC<Props> = (props) => {
@@ -27,8 +29,18 @@ const RootRouter: React.FC<Props> = (props) => {
         <Route exact path="/developer">
           <DeveloperPage />
         </Route>
-        <Route path="/:mbti">
-          <ResultPage />
+        <Route
+          exact
+          path="/:mbti"
+          render={(routeProps) => {
+            const mbti = routeProps.match.params["mbti"];
+
+            if (isMBTIResult(mbti)) return <ResultPage />;
+            else return <Redirect to={`/start`} />;
+          }}
+        />
+        <Route path={"*"}>
+          <Redirect to={"/start"} />
         </Route>
       </Switch>
     </div>

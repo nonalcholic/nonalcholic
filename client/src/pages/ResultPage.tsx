@@ -16,7 +16,9 @@ declare const window: any;
 
 interface Props {}
 const ResultPage: React.FC<Props> = (props) => {
-  const { mbti } = useParams<{ mbti: MBTIResultType }>();
+  const { mbti } = useParams<{ mbti: string }>();
+  const MBTI: MBTIResultType = mbti.toUpperCase() as MBTIResultType;
+
   const hiddenRef = useRef<HTMLTextAreaElement>(null);
   const progress = useSelector((state: IReducer) => state.progress);
 
@@ -39,8 +41,8 @@ const ResultPage: React.FC<Props> = (props) => {
         {
           title: "결과보기",
           link: {
-            mobileWebUrl: `http://${IP_ADDRESS}:80/${mbti}`,
-            webUrl: `http://${IP_ADDRESS}:80/${mbti}`,
+            mobileWebUrl: `http://${IP_ADDRESS}:80/${MBTI}`,
+            webUrl: `http://${IP_ADDRESS}:80/${MBTI}`,
           },
         },
         {
@@ -119,24 +121,24 @@ const ResultPage: React.FC<Props> = (props) => {
           {"나의 KAIST 최애 장소는.."}
         </span>
 
-        <span className="result-title one">{MBTIResult[mbti].title}</span>
+        <span className="result-title one">{MBTIResult[MBTI].title}</span>
         <span className="result-title two">
-          {"[     " + MBTIResult[mbti].place + "     ]"}
+          {"[     " + MBTIResult[MBTI].place + "     ]"}
         </span>
         <img
           className="result-picture"
-          src={require("../assets/mbti/ENTJ.jpg").default}
+          src={require(`../assets/mbti/${MBTI}.jpg`).default}
         />
-        <span className="result-context">{MBTIResult[mbti].subtitle}</span>
+        <span className="result-context">{MBTIResult[MBTI].subtitle}</span>
         <span className="result-description">
-          {MBTIResult[mbti].description}
+          {MBTIResult[MBTI].description}
         </span>
       </div>
       <div className="result-buttons">
         <textarea
           readOnly
           style={{ display: "none" }}
-          value={`http://${IP_ADDRESS}/${mbti}`}
+          value={`http://${IP_ADDRESS}/${MBTI}`}
           tabIndex={-1}
           ref={hiddenRef}
         />
