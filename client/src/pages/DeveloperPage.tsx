@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import Developer from "../components/Developer";
 import HomeButton from "../components/HomeButton";
 
-interface Props { }
+interface Props {}
 const DeveloperPage: React.FC<Props> = (props) => {
   const [showA, setShowA] = useState<boolean>(false);
   const [showB, setShowB] = useState<boolean>(false);
@@ -17,7 +17,7 @@ const DeveloperPage: React.FC<Props> = (props) => {
       <span className="title">{"만든이들"}</span>
       {showA && (
         <Developer
-          name="@jackson"
+          name="@usual_yuz"
           mbti="ENFJ"
           image={require("../assets/developer/yuz.png").default}
           subdescription="맥주 들고 신학관 옥상으로 따라와!"
@@ -41,6 +41,13 @@ const DeveloperPage: React.FC<Props> = (props) => {
           email="leeminxji@gmail.com"
         />
       )}
+      <div className="hint" style={{ marginTop: 30 }}>
+        <span className="hint" style={{ marginBottom: 8 }}>
+          도움 주신 분
+        </span>
+        @zzompang2 <br />
+        @sehoney.jang
+      </div>
       <HomeButton />
     </>
   );
