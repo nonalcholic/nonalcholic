@@ -123,7 +123,7 @@ const ResultPage: React.FC<Props> = (props) => {
     <>
       <div className="animation-fade-in" />
       <div className="result-container" id="result-container">
-        <span className="hint-title" style={{ height: 64 }}>
+        <span className="hint-title" >
           {"나의 KAIST 최애 장소는.."}
         </span>
         <span className="result-title one">{MBTIResult[MBTI].title}</span>

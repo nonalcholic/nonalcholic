@@ -12,15 +12,15 @@
 }
 
 .result-container {
-  padding: 20px 12px;
+  padding: 20px 12px 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   .result-picture {
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    height: 200px;
 
     border-radius: 8px;
     margin-bottom: 15px;
@@ -31,11 +31,12 @@
     flex-direction: column;
     align-items: center;
 
-    font-size: 18px;
+    font-size: 14px;
     color: #777777;
     background-color: $nonalcholic-white;
     white-space: pre-wrap;
 
+    height: 28px;
     text-align: center;
   }
   .result-title {
@@ -45,16 +46,16 @@
     white-space: pre-wrap;
 
     &.one {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 600;
       text-align: center;
     }
     &.two {
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 700;
       text-align: center;
 
-      padding: 10px 0;
+      padding-bottom: 8px;
     }
   }
 
@@ -99,6 +100,5 @@
   justify-content: center;
   align-items: center;
 
-  margin-top: 20px;
   gap: 12px;
 }
