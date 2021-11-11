@@ -19,7 +19,7 @@ const HomeButton: React.FC<Props> = (props) => {
         {props.showDeveloper && !isLoading && (
           <button
             className="hint-button"
-            style={{ marginBottom: 12 }}
+            style={{ margin: '6px 0' }}
             onClick={() => history.push("/developer")}
           >
             개발자
@@ -38,7 +38,7 @@ const HomeButton: React.FC<Props> = (props) => {
             }, 900);
           }}
         >
-          {!isLoading && "메인으로"}
+          {!isLoading && "kaist-mbti.me"}
         </div>
       </div>
     </>
