@@ -119,11 +119,13 @@ const ResultPage: React.FC<Props> = (props) => {
           {"나의 KAIST 최애 장소는.."}
         </span>
 
-        <span className="result-title one">{"이번학기 딘즈는 나야!"}</span>
-        <span className="result-title two">{"[  도서관  ]"}</span>
+        <span className="result-title one">{MBTIResult[mbti].title}</span>
+        <span className="result-title two">
+          {"[     " + MBTIResult[mbti].place + "     ]"}
+        </span>
         <img
           className="result-picture"
-          src={require("../assets/mbti/ENFJ.jpeg").default}
+          src={require("../assets/mbti/ENTJ.jpg").default}
         />
         <span className="result-context">{MBTIResult[mbti].subtitle}</span>
         <span className="result-description">
