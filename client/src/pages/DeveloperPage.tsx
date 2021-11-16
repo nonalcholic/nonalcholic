@@ -45,8 +45,13 @@ const DeveloperPage: React.FC<Props> = (props) => {
         <span className="hint" style={{ marginBottom: 8 }}>
           도움 주신 분
         </span>
-        @zzompang2 <br />
-        @sehoney.jang
+        <a href={`https://www.instagram.com/nupjuki`} target="_blank">
+          @nupjuki
+        </a>
+        <a href={`https://www.instagram.com/sehoney.jang`} target="_blank">
+          @sehoney.jang
+        </a>
+        <br />
       </div>
       <HomeButton />
     </>

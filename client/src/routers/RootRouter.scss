@@ -137,6 +137,17 @@
 
   text-align: center;
   bottom: 0px;
+
+  a {
+    font-size: 14px;
+    color: #777777;
+    text-decoration: none;
+    line-height: 18px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .hint-button {
