@@ -33,23 +33,23 @@ const ResultPage: React.FC<Props> = (props) => {
         description: "내 최애 장소는 어디일까요?!",
         imageUrl: "logo192.png",
         link: {
-          mobileWebUrl: `http://${IP_ADDRESS}:80`,
-          webUrl: `http://${IP_ADDRESS}:80`,
+          mobileWebUrl: `http://${IP_ADDRESS}`,
+          webUrl: `http://${IP_ADDRESS}`,
         },
       },
       buttons: [
         {
           title: "결과보기",
           link: {
-            mobileWebUrl: `http://${IP_ADDRESS}:80/${MBTI}`,
-            webUrl: `http://${IP_ADDRESS}:80/${MBTI}`,
+            mobileWebUrl: `http://${IP_ADDRESS}/${MBTI}`,
+            webUrl: `http://${IP_ADDRESS}/${MBTI}`,
           },
         },
         {
           title: "테스트하기",
           link: {
-            mobileWebUrl: `http://${IP_ADDRESS}:80/start`,
-            webUrl: `http://${IP_ADDRESS}:80/start`,
+            mobileWebUrl: `http://${IP_ADDRESS}/start`,
+            webUrl: `http://${IP_ADDRESS}/start`,
           },
         },
       ],
