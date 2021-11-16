@@ -5,7 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"log"
+	// "log"
 	"os"
 	"time"
 
@@ -33,13 +33,13 @@ func main() {
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
 	}
 
 	// Check the connection
 	err = client.Ping(context.TODO(), nil)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
 	}
 
 	fmt.Println("Connected to MongoDB!")
@@ -49,7 +49,7 @@ func main() {
 	// Disconnect to MongoDB
 	// err = client.Disconnect(context.TODO())
 	// if err != nil {
-	// log.Fatal(err)
+	// fmt.Println(err)
 	// }
 	// fmt.Println("Connection to MongoDB closed.")
 
@@ -63,7 +63,7 @@ func main() {
 
 		err := json.NewDecoder(c.Request.Body).Decode(&d)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println(err)
 		}
 
 		d.CreatedAt = time.Now()
@@ -72,7 +72,7 @@ func main() {
 
 		insertResult, err := result.InsertOne(context.TODO(), d)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println(err)
 		}
 
 		fmt.Println("Inserted a single document: ", insertResult.InsertedID)
@@ -84,7 +84,7 @@ func main() {
 
 		err := json.NewDecoder(c.Request.Body).Decode(&t)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println(err)
 		}
 
 		var f models.FindData
@@ -92,7 +92,7 @@ func main() {
 		err2 := result.FindOne(context.TODO(), filter).Decode(&f)
 
 		if err2 != nil {
-			log.Fatal(err2)
+			fmt.Println(err2)
 		}
 
 		var previous int
@@ -116,7 +116,7 @@ func main() {
 		incrementResult, err3 := result.UpdateOne(context.TODO(), filter2, update)
 
 		if err3 != nil {
-			log.Fatal(err3)
+			fmt.Println(err3)
 		}
 
 		fmt.Println("Inserted a single document: ", incrementResult)
@@ -124,11 +124,12 @@ func main() {
 
 	//// Client에게 result에 저장된 mbti별 수를 보냄
 	router.POST("/statistics", func(c *gin.Context) { // c := types: MBTIList
+	fmt.Println("@@@@@@@@@@@@@@@@@@@@@statistics!!!!!!!!!!!!!")
 		var m models.Mbti
 		var cr models.CountResult
 		err := json.NewDecoder(c.Request.Body).Decode(&m)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println(err)
 		}
 		for i := 0; i < 16; i++ {
 			filter := bson.M{"result": m.Types[i].Type}
@@ -138,7 +139,7 @@ func main() {
 			ct.Count = total
 			cr.Results[i] = ct
 			if err != nil {
-				log.Fatal(err)
+				fmt.Println(err)
 			}
 		}
 		c.JSON(200, gin.H{"results": cr.Results})

@@ -5,68 +5,94 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &.hide {
+    display: none;
+  }
 }
 
 .result-container {
-  padding: 20px 0;
+  position: relative;
+  padding: 12px 12px 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  overflow: hidden;
+
   .result-picture {
-    width: 240px;
-    height: 240px;
+    z-index: 1;
+    width: 200px;
+    height: 200px;
 
     border-radius: 8px;
     margin-bottom: 15px;
   }
+  .background-picture {
+    position: absolute;
+    display: none;
+
+    width: 680px;
+
+    opacity: 0.2;
+    border-radius: 8px;
+    z-index: -1;
+
+    &.show {
+      display: initial;
+    }
+  }
 
   .hint-title {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    font-size: 18px;
+    font-size: 14px;
     color: #777777;
-    background-color: $nonalcholic-white;
     white-space: pre-wrap;
 
+    height: 28px;
     text-align: center;
   }
   .result-title {
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     white-space: pre-wrap;
 
     &.one {
-      font-size: 24px;
-      font-weight: 400;
+      font-size: 20px;
+      font-weight: 600;
       text-align: center;
     }
     &.two {
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 700;
       text-align: center;
 
-      padding: 10px 0;
+      padding-bottom: 8px;
     }
   }
 
   .result-context {
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 17px;
+    font-size: 18px;
     white-space: pre-wrap;
-    // font-weight: 500;
+    font-weight: 500;
     text-align: center;
     padding-bottom: 10px;
     line-height: 24px;
   }
 
   .result-description {
+    z-index: 1;
     font-size: 14px;
     line-height: 27px;
     text-align: center;
@@ -76,6 +102,18 @@
     white-space: pre-wrap;
     word-break: keep-all;
   }
+
+  .hidden-url {
+    z-index: 1;
+    font-size: 14px;
+    color: #777777;
+    padding: 36px 0 24px;
+    display: none;
+
+    &.show {
+      display: initial;
+    }
+  }
 }
 
 .bottom-buttons {
@@ -84,7 +122,5 @@
   justify-content: center;
   align-items: center;
 
-  margin-top: 20px;
-  // margin-bottom: 20px;
   gap: 12px;
 }

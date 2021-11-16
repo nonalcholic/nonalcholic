@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ShareInterface } from "../redux/interfaces/dataInterface";
@@ -6,7 +6,7 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { FiImage, FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
 import { MBTIResult } from "../utils/utils.const";
-import { CLIENT_PORT, IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
+import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
 import { IReducer } from "../redux";
 import html2canvas from "html2canvas";
@@ -16,7 +16,9 @@ declare const window: any;
 
 interface Props {}
 const ResultPage: React.FC<Props> = (props) => {
-  const { mbti } = useParams<{ mbti: MBTIResultType }>();
+  const { mbti } = useParams<{ mbti: string }>();
+  const MBTI: MBTIResultType = mbti.toUpperCase() as MBTIResultType;
+
   const hiddenRef = useRef<HTMLTextAreaElement>(null);
   const progress = useSelector((state: IReducer) => state.progress);
 
@@ -39,8 +41,8 @@ const ResultPage: React.FC<Props> = (props) => {
         {
           title: "결과보기",
           link: {
-            mobileWebUrl: `http://${IP_ADDRESS}:80/${mbti}`,
-            webUrl: `http://${IP_ADDRESS}:80/${mbti}`,
+            mobileWebUrl: `http://${IP_ADDRESS}:80/${MBTI}`,
+            webUrl: `http://${IP_ADDRESS}:80/${MBTI}`,
           },
         },
         {
@@ -96,9 +98,21 @@ const ResultPage: React.FC<Props> = (props) => {
   const downloadImage = () => {
     const container = document.getElementById("result-container");
     if (container) {
-      html2canvas(container).then((canvas) => {
-        onSaveAs(canvas.toDataURL("image/png"), "kaist-mbti.png");
-      });
+      document.getElementById("hidden-url")?.classList.add("show");
+      document.getElementById("background-picture")?.classList.add("show");
+      document.getElementById("result-buttons")?.classList.add("hide");
+
+      html2canvas(container)
+        .then((canvas) => {
+          onSaveAs(canvas.toDataURL("image/png"), "kaist-mbti.png");
+        })
+        .finally(() => {
+          document.getElementById("hidden-url")?.classList.remove("show");
+          document
+            .getElementById("background-picture")
+            ?.classList.remove("show");
+          document.getElementById("result-buttons")?.classList.remove("hide");
+        });
     }
   };
 
@@ -115,26 +129,33 @@ const ResultPage: React.FC<Props> = (props) => {
     <>
       <div className="animation-fade-in" />
       <div className="result-container" id="result-container">
-        <span className="hint-title" style={{ height: 80 }}>
-          {"나의 KAIST 최애 장소는.."}
-        </span>
-
-        <span className="result-title one">{"이번학기 딘즈는 나야!"}</span>
-        <span className="result-title two">{"[  도서관  ]"}</span>
+        <img
+          className="background-picture"
+          id="background-picture"
+          src={require(`../assets/mbti/${MBTI}.jpg`).default}
+          alt="background"
+        />
+        <span className="hint-title">{"나의 KAIST 최애 장소는.."}</span>
+        <span className="result-title one">{MBTIResult[MBTI].title}</span>
+        <span className="result-title two">{MBTIResult[MBTI].place}</span>
         <img
           className="result-picture"
-          src={require("../assets/ENFJ.jpeg").default}
+          src={require(`../assets/mbti/${MBTI}.jpg`).default}
+          alt="result"
         />
-        <span className="result-context">{MBTIResult[mbti].subtitle}</span>
+        <span className="result-context">{MBTIResult[MBTI].subtitle}</span>
         <span className="result-description">
-          {MBTIResult[mbti].description}
+          {MBTIResult[MBTI].description}
+        </span>
+        <span id="hidden-url" className="hidden-url">
+          kaist-mbti.me
         </span>
       </div>
-      <div className="result-buttons">
+      <div className="result-buttons" id="result-buttons">
         <textarea
           readOnly
           style={{ display: "none" }}
-          value={`http://${IP_ADDRESS}/${mbti}`}
+          value={`http://${IP_ADDRESS}/${MBTI}`}
           tabIndex={-1}
           ref={hiddenRef}
         />

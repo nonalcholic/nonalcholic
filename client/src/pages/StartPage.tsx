@@ -24,6 +24,7 @@ const StartPage: React.FC<Props> = (props) => {
         <img
           className="main-image"
           src={require("../assets/main.png").default}
+          alt="main"
         />
       </div>
       <div className="buttons-container">
@@ -48,7 +49,7 @@ const StartPage: React.FC<Props> = (props) => {
           style={{ marginTop: 12 }}
           onClick={() => history.push("/developer")}
         >
-          개발자
+          만든이
         </button>
       </span>
     </>

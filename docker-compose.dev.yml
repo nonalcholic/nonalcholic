@@ -19,7 +19,7 @@ services:
   client:
     build:
       context: ./client
-      dockerfile: Dockerfile.prod # prod
+      dockerfile: Dockerfile # dev
       args:
         SERVER_PORT: "${SERVER_PORT}"
         CLIENT_PORT: "${CLIENT_PORT}"
@@ -35,10 +35,10 @@ services:
     environment:
       # NODE_ENV: development
       CHOKIDAR_USEPOLLING: "true"
-      HTTP_PROXY: "http://${IP_ADDRESS}:${SERVER_PORT}"
-      
+      HTTP_PROXY: "http://${IP_ADDRESS_DEV}:${SERVER_PORT}"
       REACT_APP_SERVER_PORT: "${SERVER_PORT}"
       REACT_APP_CLIENT_PORT: "${CLIENT_PORT}"
+      REACT_APP_IP_ADDRESS: "${IP_ADDRESS_DEV}"
 
   mongo:
     image: mongo:4-bionic

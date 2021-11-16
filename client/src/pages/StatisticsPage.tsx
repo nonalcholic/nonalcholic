@@ -6,7 +6,6 @@ import { StatisticsDto } from "../redux/interfaces/statisticsInterface";
 import { MBTIList, MBTIListElem } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
-import { useHistory } from "react-router";
 import HomeButton from "../components/HomeButton";
 
 interface Props {}
@@ -16,8 +15,6 @@ interface MBTIInterface {
 }
 
 const StatisticsPage: React.FC<Props> = (props) => {
-  const history = useHistory();
-
   const [data, setData] = useState<StatisticsDto>();
   const [showMBTI, setShowMBTI] = useState<boolean>(false);
   const [total, setTotal] = useState<number>(0);
@@ -54,11 +51,12 @@ const StatisticsPage: React.FC<Props> = (props) => {
     if (!data) return { data: [], maxCount: 1, totalCount: 0 };
 
     const sortedData = data.results.sort((a, b) => b.Count - a.Count);
-    const maxCount = sortedData[0].Count;
-    const totalCount = sortedData.reduce((total, _data) => {
-      total += _data.Count;
-      return total;
-    }, 0);
+    const maxCount = sortedData[0].Count || 1;
+    const totalCount =
+      sortedData.reduce((total, _data) => {
+        total += _data.Count;
+        return total;
+      }, 0) || 1;
     // setTotal(totalCount);
 
     return {

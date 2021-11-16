@@ -37,3 +37,27 @@ export const caculateMBTI = (answerData: AnswerData[]) => {
 
   return result;
 };
+
+export const isMBTIResult = (text: string) => {
+  switch (text.toUpperCase()) {
+    case "ENTP":
+    case "ENTJ":
+    case "ENFP":
+    case "ENFJ":
+    case "ESTP":
+    case "ESTJ":
+    case "ESFP":
+    case "ESFJ":
+    case "INTP":
+    case "INTJ":
+    case "INFP":
+    case "INFJ":
+    case "ISTP":
+    case "ISTJ":
+    case "ISFP":
+    case "ISFJ":
+      return true;
+    default:
+      return false;
+  }
+};
