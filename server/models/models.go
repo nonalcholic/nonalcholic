@@ -10,7 +10,6 @@ type Data struct {
 	Id        string
 	Answers   [12]string
 	Result    string
-	Ip        string
 	CreatedAt time.Time
 	Link      int
 	Instagram int
@@ -27,7 +26,6 @@ type FindData struct {
 	UserID    string             `bson:"id"`
 	Answers   [12]string         `bson:"answers"`
 	Result    string             `bson:"result"`
-	Ip        string             `bson:"ip"`
 	CreatedAt time.Time          `bson:"createdat"`
 	Link      int                `bson:"link"`
 	Instagram int                `bson:"instagram"`

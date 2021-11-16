@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -10,11 +9,8 @@ import { setId } from "../redux/progress";
 import { caculateMBTI } from "../utils/utils.calculate";
 import { QuestionInfo, TOTAL_PROGRESS_NUMBER } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
-import { getIpCookie, setIpCookie } from "../utils/utils.identification";
 import { v1 as uuid } from "uuid";
 import HomeButton from "../components/HomeButton";
-
-declare const window: any;
 
 interface Props {}
 const ProgressPage: React.FC<Props> = (props) => {
@@ -28,10 +24,6 @@ const ProgressPage: React.FC<Props> = (props) => {
     try {
       const id = uuid();
       setId(id)(dispatch);
-
-      axios.get("https://geolocation-db.com/json/").then(async (res) => {
-        setIpCookie(res.data["IPv4"]);
-      });
     } catch (e) {}
   };
 
@@ -45,7 +37,6 @@ const ProgressPage: React.FC<Props> = (props) => {
         id: progress.id,
         answers: progress.answerData.map((ans) => ans.score),
         result: result,
-        ip: getIpCookie(),
       };
       await fetch(`http://${IP_ADDRESS}:${SERVER_PORT}/result`, {
         method: "POST",

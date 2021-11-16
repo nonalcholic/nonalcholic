@@ -4,7 +4,6 @@ export interface ResultInterface {
   id: string;
   answers: Answer[];
   result: string;
-  ip: string;
 }
 
 export interface ShareInterface {
