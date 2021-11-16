@@ -13,6 +13,7 @@ up_dev: ## Create and start containers
 	docker-compose \
 		-f docker-compose.dev.yml \
 		-p dev_$(PROJECT_NAME) \
+		--env-file .env \
 		up 
 .PHONY: up_dev
 
@@ -26,7 +27,7 @@ up: ## Make image and run
 	docker-compose \
 		-f docker-compose.yml \
 		-p $(PROJECT_NAME) \
-		-e $(TEST) \
+		--env-file .env \
 		up
 .PHONY: up
 

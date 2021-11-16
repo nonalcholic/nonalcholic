@@ -35,7 +35,7 @@ services:
     environment:
       # NODE_ENV: development
       CHOKIDAR_USEPOLLING: "true"
-      HTTP_PROXY: "http://kaist-mbti.me:${SERVER_PORT}"
+      HTTP_PROXY: "http://${IP_ADDRESS}:${SERVER_PORT}"
       
       REACT_APP_SERVER_PORT: "${SERVER_PORT}"
       REACT_APP_CLIENT_PORT: "${CLIENT_PORT}"
