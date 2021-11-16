@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import Developer from "../components/Developer";
 import HomeButton from "../components/HomeButton";
 
@@ -14,16 +13,14 @@ const DeveloperPage: React.FC<Props> = (props) => {
   }, []);
   return (
     <>
-      <span className="title">{"만든이들"}</span>
+      <span className="title">만든이</span>
       {showA && (
         <Developer
           name="@usual_yuz"
-          mbti="ENFJ"
           image={require("../assets/developer/yuz.png").default}
           subdescription="맥주 들고 신학관 옥상으로 따라와!"
           description_1="KAIST CS 16"
           description_2="CLASSUM"
-          description_3="Web Developer"
           instagram="usual_yuz"
           email="gogodbwngud@gmail.com"
         />
@@ -31,12 +28,10 @@ const DeveloperPage: React.FC<Props> = (props) => {
       {showB && (
         <Developer
           name="@minx"
-          mbti="INTJ"
           image={require("../assets/developer/minx.JPG").default}
           subdescription="교분 2층 B-22 지박령"
           description_1="KAIST CS 16"
           description_2="NCSOFT"
-          description_3="MLOps Developer"
           instagram="leeminxji"
           email="leeminxji@gmail.com"
         />
@@ -45,8 +40,21 @@ const DeveloperPage: React.FC<Props> = (props) => {
         <span className="hint" style={{ marginBottom: 8 }}>
           도움 주신 분
         </span>
-        @zzompang2 <br />
-        @sehoney.jang
+        <a
+          href={`https://www.instagram.com/nupjuki`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          @nupjuki
+        </a>
+        <a
+          href={`https://www.instagram.com/sehoney.jang`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          @sehoney.jang
+        </a>
+        <br />
       </div>
       <HomeButton />
     </>

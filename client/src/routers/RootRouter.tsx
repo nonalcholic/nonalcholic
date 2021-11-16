@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import ProgressPage from "../pages/ProgressPage";
 import ResultPage from "../pages/ResultPage";
@@ -6,7 +6,6 @@ import StartPage from "../pages/StartPage";
 import "./RootRouter.scss";
 import StatisticsPage from "../pages/StatisticsPage";
 import DeveloperPage from "../pages/DeveloperPage";
-import { MBTIResultType } from "../redux/interfaces/progressInterface";
 import { isMBTIResult } from "../utils/utils.calculate";
 
 interface Props {}
