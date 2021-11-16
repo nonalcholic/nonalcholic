@@ -1,6 +1,5 @@
 import {
   MBTIResultType,
-  MBTIType,
   QuestionData,
 } from "../redux/interfaces/progressInterface";
 

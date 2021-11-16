@@ -6,7 +6,6 @@ import { StatisticsDto } from "../redux/interfaces/statisticsInterface";
 import { MBTIList, MBTIListElem } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
-import { useHistory } from "react-router";
 import HomeButton from "../components/HomeButton";
 
 interface Props {}
@@ -16,8 +15,6 @@ interface MBTIInterface {
 }
 
 const StatisticsPage: React.FC<Props> = (props) => {
-  const history = useHistory();
-
   const [data, setData] = useState<StatisticsDto>();
   const [showMBTI, setShowMBTI] = useState<boolean>(false);
   const [total, setTotal] = useState<number>(0);

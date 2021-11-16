@@ -1,5 +1,5 @@
 import "./HomeButton.scss";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { resetProgress } from "../redux/progress";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
@@ -19,7 +19,7 @@ const HomeButton: React.FC<Props> = (props) => {
         {props.showDeveloper && !isLoading && (
           <button
             className="hint-button"
-            style={{ margin: '6px 0' }}
+            style={{ margin: "6px 0" }}
             onClick={() => history.push("/developer")}
           >
             개발자

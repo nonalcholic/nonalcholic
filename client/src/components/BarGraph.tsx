@@ -1,5 +1,5 @@
 import "./BarGraph.scss";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
 import { MBTIResult } from "../utils/utils.const";
 
