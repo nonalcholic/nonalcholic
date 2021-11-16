@@ -6,6 +6,9 @@ A small and fun KAIST personality type test project
 
 - Docker
 - Docker Compose
+- Node
+- React
+- Go
 
 ## Development
 
