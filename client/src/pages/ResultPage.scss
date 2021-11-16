@@ -12,34 +12,53 @@
 }
 
 .result-container {
+  position: relative;
   padding: 20px 12px 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  overflow: hidden;
+
   .result-picture {
+    z-index: 1;
     width: 200px;
     height: 200px;
 
     border-radius: 8px;
     margin-bottom: 15px;
   }
+  .background-picture {
+    position: absolute;
+    display: none;
+
+    width: 680px;
+
+    opacity: 0.2;
+    border-radius: 8px;
+    z-index: -1;
+
+    &.show {
+      display: initial;
+    }
+  }
 
   .hint-title {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     font-size: 14px;
     color: #777777;
-    background-color: $nonalcholic-white;
     white-space: pre-wrap;
 
     height: 28px;
     text-align: center;
   }
   .result-title {
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,6 +79,7 @@
   }
 
   .result-context {
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,6 +92,7 @@
   }
 
   .result-description {
+    z-index: 1;
     font-size: 14px;
     line-height: 27px;
     text-align: center;
@@ -83,6 +104,7 @@
   }
 
   .hidden-url {
+    z-index: 1;
     font-size: 14px;
     color: #777777;
     padding: 36px 0 24px;

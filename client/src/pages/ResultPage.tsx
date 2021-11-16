@@ -95,18 +95,24 @@ const ResultPage: React.FC<Props> = (props) => {
     }
   };
 
-  const downloadImage = async () => {
+  const downloadImage = () => {
     const container = document.getElementById("result-container");
     if (container) {
       document.getElementById("hidden-url")?.classList.add("show");
+      document.getElementById("background-picture")?.classList.add("show");
       document.getElementById("result-buttons")?.classList.add("hide");
 
-      await html2canvas(container).then((canvas) => {
-        onSaveAs(canvas.toDataURL("image/png"), "kaist-mbti.png");
-      });
-
-      document.getElementById("hidden-url")?.classList.remove("show");
-      document.getElementById("result-buttons")?.classList.remove("hide");
+      html2canvas(container)
+        .then((canvas) => {
+          onSaveAs(canvas.toDataURL("image/png"), "kaist-mbti.png");
+        })
+        .finally(() => {
+          document.getElementById("hidden-url")?.classList.remove("show");
+          document
+            .getElementById("background-picture")
+            ?.classList.remove("show");
+          document.getElementById("result-buttons")?.classList.remove("hide");
+        });
     }
   };
 
@@ -123,6 +129,12 @@ const ResultPage: React.FC<Props> = (props) => {
     <>
       <div className="animation-fade-in" />
       <div className="result-container" id="result-container">
+        <img
+          className="background-picture"
+          id="background-picture"
+          src={require(`../assets/mbti/${MBTI}.jpg`).default}
+          alt="background"
+        />
         <span className="hint-title">{"나의 KAIST 최애 장소는.."}</span>
         <span className="result-title one">{MBTIResult[MBTI].title}</span>
         <span className="result-title two">{MBTIResult[MBTI].place}</span>
