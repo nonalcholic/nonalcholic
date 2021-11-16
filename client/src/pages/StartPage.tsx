@@ -49,7 +49,7 @@ const StartPage: React.FC<Props> = (props) => {
           style={{ marginTop: 12 }}
           onClick={() => history.push("/developer")}
         >
-          개발자
+          만든이
         </button>
       </span>
     </>

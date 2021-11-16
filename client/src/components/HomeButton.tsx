@@ -22,7 +22,7 @@ const HomeButton: React.FC<Props> = (props) => {
             style={{ margin: "6px 0" }}
             onClick={() => history.push("/developer")}
           >
-            개발자
+            만든이
           </button>
         )}
         <div

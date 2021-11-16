@@ -13,7 +13,7 @@ const DeveloperPage: React.FC<Props> = (props) => {
   }, []);
   return (
     <>
-      <span className="title">{"만든이들"}</span>
+      <span className="title">만든이</span>
       {showA && (
         <Developer
           name="@usual_yuz"
