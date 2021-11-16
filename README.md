@@ -2,7 +2,7 @@
 
 A small and fun KAIST personality type test project
 
-## Prerequests
+## Prerequisite
 
 - Docker
 - Docker Compose
@@ -21,38 +21,12 @@ A small and fun KAIST personality type test project
 REACT_APP_IP_ADDRESS=[YOUR IP ADDRESS] # ex. localhost
 ```
 
-### Database
-
-```bash
-cd path/to/repository
-cd database
-docker-compose up
-```
-
-### Backend
-
-```bash
-cd path/to/repository
-cd server
-docker-compose build
-docker-compose up
-```
-
-### Frontend
-
-```bash
-cd path/to/repository
-cd client
-docker-compose build
-docker-compose up
-```
 
 ### Database + Backend + Frontend
 
 ```bash
 cd path/to/repository
-docker-compose build
-docker-compose up
+make up_dev
 ```
 
 ## Production
@@ -74,6 +48,5 @@ REACT_APP_IP_ADDRESS=[YOUR IP ADDRESS] # ex. 123.45.67.890
 
 ```bash
 cd path/to/repository
-docker-compose build
-docker-compose up
+make up
 ```
