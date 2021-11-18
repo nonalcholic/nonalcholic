@@ -48,7 +48,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: nonalcholic
     volumes:
-      - mongo-volume:/data/db
+      - ./database/db:/data/db
     networks:
       - internal
     ports:
@@ -74,6 +74,6 @@ networks:
   internal:
     driver: bridge
 
-volumes:
-  mongo-volume:
-    driver: local
+# volumes:
+#   mongo-volume:
+#     driver: local
