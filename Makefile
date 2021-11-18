@@ -14,7 +14,8 @@ up_dev: ## Create and start containers
 		-f docker-compose.dev.yml \
 		-p dev_$(PROJECT_NAME) \
 		--env-file .env \
-		up 
+		up \
+		-d
 .PHONY: up_dev
 
 down_dev: ## Stop and remove dev container, networks
@@ -28,7 +29,8 @@ up: ## Make image and run
 		-f docker-compose.yml \
 		-p $(PROJECT_NAME) \
 		--env-file .env \
-		up
+		up \
+		-d
 .PHONY: up
 
 down: ## Stop and remove container, networks
