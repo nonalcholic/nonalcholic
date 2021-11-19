@@ -5,7 +5,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	// "log"
+
+	"log"
 	"os"
 	"time"
 
@@ -33,13 +34,13 @@ func main() {
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 
 	// Check the connection
 	err = client.Ping(context.TODO(), nil)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 
 	fmt.Println("Connected to MongoDB!")
@@ -59,20 +60,18 @@ func main() {
 	// HTTP with Client ----------------------------------------------------------
 	//// Client로부터 받은 결과를 result에 저장
 	router.POST("/result", func(c *gin.Context) {
-		var d models.Data
+		var d models.Result
 
 		err := json.NewDecoder(c.Request.Body).Decode(&d)
 		if err != nil {
-			fmt.Println(err)
+			log.Println(err)
 		}
 
 		d.CreatedAt = time.Now()
 
-		fmt.Println("@@@@@@@@", "In /result, id:", d.Id)
-
-		insertResult, err := result.InsertOne(context.TODO(), d)
-		if err != nil {
-			fmt.Println(err)
+		insertResult, err2 := result.InsertOne(context.TODO(), d)
+		if err2 != nil {
+			log.Println(err2)
 		}
 
 		fmt.Println("Inserted a single document: ", insertResult.InsertedID)
@@ -84,7 +83,7 @@ func main() {
 
 		err := json.NewDecoder(c.Request.Body).Decode(&t)
 		if err != nil {
-			fmt.Println(err)
+			log.Println(err)
 		}
 
 		var f models.FindData
@@ -92,7 +91,7 @@ func main() {
 		err2 := result.FindOne(context.TODO(), filter).Decode(&f)
 
 		if err2 != nil {
-			fmt.Println(err2)
+			log.Println(err2)
 		}
 
 		var previous int
@@ -116,7 +115,7 @@ func main() {
 		incrementResult, err3 := result.UpdateOne(context.TODO(), filter2, update)
 
 		if err3 != nil {
-			fmt.Println(err3)
+			log.Println(err3)
 		}
 
 		fmt.Println("Inserted a single document: ", incrementResult)
@@ -124,24 +123,26 @@ func main() {
 
 	//// Client에게 result에 저장된 mbti별 수를 보냄
 	router.POST("/statistics", func(c *gin.Context) { // c := types: MBTIList
-	fmt.Println("@@@@@@@@@@@@@@@@@@@@@statistics!!!!!!!!!!!!!")
 		var m models.Mbti
 		var cr models.CountResult
+
 		err := json.NewDecoder(c.Request.Body).Decode(&m)
 		if err != nil {
-			fmt.Println(err)
+			log.Println(err)
 		}
+
 		for i := 0; i < 16; i++ {
 			filter := bson.M{"result": m.Types[i].Type}
-			total, err := result.CountDocuments(context.TODO(), filter, nil)
+			total, err2 := result.CountDocuments(context.TODO(), filter, nil)
 			var ct models.CountType
 			ct.Type = m.Types[i].Type
 			ct.Count = total
 			cr.Results[i] = ct
-			if err != nil {
-				fmt.Println(err)
+			if err2 != nil {
+				log.Println(err2)
 			}
 		}
+
 		c.JSON(200, gin.H{"results": cr.Results})
 	})
 
