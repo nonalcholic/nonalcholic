@@ -96,11 +96,11 @@ export const QuestionInfo: QuestionData[] = [
     emoji: "😱",
     question: "피곤한 하루 일과를 마치고\n침대에 누워서 드는 생각",
     choiceA: {
-      text: "긴 하루였네.\n내일은 8시에 일어나야지.",
+      text: "아유 피곤해\n내일은 8시에 일어나야겠다!",
       type: "S",
     },
     choiceB: {
-      text: "피곤하다.. 오늘은 아무생각 말고 자야지\n아무생각 안한다는 생각은 생각을 하는건가?\n그렇다면 아무생각 없는 상태는 존재할 수 있나?",
+      text: "아유 피곤해\n오늘은 아무 생각 말고 자야지\n아무 생각 안한다는 생각은 생각을 하는건가?\n그렇다면 아무 생각 없는 상태는 존재할 수 있나?",
       type: "N",
     },
   },
@@ -114,7 +114,7 @@ export const QuestionInfo: QuestionData[] = [
       type: "J",
     },
     choiceB: {
-      text: "이거 버릴까..?\n아냐 아무튼 쓸데가 있을거야",
+      text: "이거 버릴까?\n아냐 아무튼 쓸데가 있을거야...",
       type: "P",
     },
   },
