@@ -6,6 +6,7 @@ import { useHistory } from "react-router";
 
 interface Props {
   showDeveloper?: boolean;
+  showStatistics?: boolean;
 }
 const HomeButton: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
@@ -16,15 +17,27 @@ const HomeButton: React.FC<Props> = (props) => {
   return (
     <>
       <div className="bottom-fixed">
-        {props.showDeveloper && !isLoading && (
-          <button
-            className="hint-button"
-            style={{ margin: "6px 0" }}
-            onClick={() => history.push("/developer")}
-          >
-            만든이
-          </button>
-        )}
+        <div
+          style={{ display: 'flex' }}>
+          {props.showDeveloper && !isLoading && (
+            <button
+              className="hint-button"
+              style={{ margin: "6px 0" }}
+              onClick={() => history.push("/developer")}
+            >
+              만든이
+            </button>
+          )}
+          {props.showStatistics && !isLoading && (
+            <button
+              className="hint-button"
+              style={{ margin: "6px 0" }}
+              onClick={() => history.push("/statistics")}
+            >
+              통계
+            </button>
+          )}
+        </div>
         <div
           className={`home-button ${isLoading}`}
           style={{
