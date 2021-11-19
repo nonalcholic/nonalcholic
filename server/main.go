@@ -99,9 +99,9 @@ func main() {
 		if t.Type == "kakao" {
 			previous = f.Kakao
 		}
-		if t.Type == "instagram" {
-			previous = f.Instagram
-		}
+		// if t.Type == "instagram" {
+		// 	previous = f.Instagram
+		// }
 		if t.Type == "link" {
 			previous = f.Link
 		}

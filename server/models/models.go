@@ -6,14 +6,14 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type Data struct {
+type Result struct {
 	Id        string
 	Answers   [12]string
 	Result    string
 	CreatedAt time.Time
 	Link      int
-	Instagram int
-	Kakao     int
+	// Instagram int
+	Kakao int
 }
 
 type Type struct {
@@ -28,8 +28,8 @@ type FindData struct {
 	Result    string             `bson:"result"`
 	CreatedAt time.Time          `bson:"createdat"`
 	Link      int                `bson:"link"`
-	Instagram int                `bson:"instagram"`
-	Kakao     int                `bson:"kakao"`
+	// Instagram int                `bson:"instagram"`
+	Kakao int `bson:"kakao"`
 }
 
 type MbtiType struct {
