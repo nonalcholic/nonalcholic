@@ -92,6 +92,7 @@ const StatisticsPage: React.FC<Props> = (props) => {
           <BarGraph {...calculateData()} showMBTI={showMBTI} />
         </>
       )}
+      <div className="hint">장소 이름을 눌러서 결과 화면을 볼 수 있어요!</div>
       <HomeButton />
     </>
   );
