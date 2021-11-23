@@ -64,10 +64,6 @@
 }
 
 .header {
-  position: sticky;
-  top: 0px;
-  z-index: 1;
-
   display: flex;
   align-items: center;
 
@@ -256,7 +252,7 @@
 
   transition: all 0.2s;
   &:hover {
-    background-color: $nonalcholic-lightyellow;
+    background-color: rgba($color: white, $alpha: 0.4);
   }
   &:active {
     transform: scale(0.95);
