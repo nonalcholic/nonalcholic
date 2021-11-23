@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ShareInterface } from "../redux/interfaces/dataInterface";
@@ -20,6 +20,7 @@ const ResultPage: React.FC<Props> = (props) => {
 
   const hiddenRef = useRef<HTMLTextAreaElement>(null);
   const progress = useSelector((state: IReducer) => state.progress);
+  const [showCopyMessage, setShowCopyMeesage] = useState<boolean>(false);
 
   const kakaoInit = async () => {
     window.Kakao.init("7281c5f7129e05440500f936dedee302");
@@ -85,6 +86,8 @@ const ResultPage: React.FC<Props> = (props) => {
           hiddenRef.current.select();
           document.execCommand("Copy");
           hiddenRef.current.style.display = "none";
+
+          setShowCopyMeesage(true);
         }
         break;
       case "kakao":
@@ -138,6 +141,14 @@ const ResultPage: React.FC<Props> = (props) => {
               <RiKakaoTalkFill className="share-svg" fill={"black"} />
             </button>
           </div>
+          {showCopyMessage && (
+            <div
+              className="copy-message"
+              onClick={() => setShowCopyMeesage(false)}
+            >
+              링크가 클립보드에 복사되었습니다
+            </div>
+          )}
         </div>
       </div>
       <HomeButton showDeveloper showStatistics />

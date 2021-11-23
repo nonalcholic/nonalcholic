@@ -228,7 +228,7 @@
 
   transition: all 0.2s;
   &:hover {
-    background-color: $nonalcholic-lightyellow;
+    background-color: rgba($color: white, $alpha: 0.4);
   }
   &:active {
     transform: scale(0.95);
