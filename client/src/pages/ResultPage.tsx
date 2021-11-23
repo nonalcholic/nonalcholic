@@ -175,7 +175,7 @@ const ResultPage: React.FC<Props> = (props) => {
           </button>
         </div>
       </div>
-      <HomeButton showDeveloper />
+      <HomeButton showDeveloper showStatistics />
     </>
   );
 };

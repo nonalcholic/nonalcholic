@@ -1,3 +1,8 @@
+# VSCode
 .vscode/
 
+# Environment variables
 /client/.env.*
+
+# Database
+/database/db

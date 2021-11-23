@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Developer from "../components/Developer";
 import HomeButton from "../components/HomeButton";
 
-interface Props {}
+interface Props { }
 const DeveloperPage: React.FC<Props> = (props) => {
   const [showA, setShowA] = useState<boolean>(false);
   const [showB, setShowB] = useState<boolean>(false);
@@ -37,24 +37,21 @@ const DeveloperPage: React.FC<Props> = (props) => {
         />
       )}
       <div className="hint" style={{ marginTop: 30 }}>
-        <span className="hint" style={{ marginBottom: 8 }}>
-          도움 주신 분
+        <span className="hint" style={{ marginBottom: 4 }}>
+          🤍 도움 주신 분 🤍
         </span>
         <a
           href={`https://www.instagram.com/nupjuki`}
           target="_blank"
           rel="noreferrer"
         >
-          @nupjuki
+          <u>
+            @nupjuki
+          </u>
         </a>
-        <a
-          href={`https://www.instagram.com/sehoney.jang`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          @sehoney.jang
-        </a>
+        @yo_o.ngy @sehoney.jang
         <br />
+        @na12.27mi @sunstheory
       </div>
       <HomeButton />
     </>
