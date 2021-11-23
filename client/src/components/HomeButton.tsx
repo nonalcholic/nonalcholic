@@ -17,8 +17,7 @@ const HomeButton: React.FC<Props> = (props) => {
   return (
     <>
       <div className="bottom-fixed">
-        <div
-          style={{ display: 'flex' }}>
+        <div style={{ display: "flex" }}>
           {props.showDeveloper && !isLoading && (
             <button
               className="hint-button"
@@ -51,7 +50,7 @@ const HomeButton: React.FC<Props> = (props) => {
             }, 900);
           }}
         >
-          {!isLoading && "kaist-mbti.me"}
+          {!isLoading && "처음으로"}
         </div>
       </div>
     </>

@@ -72,44 +72,11 @@ const StatisticsPage: React.FC<Props> = (props) => {
     };
   };
 
-  const calculateCompareData = () => {
-    if (!data) return { data: {}, compare: [], maxCount: 1 };
-
-    const result: { [key: string]: number } = {
-      E: 0,
-      I: 0,
-      S: 0,
-      N: 0,
-      T: 0,
-      F: 0,
-      J: 0,
-      P: 0,
-    };
-    data.results.forEach((_data) => {
-      _data.Type.split("").forEach((t) => {
-        result[t] += _data.Count;
-      });
-    });
-    const compare = [
-      { left: "E", right: "I" },
-      { left: "S", right: "N" },
-      { left: "T", right: "F" },
-      { left: "J", right: "P" },
-    ];
-    let maxCount = 0;
-    Object.entries(result).forEach(([key, count]) => {
-      if (maxCount < count) maxCount = count;
-    });
-    return { data: result, compare: compare, maxCount: maxCount };
-  };
-
   return (
     <>
       <span className="title">{"통계"}</span>
       <div className="header">
-        <div className="total-count">
-          총 {total} 명이 테스트에 참여했습니다.
-        </div>
+        <div className="total-count">총 {total} 명이 참여했어요!</div>
         <button
           className="show-mbti"
           style={{ marginLeft: "auto" }}
@@ -123,7 +90,6 @@ const StatisticsPage: React.FC<Props> = (props) => {
       {data && (
         <>
           <BarGraph {...calculateData()} showMBTI={showMBTI} />
-          <CompareBarGraph {...calculateCompareData()} showMBTI={showMBTI} />
         </>
       )}
       <HomeButton />

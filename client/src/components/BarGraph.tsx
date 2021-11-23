@@ -40,7 +40,7 @@ const BarGraph: React.FC<Props> = (props) => {
             </span>
             <div className="bar-container">
               <div className="bar" style={getStyle(_data)}>
-                <span className="count">{_data.Count}</span>
+                <span className="count">{_data.Count + "명"}</span>
               </div>
             </div>
             <span className="percent">{Math.round(_data.Percent) + "%"}</span>
