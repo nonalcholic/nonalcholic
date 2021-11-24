@@ -17,6 +17,7 @@
   min-height: 600px;
   padding: 0 12px 72px;
   margin: 0 auto;
+  overflow-x: hidden;
 
   box-sizing: border-box;
 
@@ -42,7 +43,7 @@
   }
 }
 .animation-fade-in {
-  position: absolute;
+  position: fixed;
   top: 0px;
 
   width: 100vw;

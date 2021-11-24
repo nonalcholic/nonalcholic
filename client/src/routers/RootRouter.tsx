@@ -20,9 +20,9 @@ const RootRouter: React.FC<Props> = (props) => {
         <Route exact path="/start">
           <StartPage />
         </Route>
-        <Route exact path="/description">
+        {/* <Route exact path="/description">
           <DescriptionPage />
-        </Route>
+        </Route> */}
         <Route exact path="/progress">
           <ProgressPage />
         </Route>
