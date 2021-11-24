@@ -67,7 +67,6 @@ const DeveloperPage: React.FC<Props> = (props) => {
           href={`https://www.instagram.com/nupjuki`}
           target="_blank"
           rel="noreferrer"
-          style={{ marginBottom: 8 }}
         >
           <u>@nupjuki</u>
         </a>
