@@ -15,7 +15,7 @@ const DescriptionPage: React.FC<Props> = () => {
           시작 전 설명
           {/* {"나에게 딱 맞는\n카이스트 장소는 어디?"} */}
         </span>
-        <span className="result-description">
+        <span className="description-text">
           {DescriptionInfo}
         </span>
         <div className="button-container">
