@@ -30,13 +30,9 @@
       font-weight: 600;
       cursor: pointer;
 
-      text-align: center;
       transition: all 0.2s;
       border-radius: 8px;
       margin-right: 4px;
-      &:hover {
-        background-color: $nonalcholic-lightyellow;
-      }
     }
     .bar-container {
       flex: 1;

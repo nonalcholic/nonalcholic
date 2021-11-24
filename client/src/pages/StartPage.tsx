@@ -17,6 +17,20 @@ const StartPage: React.FC<Props> = (props) => {
     }, 1000);
   }, []);
 
+  useEffect(() => {
+    if (showDescription) {
+      window.history.pushState(null, "", "");
+
+      window.onpopstate = (e) => {
+        setShowDescription(false);
+      };
+
+      return () => {
+        window.onpopstate = null;
+      };
+    }
+  }, [showDescription]);
+
   return (
     <>
       {animation && <div className="animation-fade-in" />}
@@ -30,7 +44,7 @@ const StartPage: React.FC<Props> = (props) => {
           alt="main"
         />
       </div>
-      <div className={`buttons-container ${showDescription}`}>
+      <div className={`buttons-container`}>
         <button
           className="large-button"
           onClick={() => setShowDescription(true)}
