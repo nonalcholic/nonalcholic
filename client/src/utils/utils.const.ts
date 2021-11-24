@@ -60,18 +60,18 @@ export const QuestionInfo: QuestionData[] = [
     id: 10,
     type: "JP",
     emoji: "🧑‍💻",
-    question: "막막할만큼 큰 프로젝트 과제가 생겼다!",
-    choiceA: { text: "뭐부터 해야할지 계획을 세우고\n과제 시작", type: "J" },
-    choiceB: { text: "자료조사를 최대한 많이 하고\n과제 시작", type: "P" },
+    question: "막막할만큼 큰 프로젝트 과제가 생겼다! ",
+    choiceA: { text: "뭐 부터 해야할지 계획 세우기!", type: "J" },
+    choiceB: { text: "기본 자료조사부터 최대한 많이!", type: "P" },
   },
   {
     id: 3,
     type: "SN",
     emoji: "🧑‍🏫",
-    question: "이 교양 과목 어때?",
+    question: "이 교양 과목 어때?\n친구의 질문에 나는",
     choiceA: { text: "야 개꿀\n무조건 들어", type: "S" },
     choiceB: {
-      text: "일주일에 한 번 과제에 중간고사는 없고\n기말고사 대신에 Final 레포트가 있어\n교수님은 친절하시긴 한데 영어라 힘들었어",
+      text: "일주일에 과제 한번, 중간고사는 없고\n교수님은 친절하시긴 한데 영어라 힘들었어",
       type: "N",
     },
   },
@@ -82,7 +82,7 @@ export const QuestionInfo: QuestionData[] = [
     question:
       "새로 들어간 동아리의 첫 술자리\n처음 보는 선배와 동기들이 잔뜩 있다!",
     choiceA: {
-      text: "오픈동방 때 봤던 선배다!\n저 친구는 얼굴이 익숙한데!!\n씐나!!!",
+      text: "오픈동방 때 봤던 선배다!\n저 친구는 얼굴이 익숙한데?!",
       type: "E",
     },
     choiceB: {
@@ -94,13 +94,13 @@ export const QuestionInfo: QuestionData[] = [
     id: 5,
     type: "SN",
     emoji: "🤔",
-    question: "멍 때리는 중...\n당신의 머릿속은?",
+    question: "아무것도 안할 때\n당신의 머릿속은?",
     choiceA: {
       text: "정말 아무 생각도 안함",
       type: "S",
     },
     choiceB: {
-      text: "뭔가 생각 중임",
+      text: "생각이 꼬리에 꼬리를 무는 잡생각 중",
       type: "N",
     },
   },
@@ -108,7 +108,7 @@ export const QuestionInfo: QuestionData[] = [
     id: 11,
     type: "JP",
     emoji: "🏠",
-    question: "오랜만에 방 정리 중...",
+    question: "오랜만에 방 정리를 하는 나의 자세는?",
     choiceA: {
       text: "쓰지 않을 것들은 과감하게 버린다",
       type: "J",
@@ -133,13 +133,13 @@ export const QuestionInfo: QuestionData[] = [
     id: 9,
     type: "JP",
     emoji: "🏫",
-    question: "다음 학기 시간표를 짜는\n당신의 자세는?",
+    question: "다음 학기 시간표를 짜는\n당신의 모습은?",
     choiceA: {
-      text: "교양/전필/전선 과목별로 1,2,3순위 설정\n플랜 A,B,C,D까지 준비",
+      text: "수강 신청 우선 순위 설정하고\n플랜 A,B,C 준비",
       type: "J",
     },
     choiceB: {
-      text: "엥 수강신청이 내일이라고?\n와 나 강제 휴학 휴학할뻔 ㅋㅋㅋ",
+      text: "엥 수강신청이 내일이라고?\n와 하마터면 휴학 할뻔 ㅋㅋㅋ",
       type: "P",
     },
   },
@@ -147,13 +147,13 @@ export const QuestionInfo: QuestionData[] = [
     id: 2,
     type: "EI",
     emoji: "🎉",
-    question: "비대면 기간이 길어진다",
+    question: "비대면 기간이 길어질 때 드는 생각은?",
     choiceA: {
-      text: "편하긴 한데, 캠퍼스 라이프가 없는게 아쉽구만",
+      text: "편하긴 한데\n캠퍼스 라이프가 없는게 아쉽구만",
       type: "E",
     },
     choiceB: {
-      text: "주 평균 0.2회 외출\n이보다 행복한 삶은 없다",
+      text: "외출이 뭐였더라?\n이보다 행복한 삶은 없다",
       type: "I",
     },
   },
