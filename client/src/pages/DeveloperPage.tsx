@@ -3,7 +3,7 @@ import Developer from "../components/Developer";
 import HomeButton from "../components/HomeButton";
 import { RiGithubFill } from "react-icons/ri";
 
-interface Props { }
+interface Props {}
 const DeveloperPage: React.FC<Props> = (props) => {
   const [showA, setShowA] = useState<boolean>(false);
   const [showB, setShowB] = useState<boolean>(false);
@@ -47,7 +47,7 @@ const DeveloperPage: React.FC<Props> = (props) => {
             marginTop: "2px",
             marginRight: "4px",
             width: "20px",
-            height: "20px"
+            height: "20px",
           }}
           className="share-svg"
         />
@@ -56,9 +56,7 @@ const DeveloperPage: React.FC<Props> = (props) => {
           target="_blank"
           rel="noreferrer"
         >
-          <u>
-            https://github.com/nonalcholic/nonalcholic
-          </u>
+          <u>Github Repository</u>
         </a>
       </div>
       <div className="hint" style={{ marginTop: 20 }}>
@@ -69,17 +67,20 @@ const DeveloperPage: React.FC<Props> = (props) => {
           href={`https://www.instagram.com/nupjuki`}
           target="_blank"
           rel="noreferrer"
+          style={{ marginBottom: 8 }}
         >
-          <u>
-            @nupjuki
-          </u>
+          <u>@nupjuki</u>
         </a>
+        <div className="names">
+          {["경", "세헌", "남희", "기영", "상욱", "시온", "성호"].map(
+            (data) => (
+              <span>{data}</span>
+            )
+          )}
+        </div>
         {/* @yo_o.ngy @sehoney.jang @na12.27mi @sunstheory
         <br />
         @uuuuuuk_traveller @526xionpark @shkeum21 */}
-        경 세헌 남희 기영
-        <br />
-        상욱 시온 성호
       </div>
       <HomeButton />
     </>
