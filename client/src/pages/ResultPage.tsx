@@ -104,7 +104,6 @@ const ResultPage: React.FC<Props> = (props) => {
         alt="background"
       />
       <div className="animation-fade-in" />
-      <div className="block" />
       <div className="result-container" id="result-container">
         <span className="hint-title">{"나의 KAIST 최애 장소는.."}</span>
         <span className="result-title one">{MBTIResult[MBTI].title}</span>

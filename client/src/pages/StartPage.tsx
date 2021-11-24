@@ -42,7 +42,7 @@ const StartPage: React.FC<Props> = (props) => {
         </button>
       </div>
 
-      <span className="hint bottom-fixed" style={{ padding: "20px 0" }}>
+      <span className="hint bottom-fixed" style={{ padding: "12px 0 20px" }}>
         {"이 사이트는 KAIST의 공식 페이지가 아닌\n졸업생이 제작한 페이지입니다"}
         <button
           className="hint-button"
