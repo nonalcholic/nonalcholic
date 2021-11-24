@@ -335,5 +335,4 @@ export const MBTIList: MBTIListElem[] = [
   { type: "ISFJ" },
 ];
 
-export const DescriptionInfo: string =
-  "본 검사는 간단한 성격 분석을 통해\n카이스트 내 본인과 가장 잘 어울리는 장소를 알려주는 테스트입니다.\n가벼운 마음으로 재밌게 즐겨주시면 감사하겠습니다😉";
+export const DescriptionInfo: string = "간단한 성격 분석을 통해\n딱 맞는 카이스트 장소를 찾아줄게요\n가벼운 마음으로 즐겨주세요!"
