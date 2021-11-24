@@ -14,6 +14,7 @@ const StartPage: React.FC<Props> = (props) => {
       setAnimation(false);
     }, 1000);
   }, []);
+
   return (
     <>
       {animation && <div className="animation-fade-in" />}
