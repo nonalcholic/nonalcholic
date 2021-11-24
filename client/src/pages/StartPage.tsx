@@ -31,7 +31,7 @@ const StartPage: React.FC<Props> = (props) => {
       <div className="buttons-container">
         <button
           className="large-button"
-          onClick={() => history.push("/progress")}
+          onClick={() => history.push("/description")}
         >
           시작하기
         </button>
