@@ -1,6 +1,7 @@
 import "./StartPage.scss";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { DescriptionInfo } from "../utils/utils.const";
 
 interface Props {}
 
@@ -8,6 +9,7 @@ const StartPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
   const [animation, setAnimation] = useState<boolean>(true);
+  const [showDescription, setShowDescription] = useState<boolean>(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -28,10 +30,10 @@ const StartPage: React.FC<Props> = (props) => {
           alt="main"
         />
       </div>
-      <div className="buttons-container">
+      <div className={`buttons-container ${showDescription}`}>
         <button
           className="large-button"
-          onClick={() => history.push("/description")}
+          onClick={() => setShowDescription(true)}
         >
           시작하기
         </button>
@@ -40,6 +42,15 @@ const StartPage: React.FC<Props> = (props) => {
           onClick={() => history.push("/statistics")}
         >
           통계
+        </button>
+      </div>
+      <div className={`description-containers ${showDescription}`}>
+        {DescriptionInfo}
+        <button
+          className="large-button"
+          onClick={() => history.push("/progress")}
+        >
+          좋아요!
         </button>
       </div>
 
