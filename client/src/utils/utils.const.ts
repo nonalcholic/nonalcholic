@@ -100,7 +100,7 @@ export const QuestionInfo: QuestionData[] = [
       type: "S",
     },
     choiceB: {
-      text: "뭔가 생각 중임",
+      text: "아무 생각도 안하는 방법을 모름",
       type: "N",
     },
   },
@@ -334,3 +334,5 @@ export const MBTIList: MBTIListElem[] = [
   { type: "ISFP" },
   { type: "ISFJ" },
 ];
+
+export const DescriptionInfo: string = "본 검사는 간단한 성격 분석을 통해\n카이스트 내 본인과 가장 잘 어울리는 장소를 알려주는 테스트입니다.\n가벼운 마음으로 재밌게 즐겨주시면 감사하겠습니다😉"
