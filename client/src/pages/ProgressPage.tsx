@@ -5,7 +5,7 @@ import ProgressBar from "../components/ProgressBar";
 import Progress from "../layout/Progress/Progress";
 import { IReducer } from "../redux";
 import { ResultInterface } from "../redux/interfaces/dataInterface";
-import { setId } from "../redux/progress";
+import { resetProgress, setId } from "../redux/progress";
 import { caculateMBTI } from "../utils/utils.calculate";
 import { QuestionInfo, TOTAL_PROGRESS_NUMBER } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
@@ -48,7 +48,10 @@ const ProgressPage: React.FC<Props> = (props) => {
       });
     } catch (e) {}
 
-    setTimeout(() => history.push(`/${result}`), 1000);
+    setTimeout(() => {
+      history.push(`/${result}`);
+      resetProgress()(dispatch);
+    }, 1000);
   };
 
   useEffect(() => {

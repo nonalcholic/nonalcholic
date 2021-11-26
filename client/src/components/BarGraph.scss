@@ -8,7 +8,7 @@
   width: 100%;
 
   padding: 12px 8px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 
   border: 2px solid $nonalcholic-gray;
   border-radius: 8px;
@@ -24,17 +24,22 @@
     flex-direction: row;
 
     .type {
-      width: 80px;
+      width: 84px;
       font-size: 14px;
       box-sizing: border-box;
       font-weight: 600;
+      cursor: pointer;
+
+      transition: all 0.2s;
+      border-radius: 8px;
+      margin-right: 4px;
     }
     .bar-container {
       flex: 1;
       .bar {
         position: relative;
         height: 20px;
-        min-width: 24px;
+        min-width: 36px;
         border-radius: 10px;
 
         background-color: $nonalcholic-yellow;
@@ -45,8 +50,6 @@
           position: absolute;
           top: 0;
           right: 8px;
-
-          margin-left: 8px;
 
           box-sizing: border-box;
           font-size: 12px;

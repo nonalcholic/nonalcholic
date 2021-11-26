@@ -1,15 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ShareInterface } from "../redux/interfaces/dataInterface";
 import { RiKakaoTalkFill } from "react-icons/ri";
-import { FiImage, FiLink } from "react-icons/fi";
+import { FiLink } from "react-icons/fi";
 import "./ResultPage.scss";
 import { MBTIResult } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MBTIResultType } from "../redux/interfaces/progressInterface";
 import { IReducer } from "../redux";
-import html2canvas from "html2canvas";
 import HomeButton from "../components/HomeButton";
 
 declare const window: any;
@@ -21,6 +20,7 @@ const ResultPage: React.FC<Props> = (props) => {
 
   const hiddenRef = useRef<HTMLTextAreaElement>(null);
   const progress = useSelector((state: IReducer) => state.progress);
+  const [showCopyMessage, setShowCopyMeesage] = useState<boolean>(false);
 
   const kakaoInit = async () => {
     window.Kakao.init("7281c5f7129e05440500f936dedee302");
@@ -60,7 +60,7 @@ const ResultPage: React.FC<Props> = (props) => {
     kakaoInit();
   }, []);
 
-  const onShare = (where: "link" | "instagram" | "kakao") => {
+  const onShare = (where: "link" | "kakao") => {
     const body: ShareInterface = {
       id: progress.id,
       type: where,
@@ -86,55 +86,25 @@ const ResultPage: React.FC<Props> = (props) => {
           hiddenRef.current.select();
           document.execCommand("Copy");
           hiddenRef.current.style.display = "none";
+
+          setShowCopyMeesage(true);
         }
-        break;
-      case "instagram":
         break;
       case "kakao":
         break;
     }
   };
 
-  const downloadImage = () => {
-    const container = document.getElementById("result-container");
-    if (container) {
-      document.getElementById("hidden-url")?.classList.add("show");
-      document.getElementById("background-picture")?.classList.add("show");
-      document.getElementById("result-buttons")?.classList.add("hide");
-
-      html2canvas(container)
-        .then((canvas) => {
-          onSaveAs(canvas.toDataURL("image/png"), "kaist-mbti.png");
-        })
-        .finally(() => {
-          document.getElementById("hidden-url")?.classList.remove("show");
-          document
-            .getElementById("background-picture")
-            ?.classList.remove("show");
-          document.getElementById("result-buttons")?.classList.remove("hide");
-        });
-    }
-  };
-
-  const onSaveAs = (uri: string, fileName: string) => {
-    let link = document.createElement("a");
-    document.body.appendChild(link);
-    link.href = uri;
-    link.download = fileName;
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <>
+      <img
+        className="background-picture"
+        id="background-picture"
+        src={require(`../assets/mbti/${MBTI}.jpg`).default}
+        alt="background"
+      />
       <div className="animation-fade-in" />
       <div className="result-container" id="result-container">
-        <img
-          className="background-picture"
-          id="background-picture"
-          src={require(`../assets/mbti/${MBTI}.jpg`).default}
-          alt="background"
-        />
         <span className="hint-title">{"나의 KAIST 최애 장소는.."}</span>
         <span className="result-title one">{MBTIResult[MBTI].title}</span>
         <span className="result-title two">{MBTIResult[MBTI].place}</span>
@@ -150,29 +120,34 @@ const ResultPage: React.FC<Props> = (props) => {
         <span id="hidden-url" className="hidden-url">
           kaist-mbti.me
         </span>
-      </div>
-      <div className="result-buttons" id="result-buttons">
-        <textarea
-          readOnly
-          style={{ display: "none" }}
-          value={`http://${IP_ADDRESS}/${MBTI}`}
-          tabIndex={-1}
-          ref={hiddenRef}
-        />
-        <div className="bottom-buttons">
-          <button className="small-button" onClick={() => onShare("link")}>
-            <FiLink style={{ color: "black" }} />
-          </button>
-          <button className="small-button" onClick={() => downloadImage()}>
-            <FiImage style={{ color: "black" }} className="share-svg" />
-          </button>
-          <button
-            className="small-button"
-            id="kakao-link-btn"
-            onClick={() => onShare("kakao")}
-          >
-            <RiKakaoTalkFill className="share-svg" fill={"black"} />
-          </button>
+        <div className="result-buttons" id="result-buttons">
+          <textarea
+            readOnly
+            style={{ display: "none" }}
+            value={`http://${IP_ADDRESS}/${MBTI}`}
+            tabIndex={-1}
+            ref={hiddenRef}
+          />
+          <div className="bottom-buttons">
+            <button className="small-button" onClick={() => onShare("link")}>
+              <FiLink style={{ color: "black" }} />
+            </button>
+            <button
+              className="small-button"
+              id="kakao-link-btn"
+              onClick={() => onShare("kakao")}
+            >
+              <RiKakaoTalkFill className="share-svg" fill={"black"} />
+            </button>
+          </div>
+          {showCopyMessage && (
+            <div
+              className="copy-message"
+              onClick={() => setShowCopyMeesage(false)}
+            >
+              링크가 클립보드에 복사되었습니다
+            </div>
+          )}
         </div>
       </div>
       <HomeButton showDeveloper showStatistics />

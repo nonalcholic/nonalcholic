@@ -17,6 +17,7 @@
   min-height: 600px;
   padding: 0 12px 72px;
   margin: 0 auto;
+  overflow-x: hidden;
 
   box-sizing: border-box;
 
@@ -42,7 +43,7 @@
   }
 }
 .animation-fade-in {
-  position: absolute;
+  position: fixed;
   top: 0px;
 
   width: 100vw;
@@ -64,10 +65,6 @@
 }
 
 .header {
-  position: sticky;
-  top: 0px;
-  z-index: 1;
-
   display: flex;
   align-items: center;
 
@@ -126,6 +123,43 @@
 .hint {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  font-size: 14px;
+  color: #777777;
+  white-space: pre-wrap;
+
+  text-align: center;
+  bottom: 0px;
+
+  a {
+    font-size: 14px;
+    color: #777777;
+    text-decoration: none;
+    line-height: 18px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.names {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  width: 120px;
+  gap: 0px 6px;
+
+  span {
+    font-size: 14px;
+    color: #777777;
+  }
+}
+.hint2 {
+  display: flex;
+  // flex-direction: row;
   align-items: center;
 
   font-size: 14px;
@@ -232,7 +266,7 @@
 
   transition: all 0.2s;
   &:hover {
-    background-color: $nonalcholic-lightyellow;
+    background-color: rgba($color: white, $alpha: 0.4);
   }
   &:active {
     transform: scale(0.95);
@@ -245,7 +279,7 @@
 }
 
 .bottom-fixed {
-  background-color: white;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -253,4 +287,24 @@
   position: fixed;
   bottom: 0;
   z-index: 1;
+
+  .sub-buttons {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    background-color: rgba($color: white, $alpha: 0.8);
+    animation: push-up 0.5s ease;
+    z-index: -1;
+  }
+}
+
+@keyframes push-up {
+  0% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

@@ -1,6 +1,7 @@
 # NONALCHOLIC
 
 A small and fun KAIST personality type test project
+We know "Nonalcholic" is wrong. That is what we intended.
 
 ## Prerequisite
 
@@ -20,7 +21,6 @@ A small and fun KAIST personality type test project
 ```bash
 REACT_APP_IP_ADDRESS=[YOUR IP ADDRESS] # ex. localhost
 ```
-
 
 ### Database + Backend + Frontend
 

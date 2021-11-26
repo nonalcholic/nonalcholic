@@ -1,6 +1,7 @@
 import "./StartPage.scss";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { DescriptionInfo } from "../utils/utils.const";
 
 interface Props {}
 
@@ -8,12 +9,28 @@ const StartPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
   const [animation, setAnimation] = useState<boolean>(true);
+  const [showDescription, setShowDescription] = useState<boolean>(false);
 
   useEffect(() => {
     setTimeout(() => {
       setAnimation(false);
     }, 1000);
   }, []);
+
+  useEffect(() => {
+    if (showDescription) {
+      window.history.pushState(null, "", "");
+
+      window.onpopstate = (e) => {
+        setShowDescription(false);
+      };
+
+      return () => {
+        window.onpopstate = null;
+      };
+    }
+  }, [showDescription]);
+
   return (
     <>
       {animation && <div className="animation-fade-in" />}
@@ -27,10 +44,10 @@ const StartPage: React.FC<Props> = (props) => {
           alt="main"
         />
       </div>
-      <div className="buttons-container">
+      <div className={`buttons-container`}>
         <button
           className="large-button"
-          onClick={() => history.push("/progress")}
+          onClick={() => setShowDescription(true)}
         >
           시작하기
         </button>
@@ -41,8 +58,17 @@ const StartPage: React.FC<Props> = (props) => {
           통계
         </button>
       </div>
+      <div className={`description-containers ${showDescription}`}>
+        {DescriptionInfo}
+        <button
+          className="large-button"
+          onClick={() => history.push("/progress")}
+        >
+          좋아요!
+        </button>
+      </div>
 
-      <span className="hint bottom-fixed" style={{ padding: "20px 0" }}>
+      <span className="hint bottom-fixed" style={{ padding: "12px 0 20px" }}>
         {"이 사이트는 KAIST의 공식 페이지가 아닌\n졸업생이 제작한 페이지입니다"}
         <button
           className="hint-button"
