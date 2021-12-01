@@ -1,6 +1,6 @@
 # NONALCHOLIC
 
-A small and fun KAIST personality type test project
+A small and fun KAIST personality type test project.  
 We know "Nonalcholic" is wrong. That is what we intended.
 
 ## Prerequisite
