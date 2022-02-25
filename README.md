@@ -5,7 +5,6 @@ Branch for [nonalcholic.github.io/nonalcholic](nonalcholic.github.io/nonalcholic
 ## Development
 
 ```bash
-cd client
 npm install
 npm start
 ```
@@ -13,7 +12,6 @@ npm start
 ## Release
 
 ```bash
-cd client
 npm install
 npm run build # output: build/
 ```
