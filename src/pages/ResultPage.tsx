@@ -48,8 +48,8 @@ const ResultPage: React.FC<Props> = (props) => {
         {
           title: "테스트하기",
           link: {
-            mobileWebUrl: `http://${IP_ADDRESS}/start`,
-            webUrl: `http://${IP_ADDRESS}/start`,
+            mobileWebUrl: `http://${IP_ADDRESS}`,
+            webUrl: `http://${IP_ADDRESS}`,
           },
         },
       ],

@@ -15,9 +15,6 @@ const RootRouter: React.FC<Props> = (props) => {
     <div className="root-container">
       <Switch>
         <Route exact path="/">
-          <Redirect to="/start" />
-        </Route>
-        <Route exact path="/start">
           <StartPage />
         </Route>
         {/* <Route exact path="/description">
@@ -39,11 +36,11 @@ const RootRouter: React.FC<Props> = (props) => {
             const mbti = routeProps.match.params["mbti"];
 
             if (isMBTIResult(mbti)) return <ResultPage />;
-            else return <Redirect to={`/start`} />;
+            else return <Redirect to={`/`} />;
           }}
         />
         <Route path={"*"}>
-          <Redirect to={"/start"} />
+          <Redirect to={"/"} />
         </Route>
       </Switch>
     </div>
