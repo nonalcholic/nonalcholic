@@ -66,18 +66,18 @@ const ResultPage: React.FC<Props> = (props) => {
       type: where,
     };
 
-    try {
-      fetch(`http://${IP_ADDRESS}:${SERVER_PORT}/share`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-    } catch (e) {
-      console.log(e);
-    }
+    // try {
+    //   fetch(`http://${IP_ADDRESS}:${SERVER_PORT}/share`, {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(body),
+    //   });
+    // } catch (e) {
+    //   console.log(e);
+    // }
 
     switch (where) {
       case "link":
@@ -100,7 +100,8 @@ const ResultPage: React.FC<Props> = (props) => {
       <img
         className="background-picture"
         id="background-picture"
-        src={require(`../assets/mbti/${MBTI}.jpg`).default}
+        // src={require(`../assets/mbti/${MBTI}.jpg`).default}
+        src={`./assets/mbti/${MBTI}.jpg`}
         alt="background"
       />
       <div className="animation-fade-in" />
@@ -110,7 +111,8 @@ const ResultPage: React.FC<Props> = (props) => {
         <span className="result-title two">{MBTIResult[MBTI].place}</span>
         <img
           className="result-picture"
-          src={require(`../assets/mbti/${MBTI}.jpg`).default}
+          // src={require(`../assets/mbti/${MBTI}.jpg`).default}
+          src={`./assets/mbti/${MBTI}.jpg`}
           alt="result"
         />
         <span className="result-context">{MBTIResult[MBTI].subtitle}</span>

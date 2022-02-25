@@ -40,7 +40,8 @@ const StartPage: React.FC<Props> = (props) => {
         </span>
         <img
           className="main-image"
-          src={require("../assets/main.png").default}
+          // src={require("../assets/main.png").default}
+          src="./assets/main.png"
           alt="main"
         />
       </div>

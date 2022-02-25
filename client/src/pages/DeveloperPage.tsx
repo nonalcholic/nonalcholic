@@ -18,7 +18,8 @@ const DeveloperPage: React.FC<Props> = (props) => {
       {showA && (
         <Developer
           name="유주형"
-          image={require("../assets/developer/yuz.png").default}
+          // image={require("../assets/developer/yuz.png").default}
+          image="/assets/developer/yuz.png"
           subdescription="맥주 들고 신학관 옥상으로 따라와!"
           description_1="KAIST CS 16"
           description_2="CLASSUM"
@@ -29,7 +30,8 @@ const DeveloperPage: React.FC<Props> = (props) => {
       {showB && (
         <Developer
           name="이민지"
-          image={require("../assets/developer/minx.JPG").default}
+          // image={require("../assets/developer/minx.JPG").default}
+          image="/assets/developer/minx.JPG"
           subdescription="교분 2층 B-22 지박령"
           description_1="KAIST CS 16"
           description_2="NCSOFT"

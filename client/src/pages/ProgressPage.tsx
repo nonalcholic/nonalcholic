@@ -32,21 +32,21 @@ const ProgressPage: React.FC<Props> = (props) => {
 
     const result = caculateMBTI(progress.answerData);
 
-    try {
-      const body: ResultInterface = {
-        id: progress.id,
-        answers: progress.answerData.map((ans) => ans.score),
-        result: result,
-      };
-      await fetch(`http://${IP_ADDRESS}:${SERVER_PORT}/result`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-    } catch (e) {}
+    // try {
+    //   const body: ResultInterface = {
+    //     id: progress.id,
+    //     answers: progress.answerData.map((ans) => ans.score),
+    //     result: result,
+    //   };
+    //   await fetch(`http://${IP_ADDRESS}:${SERVER_PORT}/result`, {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(body),
+    //   });
+    // } catch (e) {}
 
     setTimeout(() => {
       history.push(`/${result}`);

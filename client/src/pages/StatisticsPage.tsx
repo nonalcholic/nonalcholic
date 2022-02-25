@@ -2,7 +2,11 @@ import "./StatisticsPage.scss";
 import React, { useEffect, useState } from "react";
 import BarGraph from "../components/BarGraph";
 import CompareBarGraph from "../components/CompareBarGraph";
-import { StatisticsDto } from "../redux/interfaces/statisticsInterface";
+import {
+  MockStaticDto,
+  MockTotal,
+  StatisticsDto,
+} from "../redux/interfaces/statisticsInterface";
 import { MBTIList, MBTIListElem } from "../utils/utils.const";
 import { IP_ADDRESS, SERVER_PORT } from "../utils/utils.env";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
@@ -15,36 +19,35 @@ interface MBTIInterface {
 }
 
 const StatisticsPage: React.FC<Props> = (props) => {
-  const [data, setData] = useState<StatisticsDto>();
+  const [data, setData] = useState<StatisticsDto>(MockStaticDto);
   const [showMBTI, setShowMBTI] = useState<boolean>(false);
-  const [total, setTotal] = useState<number>(0);
+  const [total, setTotal] = useState<number>(MockTotal);
 
   useEffect(() => {
-    const fetchResult = async () => {
-      const body: MBTIInterface = {
-        types: MBTIList,
-      };
-      const res = await fetch(
-        `http://${IP_ADDRESS}:${SERVER_PORT}/statistics`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        }
-      );
-      const data: StatisticsDto = await res.json();
-      setData(data);
-
-      const totalCount = data.results.reduce((total, _data) => {
-        total += _data.Count;
-        return total;
-      }, 0);
-      setTotal(totalCount);
-    };
-    fetchResult();
+    // const fetchResult = async () => {
+    //   const body: MBTIInterface = {
+    //     types: MBTIList,
+    //   };
+    //   const res = await fetch(
+    //     `http://${IP_ADDRESS}:${SERVER_PORT}/statistics`,
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(body),
+    //     }
+    //   );
+    //   const data: StatisticsDto = await res.json();
+    //   setData(data);
+    //   const totalCount = data.results.reduce((total, _data) => {
+    //     total += _data.Count;
+    //     return total;
+    //   }, 0);
+    //   setTotal(totalCount);
+    // };
+    // fetchResult();
   }, []);
 
   const calculateData = () => {
