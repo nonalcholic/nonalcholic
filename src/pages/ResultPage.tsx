@@ -101,7 +101,7 @@ const ResultPage: React.FC<Props> = (props) => {
         className="background-picture"
         id="background-picture"
         // src={require(`../assets/mbti/${MBTI}.jpg`).default}
-        src={`./assets/mbti/${MBTI}.jpg`}
+        src={`nonalcholic/assets/mbti/${MBTI}.jpg`}
         alt="background"
       />
       <div className="animation-fade-in" />
@@ -112,7 +112,7 @@ const ResultPage: React.FC<Props> = (props) => {
         <img
           className="result-picture"
           // src={require(`../assets/mbti/${MBTI}.jpg`).default}
-          src={`./assets/mbti/${MBTI}.jpg`}
+          src={`nonalcholic/assets/mbti/${MBTI}.jpg`}
           alt="result"
         />
         <span className="result-context">{MBTIResult[MBTI].subtitle}</span>

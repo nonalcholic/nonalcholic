@@ -41,7 +41,7 @@ const StartPage: React.FC<Props> = (props) => {
         <img
           className="main-image"
           // src={require("../assets/main.png").default}
-          src="./assets/main.png"
+          src="nonalcholic/assets/main.png"
           alt="main"
         />
       </div>
