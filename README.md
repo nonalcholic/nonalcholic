@@ -3,6 +3,9 @@
 A small and fun KAIST personality type test project.  
 We know "Nonalcholic" is wrong. That is what we intended.
 
+
+[사용하기](https://nonalcholic.github.io/) 
+
 ## Preview
 
 [웹 시연 보기 (비디오)](https://drive.google.com/file/d/1b5uEbPUtygNwgtu5vy_8eGcmV5ZYhIzE/view?usp=sharing)  
